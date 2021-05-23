@@ -16,8 +16,8 @@ public class ProyectoFinal_RAPA {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        login l1 = new login();
-        l1.setVisible(true);
+        portada p1 = new portada();
+        p1.setVisible(true);
     }
     
 }
