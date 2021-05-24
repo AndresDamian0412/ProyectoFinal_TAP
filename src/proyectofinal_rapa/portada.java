@@ -24,6 +24,8 @@ public class portada extends javax.swing.JFrame {
         this.setContentPane(fondo);
         initComponents();
         this.setLocation(400,100);
+        this.setTitle("REGISTRO Y ADMINISTRACIÓN DE PRODUCTOS ACADEMICOS (RAPA)");
+        this.setResizable(false);
     }
 
     /**

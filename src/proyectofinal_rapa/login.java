@@ -18,7 +18,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         panelLogin.setLocation(50, 100);
         this.setLocation(50,100);
-        this.setTitle("REGISTRO Y ADMINISTRACIÓN DE PRODUCTOS ACADÉMICOS (RAPA)");
+        this.setTitle("REGISTRO Y ADMINISTRACIÓN DE PRODUCTOS ACADEMICOS (RAPA)");
         this.setResizable(false);
     }
 
