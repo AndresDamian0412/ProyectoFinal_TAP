@@ -5,20 +5,28 @@
  */
 package proyectofinal_rapa;
 
-import java.awt.PopupMenu;
+import jPanels.docente_consulta;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 /**
  *
  * @author andresdam
  */
-public class interfaz_docente extends javax.swing.JFrame {
+public class interfaz_docente extends javax.swing.JFrame implements ActionListener {
 
-    /**
-     * Creates new form interfaz_docente
-     */
+    docente_consulta dc = new docente_consulta();
+    
     public interfaz_docente() {
         initComponents();
         this.setLocation(50, 100);
+        etiNombre.setText("Jose Alfonso Perez Duran");
+        
+        btnAgregar.addActionListener(this);
+        btnConsultar.addActionListener(this);
+        
+        dc.setVisible(false);
     }
 
     /**
@@ -29,53 +37,49 @@ public class interfaz_docente extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        btnConsulta = new javax.swing.JRadioButton();
-        btnNuevo = new javax.swing.JRadioButton();
+        contenedor = new javax.swing.JPanel();
+        pnlIzquierdo = new javax.swing.JPanel();
+        etiBienvenido = new javax.swing.JLabel();
+        etiNombre = new javax.swing.JLabel();
+        pnlInferior = new javax.swing.JPanel();
+        btnConsultar = new javax.swing.JRadioButton();
+        btnAgregar = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 546));
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        contenedor.setLayout(new java.awt.BorderLayout());
 
-        buttonGroup1.add(btnConsulta);
-        btnConsulta.setText("Consultar productos");
-        btnConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConsultaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnConsulta, new java.awt.GridBagConstraints());
+        pnlIzquierdo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(255, 0, 0), null, null));
+        pnlIzquierdo.setLayout(new java.awt.BorderLayout());
 
-        buttonGroup1.add(btnNuevo);
-        btnNuevo.setText("Registrar productos");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        jPanel1.add(btnNuevo, gridBagConstraints);
+        etiBienvenido.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        etiBienvenido.setText("Bienvenido");
+        pnlIzquierdo.add(etiBienvenido, java.awt.BorderLayout.PAGE_START);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
+        etiNombre.setText("nombreDocente");
+        pnlIzquierdo.add(etiNombre, java.awt.BorderLayout.CENTER);
+
+        pnlInferior.setLayout(new java.awt.BorderLayout());
+
+        buttonGroup1.add(btnConsultar);
+        btnConsultar.setText("Consultar participaciones");
+        pnlInferior.add(btnConsultar, java.awt.BorderLayout.CENTER);
+
+        buttonGroup1.add(btnAgregar);
+        btnAgregar.setText("Agregar producto");
+        pnlInferior.add(btnAgregar, java.awt.BorderLayout.PAGE_START);
+
+        pnlIzquierdo.add(pnlInferior, java.awt.BorderLayout.PAGE_END);
+
+        contenedor.add(pnlIzquierdo, java.awt.BorderLayout.LINE_START);
+
+        getContentPane().add(contenedor, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void btnConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultaMouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnConsultaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -113,9 +117,27 @@ public class interfaz_docente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton btnConsulta;
-    private javax.swing.JRadioButton btnNuevo;
+    private javax.swing.JRadioButton btnAgregar;
+    private javax.swing.JRadioButton btnConsultar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel contenedor;
+    private javax.swing.JLabel etiBienvenido;
+    private javax.swing.JLabel etiNombre;
+    private javax.swing.JPanel pnlInferior;
+    private javax.swing.JPanel pnlIzquierdo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        Object evt = ae.getSource();
+        if(evt.equals(btnConsultar)){
+            dc.setVisible(true);
+            
+            contenedor.add(dc); 
+            contenedor.validate();
+        } else{
+            dc.setVisible(false);
+        }
+                
+    }
 }
