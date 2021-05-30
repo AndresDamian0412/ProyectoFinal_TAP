@@ -5,28 +5,16 @@
  */
 package proyectofinal_rapa;
 
-import jPanels.docente_consulta;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-
 /**
  *
  * @author andresdam
  */
-public class interfaz_docente extends javax.swing.JFrame implements ActionListener {
+public class interfaz_docente extends javax.swing.JFrame {
 
-    docente_consulta dc = new docente_consulta();
-    
     public interfaz_docente() {
         initComponents();
         this.setLocation(50, 100);
-        etiNombre.setText("Jose Alfonso Perez Duran");
-        
-        btnAgregar.addActionListener(this);
-        btnConsultar.addActionListener(this);
-        
-        dc.setVisible(false);
+        lblProdA.setText("<html>PRODUCTOS<P>"+"<html>ACADÉMICOS<P>");
     }
 
     /**
@@ -41,38 +29,53 @@ public class interfaz_docente extends javax.swing.JFrame implements ActionListen
         buttonGroup1 = new javax.swing.ButtonGroup();
         contenedor = new javax.swing.JPanel();
         pnlIzquierdo = new javax.swing.JPanel();
-        etiBienvenido = new javax.swing.JLabel();
-        etiNombre = new javax.swing.JLabel();
-        pnlInferior = new javax.swing.JPanel();
-        btnConsultar = new javax.swing.JRadioButton();
-        btnAgregar = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblProdA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 546));
 
         contenedor.setLayout(new java.awt.BorderLayout());
 
-        pnlIzquierdo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(255, 0, 0), null, null));
-        pnlIzquierdo.setLayout(new java.awt.BorderLayout());
+        pnlIzquierdo.setLayout(new javax.swing.BoxLayout(pnlIzquierdo, javax.swing.BoxLayout.Y_AXIS));
 
-        etiBienvenido.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
-        etiBienvenido.setText("Bienvenido");
-        pnlIzquierdo.add(etiBienvenido, java.awt.BorderLayout.PAGE_START);
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setPreferredSize(new java.awt.Dimension(140, 200));
 
-        etiNombre.setText("nombreDocente");
-        pnlIzquierdo.add(etiNombre, java.awt.BorderLayout.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotec.png"))); // NOI18N
+        jLabel1.setIconTextGap(1);
+        jLabel1.setMaximumSize(new java.awt.Dimension(65, 65));
+        jLabel1.setMinimumSize(new java.awt.Dimension(65, 65));
+        jLabel1.setPreferredSize(new java.awt.Dimension(65, 65));
+        jPanel1.add(jLabel1);
 
-        pnlInferior.setLayout(new java.awt.BorderLayout());
+        jLabel5.setText("jLabel5");
+        jPanel1.add(jLabel5);
 
-        buttonGroup1.add(btnConsultar);
-        btnConsultar.setText("Consultar participaciones");
-        pnlInferior.add(btnConsultar, java.awt.BorderLayout.CENTER);
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4);
 
-        buttonGroup1.add(btnAgregar);
-        btnAgregar.setText("Agregar producto");
-        pnlInferior.add(btnAgregar, java.awt.BorderLayout.PAGE_START);
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3);
 
-        pnlIzquierdo.add(pnlInferior, java.awt.BorderLayout.PAGE_END);
+        pnlIzquierdo.add(jPanel1);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setMaximumSize(new java.awt.Dimension(2147483647, 700));
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 300));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        lblProdA.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        lblProdA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProdA.setText("jLabel1");
+        jPanel2.add(lblProdA, java.awt.BorderLayout.CENTER);
+
+        pnlIzquierdo.add(jPanel2);
 
         contenedor.add(pnlIzquierdo, java.awt.BorderLayout.LINE_START);
 
@@ -117,27 +120,16 @@ public class interfaz_docente extends javax.swing.JFrame implements ActionListen
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton btnAgregar;
-    private javax.swing.JRadioButton btnConsultar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel contenedor;
-    private javax.swing.JLabel etiBienvenido;
-    private javax.swing.JLabel etiNombre;
-    private javax.swing.JPanel pnlInferior;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblProdA;
     private javax.swing.JPanel pnlIzquierdo;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        Object evt = ae.getSource();
-        if(evt.equals(btnConsultar)){
-            dc.setVisible(true);
-            
-            contenedor.add(dc); 
-            contenedor.validate();
-        } else{
-            dc.setVisible(false);
-        }
-                
-    }
 }
