@@ -160,9 +160,9 @@ public class portada extends javax.swing.JFrame {
     private void btnContinuarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContinuarMouseClicked
         // TODO add your handling code here:
         login l1 =new login();
-        interfaz_jefedepartamento jd = new interfaz_jefedepartamento();
-        jd.setVisible(true);
-        //l1.setVisible(true);
+        
+        
+        l1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnContinuarMouseClicked
 
