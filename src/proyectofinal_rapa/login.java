@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinal_rapa;
 
 import java.awt.Graphics;
@@ -31,6 +26,7 @@ public class login extends javax.swing.JFrame {
         txtContra = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         btnIniciar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,10 +67,29 @@ public class login extends javax.swing.JFrame {
 
         btnIniciar.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         btnIniciar.setText("Iniciar sesión");
-        btnIniciar.setBorder(new javax.swing.border.MatteBorder(null));
+        btnIniciar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIniciarMouseClicked(evt);
+            }
+        });
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverMouseClicked(evt);
+            }
+        });
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -93,8 +108,10 @@ public class login extends javax.swing.JFrame {
                         .addGap(0, 31, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(panelLoginLayout.createSequentialGroup()
-                .addGap(169, 169, 169)
+                .addGap(106, 106, 106)
                 .addComponent(btnIniciar)
+                .addGap(60, 60, 60)
+                .addComponent(btnVolver)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
@@ -106,9 +123,11 @@ public class login extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(btnIniciar)
-                .addGap(35, 35, 35))
+                .addGap(32, 32, 32)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIniciar)
+                    .addComponent(btnVolver))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -153,34 +172,37 @@ public class login extends javax.swing.JFrame {
         txtContra.selectAll();
     }//GEN-LAST:event_txtContraFocusGained
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-        /* Create and display the form */
+    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
+        // TODO add your handling code here:
+        portada p = new portada();
+        p.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverMouseClicked
+
+    private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
+        // TODO add your handling code here:
+        String user = txtUsuario.getText();
+        
+        if(user.equalsIgnoreCase("docente")){
+            Docentes d = new Docentes();
+            d.setVisible(true);
+            this.dispose();
+        }else if(user.equalsIgnoreCase("Jefedep")){
+            interfaz_jefedepartamento ijd = new interfaz_jefedepartamento();
+            ijd.setVisible(true);
+            this.dispose();
+        }else if(user.equalsIgnoreCase("Jefeofi")){
+            Jefe_de_Oficina jdo = new Jefe_de_Oficina();
+            jdo.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnIniciarMouseClicked
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login().setVisible(true);
@@ -190,6 +212,7 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel lblBienvenida;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JTextField txtContra;

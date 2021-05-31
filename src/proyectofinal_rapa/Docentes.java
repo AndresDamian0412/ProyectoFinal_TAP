@@ -5,17 +5,23 @@
  */
 package proyectofinal_rapa;
 
-/**
- *
- * @author axel8
- */
-public class Docentes extends javax.swing.JFrame {
+import JPanels_Proyecto.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    /**
-     * Creates new form Docentes
-     */
+public class Docentes extends javax.swing.JFrame implements ActionListener {
+
+    reg_productos_editar rpe = new reg_productos_editar();
+    reg_productos_eliminar rpel = new reg_productos_eliminar();
+    reg_productos_registrar rpr = new reg_productos_registrar();
+
     public Docentes() {
         initComponents();
+        this.setLocation(150, 100);
+
+        btn_agregar.addActionListener(this);
+        btn_editar.addActionListener(this);
+        btn_eliminar.addActionListener(this);
     }
 
     /**
@@ -36,11 +42,11 @@ public class Docentes extends javax.swing.JFrame {
         Panel_ProductosAcademicos = new javax.swing.JPanel();
         eti_informes = new javax.swing.JLabel();
         Img_productosAcademicos = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        panelCambiante = new javax.swing.JPanel();
         btn_agregar = new javax.swing.JButton();
-        btn_Aceptar1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btn_editar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
+        lblLista = new javax.swing.JLabel();
         tabla_productos_academicos = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Fondo_Docentes = new javax.swing.JLabel();
@@ -49,7 +55,7 @@ public class Docentes extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_usuario_docente.setBackground(new java.awt.Color(255, 255, 255));
-        panel_usuario_docente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Docente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        panel_usuario_docente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Docente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         Foto_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/perfil_jefe_oficina (2).png"))); // NOI18N
 
@@ -101,7 +107,7 @@ public class Docentes extends javax.swing.JFrame {
         getContentPane().add(panel_usuario_docente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 320));
 
         Panel_ProductosAcademicos.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_ProductosAcademicos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Panel_ProductosAcademicos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         Panel_ProductosAcademicos.setForeground(new java.awt.Color(0, 0, 0));
 
         eti_informes.setForeground(new java.awt.Color(0, 0, 0));
@@ -135,38 +141,27 @@ public class Docentes extends javax.swing.JFrame {
 
         getContentPane().add(Panel_ProductosAcademicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, 250));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 780, 260));
+        panelCambiante.setBackground(new java.awt.Color(255, 255, 255));
+        panelCambiante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelCambiante.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(panelCambiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 780, 260));
 
         btn_agregar.setBackground(new java.awt.Color(0, 204, 0));
         btn_agregar.setText("AGREGAR");
         getContentPane().add(btn_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
-        btn_Aceptar1.setBackground(new java.awt.Color(255, 102, 0));
-        btn_Aceptar1.setText("EDITAR");
-        getContentPane().add(btn_Aceptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
+        btn_editar.setBackground(new java.awt.Color(255, 102, 0));
+        btn_editar.setText("EDITAR");
+        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setText("ELIMINAR");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
+        btn_eliminar.setBackground(new java.awt.Color(255, 0, 0));
+        btn_eliminar.setText("ELIMINAR");
+        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("LISTA DE PRODUCTOS ACADÉMICOS");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, -1, -1));
+        lblLista.setForeground(new java.awt.Color(0, 0, 0));
+        lblLista.setText("LISTA DE PRODUCTOS ACADÉMICOS");
+        getContentPane().add(lblLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, -1, -1));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -250,17 +245,45 @@ public class Docentes extends javax.swing.JFrame {
     private javax.swing.JLabel Img_productosAcademicos;
     private javax.swing.JLabel Nombre_Docente;
     private javax.swing.JPanel Panel_ProductosAcademicos;
-    private javax.swing.JButton btn_Aceptar1;
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_editar;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JLabel eti_departamento_docente;
     private javax.swing.JLabel eti_informes;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblLista;
+    private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panel_usuario_docente;
     private javax.swing.JLabel puesto_docente;
     private javax.swing.JScrollPane tabla_productos_academicos;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        Object evt = ae.getSource();
+
+        if (evt.equals(btn_editar)) {
+            rpel.setVisible(false);
+            rpr.setVisible(false);
+            rpe.setVisible(true);
+
+            panelCambiante.add(rpe);
+            panelCambiante.validate();
+        } else if (evt.equals(btn_eliminar)) {
+            rpr.setVisible(false);
+            rpe.setVisible(false);
+            rpel.setVisible(true);
+
+            panelCambiante.add(rpel);
+            panelCambiante.validate();
+        }else if(evt.equals(btn_agregar)){
+            rpe.setVisible(false);
+            rpel.setVisible(false);
+            rpr.setVisible(true);
+
+            panelCambiante.add(rpr);
+            panelCambiante.validate();
+        }
+    }
 }
