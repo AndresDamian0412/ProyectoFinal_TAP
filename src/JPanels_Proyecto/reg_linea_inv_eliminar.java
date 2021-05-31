@@ -47,6 +47,10 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setMaximumSize(new java.awt.Dimension(5000, 5000));
+
         jTextField6.setEditable(false);
         jTextField6.setText("MM");
 

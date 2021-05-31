@@ -47,6 +47,9 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jTextField8 = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setMaximumSize(new java.awt.Dimension(5000, 5000));
         setPreferredSize(new java.awt.Dimension(416, 205));
 
         jLabel1.setText("CLAVE:");
