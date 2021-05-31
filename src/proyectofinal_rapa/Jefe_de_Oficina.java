@@ -34,7 +34,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         Puesto_Jefe_Oficina = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         Nombre_Jefe_Oficina = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        eti_departamento_jefeOficina = new javax.swing.JLabel();
         Panel_Informes = new javax.swing.JPanel();
         img_Informe = new javax.swing.JLabel();
         eti_informes = new javax.swing.JLabel();
@@ -61,8 +61,8 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         Nombre_Jefe_Oficina.setForeground(new java.awt.Color(0, 0, 0));
         Nombre_Jefe_Oficina.setText("Nombre");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Departamento");
+        eti_departamento_jefeOficina.setForeground(new java.awt.Color(0, 0, 0));
+        eti_departamento_jefeOficina.setText("Departamento");
 
         javax.swing.GroupLayout Panel_Usuario_JefeOficinaLayout = new javax.swing.GroupLayout(Panel_Usuario_JefeOficina);
         Panel_Usuario_JefeOficina.setLayout(Panel_Usuario_JefeOficinaLayout);
@@ -84,7 +84,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jLabel1)
+                .addComponent(eti_departamento_jefeOficina)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_Usuario_JefeOficinaLayout.setVerticalGroup(
@@ -99,7 +99,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jLabel1)
+                .addComponent(eti_departamento_jefeOficina)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -251,10 +251,9 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combo_presentacion;
     private javax.swing.JLabel eti_Tipo_Presentacion;
     private javax.swing.JLabel eti_Titulo_Informe_Generado;
+    private javax.swing.JLabel eti_departamento_jefeOficina;
     private javax.swing.JLabel eti_informes;
     private javax.swing.JLabel img_Informe;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
