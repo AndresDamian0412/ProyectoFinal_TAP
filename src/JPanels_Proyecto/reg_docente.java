@@ -27,13 +27,14 @@ public class reg_docente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        opciones_btns = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jPanel4 = new javax.swing.JPanel();
+        agregar_btn = new javax.swing.JToggleButton();
+        editar_btn = new javax.swing.JToggleButton();
+        eliminar_btn = new javax.swing.JToggleButton();
+        principal_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -42,40 +43,48 @@ public class reg_docente extends javax.swing.JPanel {
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jToggleButton1.setText("AGREGAR");
-        jToggleButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 204, 0), 2));
-        jToggleButton1.setMargin(new java.awt.Insets(2, 30, 2, 90));
-        jToggleButton1.setPreferredSize(new java.awt.Dimension(80, 21));
-        jPanel3.add(jToggleButton1);
+        opciones_btns.add(agregar_btn);
+        agregar_btn.setText("AGREGAR");
+        agregar_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 204, 0), 2));
+        agregar_btn.setMargin(new java.awt.Insets(2, 30, 2, 90));
+        agregar_btn.setPreferredSize(new java.awt.Dimension(80, 21));
+        agregar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregar_btnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(agregar_btn);
 
-        jToggleButton2.setText("EDITAR");
-        jToggleButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0), 2));
-        jToggleButton2.setPreferredSize(new java.awt.Dimension(80, 21));
-        jPanel3.add(jToggleButton2);
+        opciones_btns.add(editar_btn);
+        editar_btn.setText("EDITAR");
+        editar_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0), 2));
+        editar_btn.setPreferredSize(new java.awt.Dimension(80, 21));
+        editar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editar_btnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(editar_btn);
 
-        jToggleButton3.setText("ELIMINAR");
-        jToggleButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 2));
-        jToggleButton3.setPreferredSize(new java.awt.Dimension(80, 21));
-        jPanel3.add(jToggleButton3);
+        opciones_btns.add(eliminar_btn);
+        eliminar_btn.setText("ELIMINAR");
+        eliminar_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 2));
+        eliminar_btn.setPreferredSize(new java.awt.Dimension(80, 21));
+        eliminar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_btnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(eliminar_btn);
 
         jPanel2.add(jPanel3);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 4, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel4);
+        principal_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        principal_panel.setPreferredSize(new java.awt.Dimension(200, 400));
+        principal_panel.setLayout(new javax.swing.BoxLayout(principal_panel, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel2.add(principal_panel);
 
         jLabel1.setText("DOCENTES ADSCRITOS");
         jPanel2.add(jLabel1);
@@ -116,17 +125,48 @@ public class reg_docente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
+        // TODO add your handling code here:
+        principal_panel.removeAll();
+        reg_docente_registrar rdr = new reg_docente_registrar();
+        rdr.setSize(416,205);
+        principal_panel.add(rdr);
+        principal_panel.revalidate();
+        principal_panel.repaint();
+    }//GEN-LAST:event_agregar_btnActionPerformed
+
+    private void editar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_btnActionPerformed
+        // TODO add your handling code here:
+        principal_panel.removeAll();
+        reg_docente_editar rde = new reg_docente_editar();
+        rde.setSize(416,205);
+        principal_panel.add(rde);
+        principal_panel.revalidate();
+        principal_panel.repaint();
+    }//GEN-LAST:event_editar_btnActionPerformed
+
+    private void eliminar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_btnActionPerformed
+        // TODO add your handling code here:
+        principal_panel.removeAll();
+        reg_docente_eliminar rdel = new reg_docente_eliminar();
+        rdel.setSize(416,205);
+        principal_panel.add(rdel);
+        principal_panel.revalidate();
+        principal_panel.repaint();
+    }//GEN-LAST:event_eliminar_btnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton agregar_btn;
+    private javax.swing.JToggleButton editar_btn;
+    private javax.swing.JToggleButton eliminar_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.ButtonGroup opciones_btns;
+    private javax.swing.JPanel principal_panel;
     // End of variables declaration//GEN-END:variables
 }

@@ -53,7 +53,7 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setMaximumSize(new java.awt.Dimension(416, 205));
+        jPanel1.setMaximumSize(new java.awt.Dimension(5000, 5000));
 
         jLabel1.setText("CLAVE:");
 
