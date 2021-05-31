@@ -1,5 +1,6 @@
 package proyectofinal_rapa;
 
+import JPanels_Proyecto.jefe_depa_prod_gral;
 import JPanels_Proyecto.reg_docente;
 import JPanels_Proyecto.reg_linea_inv;
 
@@ -178,6 +179,11 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
 
         produc_gral_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/produccion_general_icono.png"))); // NOI18N
         produc_gral_btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        produc_gral_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                produc_gral_btnActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("GENERAL");
 
@@ -250,6 +256,16 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
         Principal_Panel.revalidate();
         Principal_Panel.repaint();
     }//GEN-LAST:event_docente_btnActionPerformed
+
+    private void produc_gral_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produc_gral_btnActionPerformed
+        // TODO add your handling code here:
+        Principal_Panel.removeAll();
+        jefe_depa_prod_gral jdpg = new jefe_depa_prod_gral();
+        jdpg.setSize(Principal_Panel.getSize());
+        Principal_Panel.add(jdpg);
+        Principal_Panel.revalidate();
+        Principal_Panel.repaint();
+    }//GEN-LAST:event_produc_gral_btnActionPerformed
 
     /**
      * @param args the command line arguments
