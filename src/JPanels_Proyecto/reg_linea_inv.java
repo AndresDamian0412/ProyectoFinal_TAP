@@ -87,6 +87,7 @@ public class reg_linea_inv extends javax.swing.JPanel {
         principal_panel.setLayout(new javax.swing.BoxLayout(principal_panel, javax.swing.BoxLayout.LINE_AXIS));
         jPanel1.add(principal_panel);
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("LINEAS DE INVESTIGACIÓN");
         jPanel1.add(jLabel1);
 

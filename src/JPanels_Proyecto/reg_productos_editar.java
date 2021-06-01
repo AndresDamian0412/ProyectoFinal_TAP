@@ -269,7 +269,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
         MM1.setText("MM");
 
         eti_nombre.setForeground(new java.awt.Color(0, 0, 0));
-        eti_nombre.setText("NOMBRE: ");
+        eti_nombre.setText("NOMBRE PRODUCTO: ");
 
         txt_Nombre1.setBackground(new java.awt.Color(255, 255, 255));
         txt_Nombre1.setForeground(new java.awt.Color(0, 0, 0));
@@ -323,7 +323,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
         combo_Nivel1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         eti_tipo1.setForeground(new java.awt.Color(0, 0, 0));
-        eti_tipo1.setText("TIPO: ");
+        eti_tipo1.setText("TIPO PRODUCTO: ");
 
         eti_buscar.setForeground(new java.awt.Color(0, 0, 0));
         eti_buscar.setText("BUSCAR POR:");

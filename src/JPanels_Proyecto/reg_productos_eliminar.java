@@ -89,7 +89,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         eti_linea_Inv1.setText("LINEA DE INVESTIGACIÓN:");
 
         eti_nombre.setForeground(new java.awt.Color(0, 0, 0));
-        eti_nombre.setText("NOMBRE: ");
+        eti_nombre.setText("NOMBRE PRODUCTO: ");
 
         eti_nivel.setForeground(new java.awt.Color(0, 0, 0));
         eti_nivel.setText("NIVEL: ");
@@ -112,7 +112,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         eti_colaboradores.setText("COLABORADORES (MAX 3) :");
 
         eti_tipo1.setForeground(new java.awt.Color(0, 0, 0));
-        eti_tipo1.setText("TIPO: ");
+        eti_tipo1.setText("TIPO PRODUCTO: ");
 
         YYYY1.setBackground(new java.awt.Color(255, 255, 255));
         YYYY1.setForeground(new java.awt.Color(0, 0, 0));
@@ -221,9 +221,12 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eti_nivel)
                     .addComponent(combo_Nivel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_editar)
+                        .addGap(40, 40, 40))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eti_fecha_registro)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -232,12 +235,11 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                                 .addComponent(MM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(diagonal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(YYYY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(eti_estatus)
-                        .addComponent(btn_editar)))
-                .addGap(40, 40, 40))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eti_estatus))
+                        .addGap(36, 36, 36))))
         );
     }// </editor-fold>//GEN-END:initComponents
 

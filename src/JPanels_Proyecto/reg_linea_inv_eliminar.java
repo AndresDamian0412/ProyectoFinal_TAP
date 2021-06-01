@@ -58,6 +58,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
 
         jLabel8.setText("/");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("FECHA AUTORIZACIÓN:");
 
         jTextField7.setEditable(false);
@@ -85,8 +86,10 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
         jTextField5.setText("DD");
         jTextField5.setToolTipText("Día");
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CLAVE:");
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("FECHA VIGENCIA:");
 
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +100,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
 
         jLabel7.setText("/");
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("NOM. DE LINEA:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -121,8 +125,8 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(8, 8, 8)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,7 +141,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButton1)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -44,6 +44,7 @@ public class jefe_depa_prod_gral extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("PRODUCCIÓN GENERAL");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

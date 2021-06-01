@@ -28,6 +28,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_Aceptar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         Fondo_Jefe_Oficina = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,46 +141,49 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         eti_Titulo_Informe_Generado.setText("INFORME GENERADO");
         getContentPane().add(eti_Titulo_Informe_Generado, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "LINEA INVESTIGACION", "TIPO PRODUCTO", "NOM PRODUCTO", "COLABORADORES", "NIVEL", "FECHA REGISTRO", "ESTATUS"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 690, 380));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 850, 380));
 
         btn_Aceptar.setBackground(new java.awt.Color(255, 255, 255));
         btn_Aceptar.setText("Aceptar");
         getContentPane().add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 80, 30));
+
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jButton1.setText("SALIR");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
 
         Fondo_Jefe_Oficina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_jefe_oficina.jpg"))); // NOI18N
         getContentPane().add(Fondo_Jefe_Oficina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1054, 570));
@@ -210,6 +214,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
     private javax.swing.JLabel eti_departamento_jefeOficina;
     private javax.swing.JLabel eti_informes;
     private javax.swing.JLabel img_Informe;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

@@ -47,7 +47,8 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         btn_editar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         lblLista = new javax.swing.JLabel();
-        tabla_productos_academicos = new javax.swing.JScrollPane();
+        btn_salir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Fondo_Docentes = new javax.swing.JLabel();
 
@@ -55,7 +56,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_usuario_docente.setBackground(new java.awt.Color(255, 255, 255));
-        panel_usuario_docente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Docente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        panel_usuario_docente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Docente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         Foto_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/perfil_jefe_oficina (2).png"))); // NOI18N
 
@@ -107,7 +108,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         getContentPane().add(panel_usuario_docente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 320));
 
         Panel_ProductosAcademicos.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_ProductosAcademicos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Panel_ProductosAcademicos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         Panel_ProductosAcademicos.setForeground(new java.awt.Color(0, 0, 0));
 
         eti_informes.setForeground(new java.awt.Color(0, 0, 0));
@@ -162,41 +163,45 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         lblLista.setText("LISTA DE PRODUCTOS ACADÉMICOS");
         getContentPane().add(lblLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, -1, -1));
 
+        btn_salir.setBackground(new java.awt.Color(204, 0, 0));
+        btn_salir.setText("SALIR");
+        getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, -1, -1));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "LINEA INVESTIGACION", "TIPO PRODUCTO", "NOM PRODUCTO", "COLABORADORES", "NIVEL", "FECHA REGISTRO", "ESTATUS"
             }
         ));
-        tabla_productos_academicos.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(tabla_productos_academicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 780, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 840, 260));
 
         Fondo_Docentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_jefe_oficina.jpg"))); // NOI18N
         getContentPane().add(Fondo_Docentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1041, 590));
@@ -248,15 +253,16 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_salir;
     private javax.swing.JLabel eti_departamento_docente;
     private javax.swing.JLabel eti_informes;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblLista;
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panel_usuario_docente;
     private javax.swing.JLabel puesto_docente;
-    private javax.swing.JScrollPane tabla_productos_academicos;
     // End of variables declaration//GEN-END:variables
 
     @Override

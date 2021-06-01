@@ -86,15 +86,40 @@ public class reg_docente extends javax.swing.JPanel {
         principal_panel.setLayout(new javax.swing.BoxLayout(principal_panel, javax.swing.BoxLayout.LINE_AXIS));
         jPanel2.add(principal_panel);
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("DOCENTES ADSCRITOS");
         jPanel2.add(jLabel1);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOMBRE", "APELLIDOS"
+                "NOMBRE", "APELLIDOS", "PUESTO", "DEPARTAMENTO", "USUARIO", "CONTRASEÑA"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

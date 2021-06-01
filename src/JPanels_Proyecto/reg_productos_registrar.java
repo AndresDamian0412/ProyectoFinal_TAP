@@ -60,14 +60,14 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         combo_linea_inv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         eti_tipo.setForeground(new java.awt.Color(0, 0, 0));
-        eti_tipo.setText("TIPO: ");
+        eti_tipo.setText("TIPO PRODUCTO: ");
 
         combo_tipo.setBackground(new java.awt.Color(255, 255, 255));
         combo_tipo.setForeground(new java.awt.Color(0, 0, 0));
         combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         eti_nombre.setForeground(new java.awt.Color(0, 0, 0));
-        eti_nombre.setText("NOMBRE: ");
+        eti_nombre.setText("NOMBRE PRODUCTO: ");
 
         txt_Nombre.setBackground(new java.awt.Color(255, 255, 255));
         txt_Nombre.setForeground(new java.awt.Color(0, 0, 0));

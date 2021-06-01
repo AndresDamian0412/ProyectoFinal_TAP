@@ -164,7 +164,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="TIPO: "/>
+        <Property name="text" type="java.lang.String" value="TIPO PRODUCTO: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="combo_tipo">
@@ -193,7 +193,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="NOMBRE: "/>
+        <Property name="text" type="java.lang.String" value="NOMBRE PRODUCTO: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_Nombre">
