@@ -71,7 +71,7 @@ public class conexion_db {
     }
     
     public static void registrarProductos(){
-        //hola
+        //hola q tal
     }
     
     public static void main(String[] args) {
