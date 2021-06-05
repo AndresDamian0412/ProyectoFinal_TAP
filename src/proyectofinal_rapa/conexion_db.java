@@ -5,11 +5,13 @@
  */
 package proyectofinal_rapa;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,7 +40,22 @@ public class conexion_db {
         return con;
     }
     
-    public static void main(String[] args) {
+    public static void registrarUsuarios(String usuario, String contraseña, String nombres, String apellidos, String puesto, String departamento){
         conexion();
+        try {
+            st = con.createStatement();
+            String sql = "INSERT INTO usuarios VALUES('" + usuario + "','" + contraseña + "','" + nombres + "','"
+                    + apellidos + "','" + puesto + "','" + departamento + "')";
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Registro completado");
+            st.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
+        }
+    }
+    
+    public static void main(String[] args) {
+        registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
     }
 }
