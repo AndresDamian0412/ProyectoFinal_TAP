@@ -46,7 +46,7 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
 
         jLabel3.setText("FECHA AUTORIZACIÓN:");
 
-        jButton1.setText("ELIMINAR");
+        jButton1.setText("REGISTRAR");
 
         jTextField8.setEditable(false);
 
