@@ -70,7 +70,9 @@ public class conexion_db {
         }
     }
     
-    public static void 
+    public static void registrarProductos(){
+        
+    }
     
     public static void main(String[] args) {
         //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
