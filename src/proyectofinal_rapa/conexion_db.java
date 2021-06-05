@@ -40,7 +40,7 @@ public class conexion_db {
         return con;
     }
     
-    public static void registrarUsuarios(String usuario, String contraseña, String nombres, String apellidos, String puesto, String departamento){
+    public void registrarUsuarios(String usuario, String contraseña, String nombres, String apellidos, String puesto, String departamento){
         conexion();
         try {
             st = con.createStatement();
@@ -55,7 +55,16 @@ public class conexion_db {
         }
     }
     
+    public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig){
+        conexion();
+        try {
+            st = con.createStatement();
+            String sql = "INSERT INTO lineas_investigacion VALUES()";
+        } catch (Exception e) {
+        }
+    }
+    
     public static void main(String[] args) {
-        registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
+        //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
     }
 }
