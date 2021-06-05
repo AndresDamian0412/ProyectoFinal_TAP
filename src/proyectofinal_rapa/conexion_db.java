@@ -55,16 +55,25 @@ public class conexion_db {
         }
     }
     
-    public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig){
+    public static void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig){
         conexion();
         try {
             st = con.createStatement();
-            String sql = "INSERT INTO lineas_investigacion VALUES()";
-        } catch (Exception e) {
+            String sql = "INSERT INTO lineas_investigacion VALUES('" + nombre_linea + "','" + clave + "','" + fecha_auto 
+                    + "','" + fecha_vig + "')";
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Registro completado");
+            st.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
     
+    public static void 
+    
     public static void main(String[] args) {
         //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
+        //registrarLineas("esto es una", "12345", "10-09-2000", "09-10-9000");
     }
 }
