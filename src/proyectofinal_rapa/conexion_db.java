@@ -60,7 +60,8 @@ public class conexion_db {
         boolean find = false;
         try {
             st = con.createStatement();
-            rs = st.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario +"' AND contrasena = '" + contraseña + "'");
+            rs = st.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario 
+                    +"' AND contrasena = '" + contraseña + "'");
             if(!rs.next()){
                 JOptionPane.showMessageDialog(null,"No se encontró el registro.\n Ingrese correctamente los datos");
                 find = false;

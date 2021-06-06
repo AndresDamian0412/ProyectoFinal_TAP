@@ -3,6 +3,7 @@ package proyectofinal_rapa;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class login extends javax.swing.JFrame {
@@ -23,10 +24,10 @@ public class login extends javax.swing.JFrame {
 
         panelLogin = new javax.swing.JPanel();
         lblBienvenida = new javax.swing.JLabel();
-        txtContra = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         btnIniciar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        txtContra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,20 +37,6 @@ public class login extends javax.swing.JFrame {
         lblBienvenida.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblBienvenida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBienvenida.setText("Bienvenido/a");
-
-        txtContra.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        txtContra.setText("Contraseña");
-        txtContra.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(139, 182, 150), null, null));
-        txtContra.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtContraFocusGained(evt);
-            }
-        });
-        txtContra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraActionPerformed(evt);
-            }
-        });
 
         txtUsuario.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         txtUsuario.setText("Nombre de usuario");
@@ -93,6 +80,13 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        txtContra.setText("jPasswordField1");
+        txtContra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContraFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
         panelLoginLayout.setHorizontalGroup(
@@ -102,17 +96,17 @@ public class login extends javax.swing.JFrame {
                     .addComponent(lblBienvenida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelLoginLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 31, Short.MAX_VALUE)))
+                        .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                            .addComponent(txtContra))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(panelLoginLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(btnIniciar)
                 .addGap(60, 60, 60)
                 .addComponent(btnVolver)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +115,9 @@ public class login extends javax.swing.JFrame {
                 .addComponent(lblBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(43, 43, 43)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciar)
                     .addComponent(btnVolver))
@@ -150,10 +144,6 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraActionPerformed
-
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
@@ -166,11 +156,6 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtUsuario.selectAll();
     }//GEN-LAST:event_txtUsuarioFocusGained
-
-    private void txtContraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraFocusGained
-        // TODO add your handling code here:
-        txtContra.selectAll();
-    }//GEN-LAST:event_txtContraFocusGained
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
@@ -185,22 +170,24 @@ public class login extends javax.swing.JFrame {
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
         // TODO add your handling code here:
-        String user = txtUsuario.getText();
-        
-        if(user.equalsIgnoreCase("docente")){
+        String user, contra;
+        user = txtUsuario.getText();
+        contra = new String(txtContra.getPassword());
+        conexion_db cdb = new conexion_db();
+       
+        if(cdb.login(user, contra)){
             Docentes d = new Docentes();
             d.setVisible(true);
             this.dispose();
-        }else if(user.equalsIgnoreCase("Jefedep")){
-            interfaz_jefedepartamento ijd = new interfaz_jefedepartamento();
-            ijd.setVisible(true);
-            this.dispose();
-        }else if(user.equalsIgnoreCase("Jefeofi")){
-            Jefe_de_Oficina jdo = new Jefe_de_Oficina();
-            jdo.setVisible(true);
-            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifique sus datos e ingrese de nuevo");
         }
     }//GEN-LAST:event_btnIniciarMouseClicked
+
+    private void txtContraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraFocusGained
+        // TODO add your handling code here:
+        txtContra.selectAll();
+    }//GEN-LAST:event_txtContraFocusGained
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -215,7 +202,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel lblBienvenida;
     private javax.swing.JPanel panelLogin;
-    private javax.swing.JTextField txtContra;
+    private javax.swing.JPasswordField txtContra;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
