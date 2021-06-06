@@ -55,7 +55,29 @@ public class conexion_db {
         }
     }
     
-    public static void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig){
+    public int login(String usuario, String contraseña){
+        conexion();
+        int n = 0;
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario +"' AND contrasena = '" + contraseña + "'");
+            if(!rs.next()){
+                JOptionPane.showMessageDialog(null,"No se encontró el registro.\n Ingrese correctamente los datos");
+                n = 0;
+            }else{
+                JOptionPane.showMessageDialog(null, "Bienvenido");
+                n = 1;
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al consultar la base de datos");
+        }
+        return n;
+    }
+    
+    public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig){
         conexion();
         try {
             st = con.createStatement();
@@ -70,7 +92,7 @@ public class conexion_db {
         }
     }
     
-    public static void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus){
+    public void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus){
         conexion();
         String colabConcatenado = "{";
         if(colaboradores.length > 1){
@@ -101,8 +123,9 @@ public class conexion_db {
     
     public static void main(String[] args) {
         //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
-        registrarLineas("esto es", "12345", "10-09-2000", "09-10-9000");
-        String[] ola= {"prueba","uno"};
-        registrarProductos("esto es", "una", "prueba", ola, "medio", "09-09-2000", "hola");
+        //registrarLineas("esto es", "12345", "10-09-2000", "09-10-9000");
+        //String[] ola= {"prueba","uno"};
+        //registrarProductos("esto es", "una", "prueba", ola, "medio", "09-09-2000", "hola");
+        //login("esto", "123");
     }
 }
