@@ -55,18 +55,18 @@ public class conexion_db {
         }
     }
     
-    public int login(String usuario, String contraseña){
+    public boolean login(String usuario, String contraseña){
         conexion();
-        int n = 0;
+        boolean find = false;
         try {
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario +"' AND contrasena = '" + contraseña + "'");
             if(!rs.next()){
                 JOptionPane.showMessageDialog(null,"No se encontró el registro.\n Ingrese correctamente los datos");
-                n = 0;
+                find = false;
             }else{
                 JOptionPane.showMessageDialog(null, "Bienvenido");
-                n = 1;
+                find = true;
             }
             st.close();
             rs.close();
@@ -74,7 +74,7 @@ public class conexion_db {
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al consultar la base de datos");
         }
-        return n;
+        return find;
     }
     
     public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig){
