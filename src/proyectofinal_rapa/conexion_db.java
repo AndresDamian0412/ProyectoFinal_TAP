@@ -70,12 +70,39 @@ public class conexion_db {
         }
     }
     
-    public static void registrarProductos(){
-        //hola q tal
+    public static void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus){
+        conexion();
+        String colabConcatenado = "{";
+        if(colaboradores.length > 1){
+            for(int i = 0; i < colaboradores.length; i++){
+                colabConcatenado += colaboradores[i];
+                if(i != colaboradores.length-1)
+                    colabConcatenado += ",";
+            }
+            colabConcatenado += "}";
+        }else if(colaboradores.length == 1){
+            colabConcatenado += colaboradores[0] + "}";
+        }else{
+            colabConcatenado = null;
+        }
+        try {
+            st = con.createStatement();
+            String sql = "INSERT INTO productos VALUES('" + linea_inv + "','" + tipo_producto + "','" 
+                    + nombre_producto + "','" + colabConcatenado + "','" + nivel + "','" + fecha_reg
+                    + "','" + estatus + "')";
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Registro completado");
+            st.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
+        }
     }
     
     public static void main(String[] args) {
         //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
-        //registrarLineas("esto es una", "12345", "10-09-2000", "09-10-9000");
+        registrarLineas("esto es", "12345", "10-09-2000", "09-10-9000");
+        String[] ola= {"prueba","uno"};
+        registrarProductos("esto es", "una", "prueba", ola, "medio", "09-09-2000", "hola");
     }
 }
