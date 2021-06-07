@@ -174,6 +174,11 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
                 btnSalirMouseClicked(evt);
             }
         });
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_btn_visualizarLayout = new javax.swing.GroupLayout(panel_btn_visualizar);
         panel_btn_visualizar.setLayout(panel_btn_visualizarLayout);
@@ -265,6 +270,10 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
             //Nada
         }
     }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

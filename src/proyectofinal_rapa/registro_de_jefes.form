@@ -50,7 +50,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_salir" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -80,7 +80,7 @@
                       <Component id="jTextField3" pref="218" max="32767" attributes="0"/>
                       <Component id="jTextField5" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="306" max="32767" attributes="0"/>
+                  <EmptySpace pref="338" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -111,7 +111,7 @@
               <EmptySpace pref="53" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_salir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
@@ -147,10 +147,11 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="4">
             <StringItem index="0" value="Sistemas y computaci&#xf3;n"/>
             <StringItem index="1" value="Ingenieria Insdustrial"/>
-            <StringItem index="2" value=" "/>
+            <StringItem index="2" value="Cs. Econ&#xf3;mico Administrativo "/>
+            <StringItem index="3" value="Ingenier&#xed;as"/>
           </StringArray>
         </Property>
       </Properties>
@@ -212,10 +213,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btn_salir">
       <Properties>
         <Property name="text" type="java.lang.String" value="SALIR"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_salirMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

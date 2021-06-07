@@ -5,6 +5,8 @@
  */
 package proyectofinal_rapa;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author axel8
@@ -41,7 +43,7 @@ public class registro_de_jefes extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         combo_puesto = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btn_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,7 +51,7 @@ public class registro_de_jefes extends javax.swing.JFrame {
 
         jLabel5.setText("DEPARTAMENTO:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sistemas y computación", "Ingenieria Insdustrial", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sistemas y computación", "Ingenieria Insdustrial", "Cs. Económico Administrativo ", "Ingenierías" }));
 
         jLabel6.setText("USUARIO:");
 
@@ -73,7 +75,12 @@ public class registro_de_jefes extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("SALIR");
+        btn_salir.setText("SALIR");
+        btn_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_salirMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +107,7 @@ public class registro_de_jefes extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(btn_salir)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5)
@@ -121,7 +128,7 @@ public class registro_de_jefes extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                         .addComponent(jTextField5))
-                    .addContainerGap(306, Short.MAX_VALUE)))
+                    .addContainerGap(338, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +152,7 @@ public class registro_de_jefes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btn_salir))
                 .addGap(18, 18, 18))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -170,6 +177,16 @@ public class registro_de_jefes extends javax.swing.JFrame {
     private void combo_puestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_puestoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_puestoActionPerformed
+
+    private void btn_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_salirMouseClicked
+        if ((JOptionPane.showConfirmDialog(this, "¿Desea salir del registro?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
+            login l = new login();
+            l.setVisible(true);
+            this.dispose();
+        }else{
+            //Nada
+        }
+    }//GEN-LAST:event_btn_salirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,9 +224,9 @@ public class registro_de_jefes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_salir;
     private javax.swing.JComboBox<String> combo_puesto;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
