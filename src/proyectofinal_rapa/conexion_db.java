@@ -31,12 +31,12 @@ public class conexion_db {
             Class.forName("org.postgresql.Driver");
             System.out.println("Controlador correcto");
             con = DriverManager.getConnection(connectString, user, password);
-            System.out.println("Conexion a la base de datos EJERCICIO realizada con exito");
+            System.out.println("Conexion a la base de datos pruebabd realizada con exito");
 
         } catch (ClassNotFoundException ex) {
             System.out.println("Error al registrar el driver de PostgresSQL: " + ex);
         } catch (SQLException e) {
-            System.out.println("Se ha producido un error en la conexion a la base de datos EJERCICIO " + e.toString());
+            System.out.println("Se ha producido un error en la conexion a la base de datos pruebabd " + e.toString());
         }
         return con;
     }

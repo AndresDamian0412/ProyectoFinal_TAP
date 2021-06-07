@@ -5,6 +5,7 @@
  */
 package JPanels_Proyecto;
 
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author josep
  */
 public class reg_linea_inv extends javax.swing.JPanel {
-
+    DefaultTableModel tabla;
     /**
      * Creates new form reg_linea_inv
      */
@@ -109,6 +110,10 @@ public class reg_linea_inv extends javax.swing.JPanel {
         add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
+    public DefaultTableModel getTableModel(){
+        tabla = (DefaultTableModel) tablaLineas.getModel();
+        return tabla;
+    }
     private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
         // TODO add your handling code here:
         principal_panel.removeAll();
