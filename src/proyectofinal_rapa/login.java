@@ -174,11 +174,15 @@ public class login extends javax.swing.JFrame {
         user = txtUsuario.getText();
         contra = new String(txtContra.getPassword());
         conexion_db cdb = new conexion_db();
+        String puesto = cdb.login(user, contra);
        
-        if(cdb.login(user, contra)){
-            Docentes d = new Docentes();
-            d.setVisible(true);
-            this.dispose();
+        if(!(puesto.isEmpty())){
+            switch (puesto){
+                case ("docente") :{
+                    
+                    break;
+                }
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Verifique sus datos e ingrese de nuevo");
         }
