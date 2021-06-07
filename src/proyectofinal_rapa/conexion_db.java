@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -78,7 +79,7 @@ public class conexion_db {
         return puesto;
     }
     
-    public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig){
+    public void registrarLineas(DefaultTableModel tabla, String nombre_linea, String clave, String fecha_auto, String fecha_vig){
         conexion();
         try {
             st = con.createStatement();
@@ -86,10 +87,30 @@ public class conexion_db {
                     + "','" + fecha_vig + "')";
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Registro completado");
+            llenarTablaLineasInv(tabla);
             st.close();
             con.close();
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
+        }
+    }
+    
+    public void llenarTablaLineasInv(DefaultTableModel tabla){
+        int filas = tabla.getRowCount();
+        for (int i = 1; i <= filas; i++) {
+            tabla.removeRow(0);
+        }
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM lineas_investigacion");
+            if(rs.next()){
+                while(rs.next()){
+                    tabla.addRow(new Object[]{rs.getString("nombre_linea"), rs.getString("clave"),
+                    rs.getDate("fecha_auto"), rs.getDate("fecha_vig")});
+                }
+            }
+        } catch (SQLException e) {
+                     JOptionPane.showMessageDialog(null, "Error al rellenar tabla");   
         }
     }
     
