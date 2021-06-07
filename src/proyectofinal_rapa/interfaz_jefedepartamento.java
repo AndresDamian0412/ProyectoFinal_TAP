@@ -3,6 +3,7 @@ package proyectofinal_rapa;
 import JPanels_Proyecto.jefe_depa_prod_gral;
 import JPanels_Proyecto.reg_docente;
 import JPanels_Proyecto.reg_linea_inv;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +35,7 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
         panel_btn_visualizar = new javax.swing.JPanel();
         brn_prod_gral = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         visual_panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,7 +168,12 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
 
         jLabel1.setText("Producción general");
 
-        jButton1.setText("SALIR");
+        btnSalir.setText("SALIR");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalirMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_btn_visualizarLayout = new javax.swing.GroupLayout(panel_btn_visualizar);
         panel_btn_visualizar.setLayout(panel_btn_visualizarLayout);
@@ -183,7 +189,7 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
                         .addComponent(brn_prod_gral))
                     .addGroup(panel_btn_visualizarLayout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addComponent(jButton1)))
+                        .addComponent(btnSalir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_btn_visualizarLayout.setVerticalGroup(
@@ -193,7 +199,7 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,6 +255,17 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
         visual_panel.repaint();
     }//GEN-LAST:event_brn_prod_gralActionPerformed
 
+    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+        // TODO add your handling code here:
+        if ((JOptionPane.showConfirmDialog(this, "¿En verdad desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
+            login l = new login();
+            l.setVisible(true);
+            this.dispose();
+        }else{
+            //Nada
+        }
+    }//GEN-LAST:event_btnSalirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -264,6 +281,7 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
     private javax.swing.JLabel Nombre_JefeDepar2;
     private javax.swing.JPanel areas_panel;
     private javax.swing.JButton brn_prod_gral;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btn_docentes;
     private javax.swing.JButton btn_linea_invest;
     private javax.swing.JLabel eti_depart2;
@@ -271,7 +289,6 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
     private javax.swing.JLabel eti_jefe_depa2;
     private javax.swing.JLabel eti_linea_deInvs;
     private javax.swing.JLabel img_usuario2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.ButtonGroup opcionesGroupBtns;
     private javax.swing.JPanel panel_Registro;

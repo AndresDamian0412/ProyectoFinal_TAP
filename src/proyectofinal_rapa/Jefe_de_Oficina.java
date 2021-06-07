@@ -1,5 +1,7 @@
 package proyectofinal_rapa;
 
+import javax.swing.JOptionPane;
+
 public class Jefe_de_Oficina extends javax.swing.JFrame {
 
     public Jefe_de_Oficina() {
@@ -35,7 +37,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Usuario_JefeOficina.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Usuario_JefeOficina.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Panel_Usuario_JefeOficina.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         Foto_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/perfil_jefe_oficina (2).png"))); // NOI18N
 
@@ -90,7 +92,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         getContentPane().add(Panel_Usuario_JefeOficina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 320));
 
         Panel_Informes.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Informes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Panel_Informes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         Panel_Informes.setForeground(new java.awt.Color(0, 0, 0));
 
         img_Informe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Informes_Jefe_Oficina.png"))); // NOI18N
@@ -183,6 +185,11 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setText("SALIR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
 
         Fondo_Jefe_Oficina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_jefe_oficina.jpg"))); // NOI18N
@@ -190,6 +197,17 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        if ((JOptionPane.showConfirmDialog(this, "¿En verdad desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
+            login l = new login();
+            l.setVisible(true);
+            this.dispose();
+        }else{
+            //Nada
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

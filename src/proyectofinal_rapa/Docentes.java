@@ -8,6 +8,7 @@ package proyectofinal_rapa;
 import JPanels_Proyecto.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class Docentes extends javax.swing.JFrame implements ActionListener {
 
@@ -56,7 +57,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_usuario_docente.setBackground(new java.awt.Color(255, 255, 255));
-        panel_usuario_docente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Docente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        panel_usuario_docente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Docente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         Foto_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/perfil_jefe_oficina (2).png"))); // NOI18N
 
@@ -108,7 +109,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         getContentPane().add(panel_usuario_docente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 320));
 
         Panel_ProductosAcademicos.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_ProductosAcademicos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Panel_ProductosAcademicos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         Panel_ProductosAcademicos.setForeground(new java.awt.Color(0, 0, 0));
 
         eti_informes.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,6 +166,11 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
 
         btn_salir.setBackground(new java.awt.Color(204, 0, 0));
         btn_salir.setText("SALIR");
+        btn_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_salirMouseClicked(evt);
+            }
+        });
         getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -208,6 +214,17 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_salirMouseClicked
+        // TODO add your handling code here:
+        if ((JOptionPane.showConfirmDialog(this, "¿En verdad desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
+            login l = new login();
+            l.setVisible(true);
+            this.dispose();
+        }else{
+            //Nada
+        }
+    }//GEN-LAST:event_btn_salirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -283,7 +300,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
 
             panelCambiante.add(rpel);
             panelCambiante.validate();
-        }else if(evt.equals(btn_agregar)){
+        } else if (evt.equals(btn_agregar)) {
             rpe.setVisible(false);
             rpel.setVisible(false);
             rpr.setVisible(true);
