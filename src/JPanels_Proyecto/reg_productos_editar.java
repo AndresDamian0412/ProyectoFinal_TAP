@@ -50,16 +50,11 @@ public class reg_productos_editar extends javax.swing.JPanel {
         como_estatus = new javax.swing.JComboBox<>();
         btn_Registrar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
-        DD1 = new javax.swing.JTextField();
         eti_fecha_registro = new javax.swing.JLabel();
-        diagonal1 = new javax.swing.JLabel();
         combo_tipo1 = new javax.swing.JComboBox<>();
-        MM1 = new javax.swing.JTextField();
         eti_nombre = new javax.swing.JLabel();
         txt_Nombre1 = new javax.swing.JTextField();
-        diagonal3 = new javax.swing.JLabel();
         eti_colaboradores = new javax.swing.JLabel();
-        YYYY1 = new javax.swing.JTextField();
         combo_colaboradores_4 = new javax.swing.JComboBox<>();
         eti_estatus = new javax.swing.JLabel();
         combo_colaboradores_5 = new javax.swing.JComboBox<>();
@@ -73,6 +68,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
         eti_buscar = new javax.swing.JLabel();
         combo_buscar = new javax.swing.JComboBox<>();
         btn_buscar = new javax.swing.JButton();
+        date3 = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -250,23 +246,12 @@ public class reg_productos_editar extends javax.swing.JPanel {
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_editar.setText("EDITAR");
 
-        DD1.setBackground(new java.awt.Color(255, 255, 255));
-        DD1.setForeground(new java.awt.Color(0, 0, 0));
-        DD1.setText("DD");
-
         eti_fecha_registro.setForeground(new java.awt.Color(0, 0, 0));
         eti_fecha_registro.setText("FECHA DE REGISTRO: ");
-
-        diagonal1.setForeground(new java.awt.Color(0, 0, 0));
-        diagonal1.setText("/");
 
         combo_tipo1.setBackground(new java.awt.Color(255, 255, 255));
         combo_tipo1.setForeground(new java.awt.Color(0, 0, 0));
         combo_tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        MM1.setBackground(new java.awt.Color(255, 255, 255));
-        MM1.setForeground(new java.awt.Color(0, 0, 0));
-        MM1.setText("MM");
 
         eti_nombre.setForeground(new java.awt.Color(0, 0, 0));
         eti_nombre.setText("NOMBRE PRODUCTO: ");
@@ -274,15 +259,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
         txt_Nombre1.setBackground(new java.awt.Color(255, 255, 255));
         txt_Nombre1.setForeground(new java.awt.Color(0, 0, 0));
 
-        diagonal3.setForeground(new java.awt.Color(0, 0, 0));
-        diagonal3.setText("/");
-
         eti_colaboradores.setForeground(new java.awt.Color(0, 0, 0));
         eti_colaboradores.setText("COLABORADORES (MAX 3) :");
-
-        YYYY1.setBackground(new java.awt.Color(255, 255, 255));
-        YYYY1.setForeground(new java.awt.Color(0, 0, 0));
-        YYYY1.setText("YYYY");
 
         combo_colaboradores_4.setBackground(new java.awt.Color(255, 255, 255));
         combo_colaboradores_4.setForeground(new java.awt.Color(0, 0, 0));
@@ -360,19 +338,13 @@ public class reg_productos_editar extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(DD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(diagonal1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(MM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(diagonal3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(YYYY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(67, 67, 67)
+                                        .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(67, 67, 67))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(date3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(110, 110, 110)))
                                 .addComponent(btn_editar))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(combo_colaboradores_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,29 +377,26 @@ public class reg_productos_editar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(combo_colaboradores_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo_colaboradores_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(combo_colaboradores_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eti_colaboradores))
+                    .addComponent(eti_colaboradores)
+                    .addComponent(combo_colaboradores_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eti_nivel)
                     .addComponent(combo_Nivel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eti_fecha_registro)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(DD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(diagonal1)
-                                .addComponent(MM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(diagonal3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(YYYY1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_editar)))
+                            .addComponent(btn_editar))
                         .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(eti_estatus)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(date3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eti_estatus))))
                 .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -443,11 +412,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DD;
-    private javax.swing.JTextField DD1;
     private javax.swing.JTextField MM;
-    private javax.swing.JTextField MM1;
     private javax.swing.JTextField YYYY;
-    private javax.swing.JTextField YYYY1;
     private javax.swing.JButton btn_Registrar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_editar;
@@ -466,8 +432,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> combo_tipo1;
     private javax.swing.JComboBox<String> como_estatus;
     private javax.swing.JComboBox<String> como_estatus1;
-    private javax.swing.JLabel diagonal1;
-    private javax.swing.JLabel diagonal3;
+    private com.toedter.calendar.JDateChooser date3;
     private javax.swing.JLabel eti_buscar;
     private javax.swing.JLabel eti_colaboradores;
     private javax.swing.JLabel eti_estatus;

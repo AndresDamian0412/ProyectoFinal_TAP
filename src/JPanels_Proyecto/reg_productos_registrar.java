@@ -40,14 +40,8 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         eti_nivel = new javax.swing.JLabel();
         combo_Nivel = new javax.swing.JComboBox<>();
         eti_fecha_registro = new javax.swing.JLabel();
-        DD = new javax.swing.JTextField();
-        diagonal1 = new javax.swing.JLabel();
-        MM = new javax.swing.JTextField();
-        diagonal2 = new javax.swing.JLabel();
-        YYYY = new javax.swing.JTextField();
         eti_estatus = new javax.swing.JLabel();
-        como_estatus = new javax.swing.JComboBox<>();
-        btn_Registrar = new javax.swing.JButton();
+        date2 = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -102,34 +96,8 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         eti_fecha_registro.setForeground(new java.awt.Color(0, 0, 0));
         eti_fecha_registro.setText("FECHA DE REGISTRO: ");
 
-        DD.setBackground(new java.awt.Color(255, 255, 255));
-        DD.setForeground(new java.awt.Color(0, 0, 0));
-        DD.setText("DD");
-
-        diagonal1.setForeground(new java.awt.Color(0, 0, 0));
-        diagonal1.setText("/");
-
-        MM.setBackground(new java.awt.Color(255, 255, 255));
-        MM.setForeground(new java.awt.Color(0, 0, 0));
-        MM.setText("MM");
-
-        diagonal2.setForeground(new java.awt.Color(0, 0, 0));
-        diagonal2.setText("/");
-
-        YYYY.setBackground(new java.awt.Color(255, 255, 255));
-        YYYY.setForeground(new java.awt.Color(0, 0, 0));
-        YYYY.setText("YYYY");
-
         eti_estatus.setForeground(new java.awt.Color(0, 0, 0));
         eti_estatus.setText("ESTATUS: ");
-
-        como_estatus.setBackground(new java.awt.Color(255, 255, 255));
-        como_estatus.setForeground(new java.awt.Color(0, 0, 0));
-        como_estatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btn_Registrar.setBackground(new java.awt.Color(51, 204, 0));
-        btn_Registrar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Registrar.setText("REGISTRAR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -151,29 +119,14 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                         .addComponent(combo_linea_inv, 0, 239, Short.MAX_VALUE)
                         .addComponent(combo_tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_Nombre))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(DD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(diagonal1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(MM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(diagonal2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(YYYY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(combo_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(como_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_Registrar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(combo_colaboradores_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(combo_colaboradores_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(combo_colaboradores_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(combo_colaboradores_3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(combo_colaboradores_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(combo_colaboradores_3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(date2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -203,19 +156,12 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                     .addComponent(combo_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eti_nivel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(diagonal1)
-                    .addComponent(MM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eti_fecha_registro)
-                    .addComponent(diagonal2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(YYYY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(como_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eti_estatus)
-                    .addComponent(btn_Registrar))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addComponent(date2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(eti_estatus)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -225,19 +171,13 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DD;
-    private javax.swing.JTextField MM;
-    private javax.swing.JTextField YYYY;
-    private javax.swing.JButton btn_Registrar;
     private javax.swing.JComboBox<String> combo_Nivel;
     private javax.swing.JComboBox<String> combo_colaboradores_1;
     private javax.swing.JComboBox<String> combo_colaboradores_2;
     private javax.swing.JComboBox<String> combo_colaboradores_3;
     private javax.swing.JComboBox<String> combo_linea_inv;
     private javax.swing.JComboBox<String> combo_tipo;
-    private javax.swing.JComboBox<String> como_estatus;
-    private javax.swing.JLabel diagonal1;
-    private javax.swing.JLabel diagonal2;
+    private com.toedter.calendar.JDateChooser date2;
     private javax.swing.JLabel eti_colaboradores;
     private javax.swing.JLabel eti_estatus;
     private javax.swing.JLabel eti_fecha_registro;
