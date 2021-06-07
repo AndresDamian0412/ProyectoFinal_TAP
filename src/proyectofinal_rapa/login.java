@@ -175,11 +175,32 @@ public class login extends javax.swing.JFrame {
         contra = new String(txtContra.getPassword());
         conexion_db cdb = new conexion_db();
         String puesto = cdb.login(user, contra);
-       
+        
         if(!(puesto.isEmpty())){
             switch (puesto){
-                case ("docente") :{
-                    
+                case ("Docente") :{
+                    Docentes d = new Docentes();
+                    d.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+                
+                case ("Jefe de Departamento"):{
+                    interfaz_jefedepartamento jdp = new interfaz_jefedepartamento();
+                    jdp.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+                
+                case ("Jefe de Oficina"):{
+                    Jefe_de_Oficina jdo = new Jefe_de_Oficina();
+                    jdo.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+                
+                default :{
+                    JOptionPane.showMessageDialog(null, "Lo sentimos, su puesto no coincide con ninguno en la lista de usuarios permitidos.");
                     break;
                 }
             }
