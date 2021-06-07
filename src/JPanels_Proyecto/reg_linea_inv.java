@@ -5,6 +5,8 @@
  */
 package JPanels_Proyecto;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author josep
@@ -36,7 +38,7 @@ public class reg_linea_inv extends javax.swing.JPanel {
         principal_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaLineas = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
@@ -91,7 +93,7 @@ public class reg_linea_inv extends javax.swing.JPanel {
         jLabel1.setText("LINEAS DE INVESTIGACIÓN");
         jPanel1.add(jLabel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -99,8 +101,8 @@ public class reg_linea_inv extends javax.swing.JPanel {
                 "CLAVE", "NOMBRE DE LINEA", "FECHA AUTORIZACIÓN", "FECHA VIGENCIA"
             }
         ));
-        jTable1.setPreferredSize(new java.awt.Dimension(100, 0));
-        jScrollPane1.setViewportView(jTable1);
+        tablaLineas.setPreferredSize(new java.awt.Dimension(100, 0));
+        jScrollPane1.setViewportView(tablaLineas);
 
         jPanel1.add(jScrollPane1);
 
@@ -136,7 +138,7 @@ public class reg_linea_inv extends javax.swing.JPanel {
         principal_panel.revalidate();
         principal_panel.repaint();
     }//GEN-LAST:event_eliminar_btnActionPerformed
-
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton agregar_btn;
@@ -146,8 +148,8 @@ public class reg_linea_inv extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.ButtonGroup opcionesPanelTglBtn;
     private javax.swing.JPanel principal_panel;
+    private javax.swing.JTable tablaLineas;
     // End of variables declaration//GEN-END:variables
 }
