@@ -5,6 +5,9 @@
  */
 package JPanels_Proyecto;
 
+import java.awt.event.ItemEvent;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author josep
@@ -16,6 +19,11 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
      */
     public reg_linea_inv_editar() {
         initComponents();
+        claveTxt.setEditable(false);
+        lineaTxt.setEditable(false);
+        autorizacionDate.setEnabled(false);
+        vigenciaDate.setEnabled(false);
+
     }
 
     /**
@@ -28,17 +36,17 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        buscarporBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lineaTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        editarBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        claveTxt = new javax.swing.JTextField();
+        autorizacionDate = new com.toedter.calendar.JDateChooser();
+        vigenciaDate = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
+        buscarporBox = new javax.swing.JComboBox<>();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(5000, 5000));
@@ -46,28 +54,34 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
         jLabel1.setText("CLAVE:");
 
-        buscarporBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "CLAVE", "NIOM. DE LINEA", "FECHA DE AUTORIZACIÓN", "FECHA DE VIGENCIA" }));
-        buscarporBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                buscarporBoxItemStateChanged(evt);
-            }
-        });
-
         jLabel2.setText("NOM. DE LINEA:");
-
-        jTextField1.setEditable(false);
 
         jLabel3.setText("FECHA AUTORIZACIÓN:");
 
         jLabel6.setText("FECHA VIGENCIA:");
 
-        jButton1.setText("EDITAR");
+        editarBtn.setText("EDITAR");
+        editarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarBtnActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("BUSCAR");
-
-        jTextField8.setEditable(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("BUSCAR POR:");
+
+        buscarporBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "CLAVE", "NOM. DE LINEA", "FECHA DE AUTORIZACIÓN", "FECHA DE VIGENCIA" }));
+        buscarporBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                buscarporBoxItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,25 +93,25 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lineaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(autorizacionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(vigenciaDate, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(claveTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(jButton1))
+                        .addComponent(editarBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buscarporBox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
@@ -109,48 +123,88 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(buscarporBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(buscarporBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(claveTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lineaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(autorizacionDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vigenciaDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(editarBtn)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarporBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_buscarporBoxItemStateChanged
         // TODO add your handling code here:
-        System.out.println("HOLA " + evt.getItem().toString());
+        String seleccion = (String) buscarporBox.getSelectedItem();
+        switch (seleccion) {
+            case "Seleccionar...":
+                claveTxt.setEditable(false);
+                lineaTxt.setEditable(false);
+                autorizacionDate.setEnabled(false);
+                vigenciaDate.setEnabled(false);
+                break;
+            case "CLAVE":
+                claveTxt.setEditable(true);
+                lineaTxt.setEditable(false);
+                autorizacionDate.setEnabled(false);
+                vigenciaDate.setEnabled(false);
+                break;
+            case "NOM. DE LINEA":
+                claveTxt.setEditable(false);
+                lineaTxt.setEditable(true);
+                autorizacionDate.setEnabled(false);
+                vigenciaDate.setEnabled(false);
+                break;
+            case "FECHA DE AUTORIZACIÓN":
+                claveTxt.setEditable(false);
+                lineaTxt.setEditable(false);
+                autorizacionDate.setEnabled(true);
+                vigenciaDate.setEnabled(false);
+                break;
+            case "FECHA DE VIGENCIA":
+                claveTxt.setEditable(false);
+                lineaTxt.setEditable(false);
+                autorizacionDate.setEnabled(false);
+                vigenciaDate.setEnabled(true);
+                break;
+        }
     }//GEN-LAST:event_buscarporBoxItemStateChanged
+
+    private void editarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarBtnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser autorizacionDate;
     private javax.swing.JComboBox<String> buscarporBox;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField claveTxt;
+    private javax.swing.JButton editarBtn;
     private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField lineaTxt;
+    private com.toedter.calendar.JDateChooser vigenciaDate;
     // End of variables declaration//GEN-END:variables
 }
