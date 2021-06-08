@@ -9,12 +9,16 @@ import JPanels_Proyecto.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Docentes extends javax.swing.JFrame implements ActionListener {
 
     reg_productos_editar rpe = new reg_productos_editar();
     reg_productos_eliminar rpel = new reg_productos_eliminar();
     reg_productos_registrar rpr = new reg_productos_registrar();
+    
+    DefaultTableModel tablaModelo;
+    public conexion_db conexion = new conexion_db();
 
     public Docentes() {
         initComponents();
@@ -43,6 +47,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         Panel_ProductosAcademicos = new javax.swing.JPanel();
         eti_informes = new javax.swing.JLabel();
         Img_productosAcademicos = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JButton();
         panelCambiante = new javax.swing.JPanel();
         btn_agregar = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
@@ -50,7 +55,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         lblLista = new javax.swing.JLabel();
         btn_salir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProductos = new javax.swing.JTable();
         Fondo_Docentes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,6 +122,13 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
 
         Img_productosAcademicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Productos_academicos.jpg"))); // NOI18N
 
+        btnActualizar.setText("Actualizar tabla");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Panel_ProductosAcademicosLayout = new javax.swing.GroupLayout(Panel_ProductosAcademicos);
         Panel_ProductosAcademicos.setLayout(Panel_ProductosAcademicosLayout);
         Panel_ProductosAcademicosLayout.setHorizontalGroup(
@@ -128,7 +140,10 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
                         .addComponent(eti_informes))
                     .addGroup(Panel_ProductosAcademicosLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(Img_productosAcademicos)))
+                        .addComponent(Img_productosAcademicos))
+                    .addGroup(Panel_ProductosAcademicosLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btnActualizar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_ProductosAcademicosLayout.setVerticalGroup(
@@ -136,9 +151,11 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ProductosAcademicosLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(Img_productosAcademicos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(eti_informes)
-                .addGap(53, 53, 53))
+                .addGap(18, 18, 18)
+                .addComponent(btnActualizar)
+                .addGap(7, 7, 7))
         );
 
         getContentPane().add(Panel_ProductosAcademicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, 250));
@@ -173,7 +190,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         });
         getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -205,7 +222,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
                 "LINEA INVESTIGACION", "TIPO PRODUCTO", "NOM PRODUCTO", "COLABORADORES", "NIVEL", "FECHA REGISTRO", "ESTATUS"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaProductos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 840, 260));
 
@@ -225,6 +242,12 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
             //Nada
         }
     }//GEN-LAST:event_btn_salirMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        tablaModelo = (DefaultTableModel) tablaProductos.getModel();
+        conexion.llenarTablaProductos(tablaModelo);
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,6 +290,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel Img_productosAcademicos;
     private javax.swing.JLabel Nombre_Docente;
     private javax.swing.JPanel Panel_ProductosAcademicos;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
@@ -275,11 +299,11 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel eti_informes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblLista;
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panel_usuario_docente;
     private javax.swing.JLabel puesto_docente;
+    private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 
     @Override

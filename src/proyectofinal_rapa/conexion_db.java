@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -119,6 +121,29 @@ public class conexion_db {
             con.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }
+    }
+
+    public void llenarTablaProductos(DefaultTableModel tabla) {
+        conexion();
+        
+        try {    
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM productos");
+            int filas = tabla.getRowCount();
+            
+            for (int i = 1; i <= filas; i++) {
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                    rs.getString("nombre_producto"), rs.getString("colaboladores"), rs.getString("nivel"),rs.getDate("fecha_registro"),rs.getString("estatus")});
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al rellenar tabla");
         }
     }
 
