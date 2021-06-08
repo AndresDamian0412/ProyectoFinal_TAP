@@ -426,7 +426,6 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="eti_estatus" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="eti_fecha_registro" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="eti_nivel" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="eti_linea_Inv1" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="eti_colaboradores" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="eti_buscar" min="-2" max="-2" attributes="0"/>
@@ -439,10 +438,13 @@
                       <Component id="combo_buscar" min="-2" pref="139" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_buscar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="eti_nivel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="combo_Nivel1" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
                   <Component id="txt_Nombre1" min="-2" pref="239" max="-2" attributes="0"/>
                   <Component id="combo_linea_inv1" min="-2" pref="239" max="-2" attributes="0"/>
-                  <Component id="combo_Nivel1" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="combo_tipo1" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -481,6 +483,10 @@
                   <Component id="eti_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="combo_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_buscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Component id="eti_nivel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="combo_Nivel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -504,12 +510,7 @@
                   <Component id="eti_colaboradores" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="combo_colaboradores_6" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="eti_nivel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="combo_Nivel1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="47" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -662,11 +663,9 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="2">
+            <StringItem index="0" value="En Proceso"/>
+            <StringItem index="1" value="Concluido"/>
           </StringArray>
         </Property>
       </Properties>
