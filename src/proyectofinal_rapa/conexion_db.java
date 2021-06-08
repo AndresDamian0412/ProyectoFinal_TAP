@@ -81,7 +81,7 @@ public class conexion_db {
         }
         return puesto;
     }
-
+    //<editor-fold defaultstate="collapsed" desc="LINEAS DE INVESTIGACION - SOURCE"> 
     public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig) {
         conexion();
         try {
@@ -95,6 +95,10 @@ public class conexion_db {
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
+    }
+    
+    public void editar_eliminarLineas(){
+        
     }
 
     public void llenarTablaLineasInv(DefaultTableModel tabla) {
@@ -123,6 +127,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
+    // </editor-fold>
 
     public void llenarTablaProductos(DefaultTableModel tabla) {
         conexion();

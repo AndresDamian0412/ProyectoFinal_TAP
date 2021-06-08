@@ -102,10 +102,21 @@ public class reg_linea_inv extends javax.swing.JPanel {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "CLAVE", "LINEA DE INVESTIGACIÓN", "AUTORIZACIÓN", "VIGENCIA"
             }
         ));
         jScrollPane2.setViewportView(tablaLineas);
