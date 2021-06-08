@@ -45,7 +45,7 @@ public class reg_docente_eliminar extends javax.swing.JPanel {
 
         jLabel5.setText("DEPARTAMENTO:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sistemas y Computación", "Ingenieria Industrial", "Cs. Económico Administrativo", "Ingenierías" }));
 
         jLabel6.setText("USUARIO:");
 

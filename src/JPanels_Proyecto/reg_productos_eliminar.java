@@ -64,7 +64,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
         combo_tipo1.setBackground(new java.awt.Color(255, 255, 255));
         combo_tipo1.setForeground(new java.awt.Color(0, 0, 0));
-        combo_tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artículo", "Estancia Académica", "Informe Técnico", "Dirección de Tesis", "Prototipo" }));
 
         combo_colaboradores_6.setBackground(new java.awt.Color(255, 255, 255));
         combo_colaboradores_6.setForeground(new java.awt.Color(0, 0, 0));
@@ -88,7 +88,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
         combo_Nivel1.setBackground(new java.awt.Color(255, 255, 255));
         combo_Nivel1.setForeground(new java.awt.Color(0, 0, 0));
-        combo_Nivel1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_Nivel1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Licenciatura", "Maestría", "Doctorado" }));
 
         eti_colaboradores.setForeground(new java.awt.Color(0, 0, 0));
         eti_colaboradores.setText("COLABORADORES (MAX 3) :");

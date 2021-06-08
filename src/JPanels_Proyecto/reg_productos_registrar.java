@@ -58,7 +58,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
         combo_tipo.setBackground(new java.awt.Color(255, 255, 255));
         combo_tipo.setForeground(new java.awt.Color(0, 0, 0));
-        combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artículo", "Estancia Académica", "Informe Técnico", "Dirección de Tesis", "Prototipo" }));
 
         eti_nombre.setForeground(new java.awt.Color(0, 0, 0));
         eti_nombre.setText("NOMBRE PRODUCTO: ");
@@ -91,7 +91,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
         combo_Nivel.setBackground(new java.awt.Color(255, 255, 255));
         combo_Nivel.setForeground(new java.awt.Color(0, 0, 0));
-        combo_Nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_Nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Licenciatura", "Maestría", "Doctorado" }));
 
         eti_fecha_registro.setForeground(new java.awt.Color(0, 0, 0));
         eti_fecha_registro.setText("FECHA DE REGISTRO: ");

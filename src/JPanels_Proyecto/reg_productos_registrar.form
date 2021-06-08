@@ -149,11 +149,12 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Art&#xed;culo"/>
+            <StringItem index="1" value="Estancia Acad&#xe9;mica"/>
+            <StringItem index="2" value="Informe T&#xe9;cnico"/>
+            <StringItem index="3" value="Direcci&#xf3;n de Tesis"/>
+            <StringItem index="4" value="Prototipo"/>
           </StringArray>
         </Property>
       </Properties>
@@ -270,11 +271,10 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Licenciatura"/>
+            <StringItem index="1" value="Maestr&#xed;a"/>
+            <StringItem index="2" value="Doctorado"/>
           </StringArray>
         </Property>
       </Properties>
