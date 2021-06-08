@@ -65,6 +65,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
 
         jLabel6.setText("FECHA VIGENCIA:");
 
+        buscarporBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "CLAVE", "NOM. DE LINEA", "FECHA DE AUTORIZACIÓN", "FECHA DE VIGENCIA" }));
         buscarporBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 buscarporBoxItemStateChanged(evt);
@@ -100,7 +101,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscarporBox, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buscarporBox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buscarBtn)))
                 .addContainerGap(70, Short.MAX_VALUE))

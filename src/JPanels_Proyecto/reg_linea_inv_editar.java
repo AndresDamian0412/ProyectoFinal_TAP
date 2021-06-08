@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
  * @author josep
  */
 public class reg_linea_inv_editar extends javax.swing.JPanel {
-
+    public String seleccion;
     /**
      * Creates new form reg_linea_inv_editar
      */
@@ -41,7 +41,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         editarBtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buscarBtn = new javax.swing.JButton();
         claveTxt = new javax.swing.JTextField();
         autorizacionDate = new com.toedter.calendar.JDateChooser();
         vigenciaDate = new com.toedter.calendar.JDateChooser();
@@ -67,10 +67,10 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("BUSCAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarBtn.setText("BUSCAR");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarBtnActionPerformed(evt);
             }
         });
 
@@ -114,7 +114,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buscarporBox, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(buscarBtn)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,7 +122,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(buscarBtn)
                     .addComponent(jLabel4)
                     .addComponent(buscarporBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -149,7 +149,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
     private void buscarporBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_buscarporBoxItemStateChanged
         // TODO add your handling code here:
-        String seleccion = (String) buscarporBox.getSelectedItem();
+        seleccion = (String) buscarporBox.getSelectedItem();
         switch (seleccion) {
             case "Seleccionar...":
                 claveTxt.setEditable(false);
@@ -188,17 +188,17 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_editarBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser autorizacionDate;
+    private javax.swing.JButton buscarBtn;
     private javax.swing.JComboBox<String> buscarporBox;
     private javax.swing.JTextField claveTxt;
     private javax.swing.JButton editarBtn;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

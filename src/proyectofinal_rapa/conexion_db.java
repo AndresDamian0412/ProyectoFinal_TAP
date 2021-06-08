@@ -100,6 +100,18 @@ public class conexion_db {
     public void editar_eliminarLineas(){
         
     }
+    
+    public void buscarLineas(String opcion){
+        conexion();
+        try {
+            st = con.createStatement();
+            switch(opcion){
+                case "CLAVE":
+                    
+            }
+        } catch (Exception e) {
+        }
+    }
 
     public void llenarTablaLineasInv(DefaultTableModel tabla) {
         conexion();
