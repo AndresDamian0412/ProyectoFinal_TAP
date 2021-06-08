@@ -23,6 +23,8 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
     public Docentes() {
         initComponents();
         this.setLocation(150, 100);
+        lbl_nombre.setText(login.getDatos()[0]);
+        lbl_depa.setText(login.getDatos()[1]);
 
         btn_agregar.addActionListener(this);
         btn_editar.addActionListener(this);
@@ -42,8 +44,8 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         Foto_perfil = new javax.swing.JLabel();
         puesto_docente = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        Nombre_Docente = new javax.swing.JLabel();
-        eti_departamento_docente = new javax.swing.JLabel();
+        lbl_nombre = new javax.swing.JLabel();
+        lbl_depa = new javax.swing.JLabel();
         Panel_ProductosAcademicos = new javax.swing.JPanel();
         eti_informes = new javax.swing.JLabel();
         Img_productosAcademicos = new javax.swing.JLabel();
@@ -69,11 +71,11 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         puesto_docente.setForeground(new java.awt.Color(0, 0, 0));
         puesto_docente.setText("Docente");
 
-        Nombre_Docente.setForeground(new java.awt.Color(0, 0, 0));
-        Nombre_Docente.setText("Nombre");
+        lbl_nombre.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_nombre.setText("Nombre");
 
-        eti_departamento_docente.setForeground(new java.awt.Color(0, 0, 0));
-        eti_departamento_docente.setText("Departamento");
+        lbl_depa.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_depa.setText("Departamento");
 
         javax.swing.GroupLayout panel_usuario_docenteLayout = new javax.swing.GroupLayout(panel_usuario_docente);
         panel_usuario_docente.setLayout(panel_usuario_docenteLayout);
@@ -86,13 +88,13 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
                 .addGap(34, 34, 34))
             .addGroup(panel_usuario_docenteLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(eti_departamento_docente)
+                .addComponent(lbl_depa)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel_usuario_docenteLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addGroup(panel_usuario_docenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(puesto_docente)
-                    .addComponent(Nombre_Docente))
+                    .addComponent(lbl_nombre))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panel_usuario_docenteLayout.setVerticalGroup(
@@ -101,13 +103,13 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
                 .addContainerGap()
                 .addComponent(Foto_perfil)
                 .addGap(18, 18, 18)
-                .addComponent(Nombre_Docente)
+                .addComponent(lbl_nombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(puesto_docente)
                 .addGap(11, 11, 11)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(eti_departamento_docente)
+                .addComponent(lbl_depa)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -288,18 +290,18 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel Fondo_Docentes;
     private javax.swing.JLabel Foto_perfil;
     private javax.swing.JLabel Img_productosAcademicos;
-    private javax.swing.JLabel Nombre_Docente;
     private javax.swing.JPanel Panel_ProductosAcademicos;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_salir;
-    private javax.swing.JLabel eti_departamento_docente;
     private javax.swing.JLabel eti_informes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblLista;
+    private javax.swing.JLabel lbl_depa;
+    private javax.swing.JLabel lbl_nombre;
     private javax.swing.JPanel panelCambiante;
     private javax.swing.JPanel panel_usuario_docente;
     private javax.swing.JLabel puesto_docente;

@@ -57,19 +57,23 @@ public class conexion_db {
         }
     }
 
-    public String login(String usuario, String contraseña) {
+    public String[] login(String usuario, String contraseña) {
         conexion();
-        String puesto = "";
+        String[] datos = new String[3];
         try {
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario
                     + "' AND contrasena = '" + contraseña + "'");
             if (!rs.next()) {
                 JOptionPane.showMessageDialog(null, "No se encontró el registro.\n Ingrese correctamente los datos");
-                puesto = "";
+                for (int i = 0; i < datos.length; i++) {
+                    datos[i]=null;
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Bienvenido");
-                puesto = rs.getString(5);
+                datos[0] = rs.getString(5);
+                datos[1]= rs.getString(3);
+                datos[2] = rs.getString(6);
             }
             st.close();
             rs.close();
@@ -77,7 +81,7 @@ public class conexion_db {
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al consultar la base de datos");
         }
-        return puesto;
+        return datos;
     }
 
     //<editor-fold defaultstate="collapsed" desc="LINEAS DE INVESTIGACION - SOURCE"> 

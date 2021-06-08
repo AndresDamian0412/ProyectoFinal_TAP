@@ -7,6 +7,8 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
     public Jefe_de_Oficina() {
         initComponents();
         this.setLocation(150, 100);
+        Nombre_Jefe_Oficina.setText(login.getDatos()[0]);
+        eti_departamento_jefeOficina.setText(login.getDatos()[1]);
     }
 
     @SuppressWarnings("unchecked")

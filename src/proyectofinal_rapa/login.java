@@ -8,6 +8,11 @@ import javax.swing.JPanel;
 
 public class login extends javax.swing.JFrame {
     FondoPanel fondo = new FondoPanel();
+    private static String[] datos = new String[2];
+
+    public static String[] getDatos() {
+        return datos;
+    }
 
     public login() {
         this.setContentPane(fondo);
@@ -28,6 +33,7 @@ public class login extends javax.swing.JFrame {
         btnIniciar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
         txtContra = new javax.swing.JPasswordField();
+        lblNuevouser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +93,15 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        lblNuevouser.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        lblNuevouser.setForeground(new java.awt.Color(0, 43, 255));
+        lblNuevouser.setText("¿No cuenta con un usuario? Click aquí para registrarte!");
+        lblNuevouser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNuevouserMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
         panelLoginLayout.setHorizontalGroup(
@@ -95,10 +110,13 @@ public class login extends javax.swing.JFrame {
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblBienvenida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelLoginLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
+                        .addGap(39, 39, 39)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                            .addComponent(txtContra))
+                            .addComponent(txtContra)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
+                                .addComponent(lblNuevouser)
+                                .addGap(25, 25, 25)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(panelLoginLayout.createSequentialGroup()
@@ -117,11 +135,13 @@ public class login extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNuevouser)
+                .addGap(19, 19, 19)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciar)
                     .addComponent(btnVolver))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,7 +149,7 @@ public class login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(380, 380, 380)
+                .addGap(365, 365, 365)
                 .addComponent(panelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(410, Short.MAX_VALUE))
         );
@@ -138,7 +158,7 @@ public class login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(panelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,7 +194,11 @@ public class login extends javax.swing.JFrame {
         user = txtUsuario.getText();
         contra = new String(txtContra.getPassword());
         conexion_db cdb = new conexion_db();
-        String puesto = cdb.login(user, contra);
+        String[] aux = new String[3];
+        aux = cdb.login(user, contra);
+        String puesto = aux[0];
+        datos[0]=aux[1];
+        datos[1] = aux[2];
         
         if(!(puesto.isEmpty())){
             switch (puesto){
@@ -214,6 +238,12 @@ public class login extends javax.swing.JFrame {
         txtContra.selectAll();
     }//GEN-LAST:event_txtContraFocusGained
 
+    private void lblNuevouserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNuevouserMouseClicked
+        // TODO add your handling code here:
+        registro_de_jefes rdj = new registro_de_jefes();
+        rdj.setVisible(true);
+    }//GEN-LAST:event_lblNuevouserMouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -226,6 +256,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel lblBienvenida;
+    private javax.swing.JLabel lblNuevouser;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPasswordField txtContra;
     private javax.swing.JTextField txtUsuario;
