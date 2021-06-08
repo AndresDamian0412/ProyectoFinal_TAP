@@ -141,6 +141,7 @@ public class conexion_db {
     }
     // </editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="PRODUCTOS - SOURCE"> 
     public void llenarTablaProductos(DefaultTableModel tabla) {
         conexion();
         
@@ -153,8 +154,9 @@ public class conexion_db {
                 tabla.removeRow(0);
             }
             while (rs.next()) {
+                System.out.println("dentro del while");
                 tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
-                    rs.getString("nombre_producto"), rs.getString("colaboladores"), rs.getString("nivel"),rs.getDate("fecha_registro"),rs.getString("estatus")});
+                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"),rs.getDate("fecha_registro"),rs.getString("estatus")});
             }
             st.close();
             rs.close();
@@ -193,6 +195,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
+    // </editor-fold>
 
     public static void main(String[] args) {
         //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
