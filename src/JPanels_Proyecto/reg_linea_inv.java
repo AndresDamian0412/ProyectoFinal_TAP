@@ -7,13 +7,15 @@ package JPanels_Proyecto;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import proyectofinal_rapa.conexion_db;
 
 /**
  *
  * @author josep
  */
 public class reg_linea_inv extends javax.swing.JPanel {
-    DefaultTableModel tabla;
+    DefaultTableModel tablaModelo;
+    public conexion_db conexion = new conexion_db();
     /**
      * Creates new form reg_linea_inv
      */
@@ -38,8 +40,9 @@ public class reg_linea_inv extends javax.swing.JPanel {
         eliminar_btn = new javax.swing.JToggleButton();
         principal_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tablaLineas = new javax.swing.JTable();
+        actualizarBtn = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
@@ -96,24 +99,31 @@ public class reg_linea_inv extends javax.swing.JPanel {
 
         tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "CLAVE", "NOMBRE DE LINEA", "FECHA AUTORIZACIÓN", "FECHA VIGENCIA"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaLineas.setPreferredSize(new java.awt.Dimension(100, 0));
-        jScrollPane1.setViewportView(tablaLineas);
+        jScrollPane2.setViewportView(tablaLineas);
 
-        jPanel1.add(jScrollPane1);
+        jPanel1.add(jScrollPane2);
+
+        actualizarBtn.setText("Actualizar tabla");
+        actualizarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(actualizarBtn);
 
         add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
-    public DefaultTableModel getTableModel(){
-        tabla = (DefaultTableModel) tablaLineas.getModel();
-        return tabla;
-    }
+    
     private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
         // TODO add your handling code here:
         principal_panel.removeAll();
@@ -143,16 +153,23 @@ public class reg_linea_inv extends javax.swing.JPanel {
         principal_panel.revalidate();
         principal_panel.repaint();
     }//GEN-LAST:event_eliminar_btnActionPerformed
+
+    private void actualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBtnActionPerformed
+        // TODO add your handling code here:
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        conexion.llenarTablaLineasInv(tablaModelo);
+    }//GEN-LAST:event_actualizarBtnActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizarBtn;
     private javax.swing.JToggleButton agregar_btn;
     private javax.swing.JToggleButton editar_btn;
     private javax.swing.JToggleButton eliminar_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.ButtonGroup opcionesPanelTglBtn;
     private javax.swing.JPanel principal_panel;
     private javax.swing.JTable tablaLineas;

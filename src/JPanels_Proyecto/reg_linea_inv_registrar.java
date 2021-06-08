@@ -17,7 +17,6 @@ import proyectofinal_rapa.conexion_db;
  * @author josep
  */
 public class reg_linea_inv_registrar extends javax.swing.JPanel {
-    public DefaultTableModel tabla;
     /**
      * Creates new form reg_linea_inv_registrar
      */
@@ -53,6 +52,8 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
         fecha_autoTxt.setDateFormatString("yyyy-MM-dd");
 
         jLabel3.setText("FECHA AUTORIZACIÓN:");
+
+        fecha_vigTxt.setDateFormatString("yyyy-MM-dd");
 
         registrarBtn.setText("REGISTRAR");
         registrarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +122,8 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
     private void registrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarBtnActionPerformed
         // TODO add your handling code here:
         conexion_db conexion = new conexion_db();
-        reg_linea_inv rli = new reg_linea_inv();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        conexion.registrarLineas(rli.getTableModel(), lineaTxt.getText(), claveTxt.getText(), df.format(fecha_autoTxt.getDate()), df.format(fecha_vigTxt.getDate()));
+        conexion.registrarLineas(lineaTxt.getText(), claveTxt.getText(), df.format(fecha_autoTxt.getDate()), df.format(fecha_vigTxt.getDate()));
     }//GEN-LAST:event_registrarBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

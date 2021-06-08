@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author josep
  */
 public class conexion_db {
+
     public static Connection con = null;
     public static Statement st = null;
     public static ResultSet rs = null;
@@ -40,8 +41,8 @@ public class conexion_db {
         }
         return con;
     }
-    
-    public void registrarUsuarios(String usuario, String contraseña, String nombres, String apellidos, String puesto, String departamento){
+
+    public void registrarUsuarios(String usuario, String contraseña, String nombres, String apellidos, String puesto, String departamento) {
         conexion();
         try {
             st = con.createStatement();
@@ -55,18 +56,18 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-    
-    public String login(String usuario, String contraseña){
+
+    public String login(String usuario, String contraseña) {
         conexion();
         String puesto = "";
         try {
             st = con.createStatement();
-            rs = st.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario 
-                    +"' AND contrasena = '" + contraseña + "'");
-            if(!rs.next()){
-                JOptionPane.showMessageDialog(null,"No se encontró el registro.\n Ingrese correctamente los datos");
+            rs = st.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario
+                    + "' AND contrasena = '" + contraseña + "'");
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(null, "No se encontró el registro.\n Ingrese correctamente los datos");
                 puesto = "";
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Bienvenido");
                 puesto = rs.getString(5);
             }
@@ -78,60 +79,68 @@ public class conexion_db {
         }
         return puesto;
     }
-    
-    public void registrarLineas(DefaultTableModel tabla, String nombre_linea, String clave, String fecha_auto, String fecha_vig){
+
+    public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig) {
         conexion();
         try {
             st = con.createStatement();
-            String sql = "INSERT INTO lineas_investigacion VALUES('" + nombre_linea + "','" + clave + "','" + fecha_auto 
+            String sql = "INSERT INTO lineas_investigacion VALUES('" + nombre_linea + "','" + clave + "','" + fecha_auto
                     + "','" + fecha_vig + "')";
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Registro completado");
-            llenarTablaLineasInv(tabla);
             st.close();
             con.close();
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-    
-    public void llenarTablaLineasInv(DefaultTableModel tabla){
-        int filas = tabla.getRowCount();
-        for (int i = 1; i <= filas; i++) {
-            tabla.removeRow(0);
-        }
+
+    public void llenarTablaLineasInv(DefaultTableModel tabla) {
+        conexion();
+
         try {
+            System.out.println("entre al try");
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM lineas_investigacion");
-            if(rs.next()){
-                while(rs.next()){
-                    tabla.addRow(new Object[]{rs.getString("nombre_linea"), rs.getString("clave"),
-                    rs.getDate("fecha_auto"), rs.getDate("fecha_vig")});
-                }
+            int filas = tabla.getRowCount();
+            System.out.println(filas);
+            for (int i = 1; i <= filas; i++) {
+                System.out.println("Limpiando tabla");
+                tabla.removeRow(0);
             }
+            while (rs.next()) {
+                System.out.println("llenando tabla");
+                tabla.addRow(new Object[]{rs.getString("nombre_linea"), rs.getString("clave"),
+                    rs.getDate("fecha_auto"), rs.getDate("fecha_vig")});
+            }
+            System.out.println("sali de llenar tabla");
+            st.close();
+            rs.close();
+            con.close();
         } catch (SQLException e) {
-                     JOptionPane.showMessageDialog(null, "Error al rellenar tabla");   
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
-    public void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus){
+
+    public void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus) {
         conexion();
         String colabConcatenado = "{";
-        if(colaboradores.length > 1){
-            for(int i = 0; i < colaboradores.length; i++){
+        if (colaboradores.length > 1) {
+            for (int i = 0; i < colaboradores.length; i++) {
                 colabConcatenado += colaboradores[i];
-                if(i != colaboradores.length-1)
+                if (i != colaboradores.length - 1) {
                     colabConcatenado += ",";
+                }
             }
             colabConcatenado += "}";
-        }else if(colaboradores.length == 1){
+        } else if (colaboradores.length == 1) {
             colabConcatenado += colaboradores[0] + "}";
-        }else{
+        } else {
             colabConcatenado = null;
         }
         try {
             st = con.createStatement();
-            String sql = "INSERT INTO productos VALUES('" + linea_inv + "','" + tipo_producto + "','" 
+            String sql = "INSERT INTO productos VALUES('" + linea_inv + "','" + tipo_producto + "','"
                     + nombre_producto + "','" + colabConcatenado + "','" + nivel + "','" + fecha_reg
                     + "','" + estatus + "')";
             st.executeUpdate(sql);
@@ -142,7 +151,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-    
+
     public static void main(String[] args) {
         //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
         //registrarLineas("esto es", "12345", "10-09-2000", "09-10-9000");
