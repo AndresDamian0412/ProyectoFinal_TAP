@@ -11,8 +11,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -81,6 +79,7 @@ public class conexion_db {
         }
         return puesto;
     }
+
     //<editor-fold defaultstate="collapsed" desc="LINEAS DE INVESTIGACION - SOURCE"> 
     public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig) {
         conexion();
@@ -96,18 +95,18 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-    
-    public void editar_eliminarLineas(){
-        
+
+    public void editar_eliminarLineas() {
+
     }
-    
-    public void buscarLineas(String opcion){
+
+    public void buscarLineas(String opcion) {
         conexion();
         try {
             st = con.createStatement();
-            switch(opcion){
+            switch (opcion) {
                 case "CLAVE":
-                    
+
             }
         } catch (Exception e) {
         }
@@ -144,25 +143,25 @@ public class conexion_db {
     //<editor-fold defaultstate="collapsed" desc="PRODUCTOS - SOURCE"> 
     public void llenarTablaProductos(DefaultTableModel tabla) {
         conexion();
-        
-        try {    
+
+        try {
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM productos");
             int filas = tabla.getRowCount();
-            
+
             for (int i = 1; i <= filas; i++) {
                 tabla.removeRow(0);
             }
             while (rs.next()) {
                 System.out.println("dentro del while");
                 tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
-                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"),rs.getDate("fecha_registro"),rs.getString("estatus")});
+                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
             }
             st.close();
             rs.close();
             con.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al rellenar tabla");
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
 
