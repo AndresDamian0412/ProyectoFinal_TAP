@@ -21,6 +21,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
      */
     public reg_productos_registrar() {
         initComponents();
+        rellenaComboLineas();
     }
 
     /**
@@ -58,7 +59,6 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
         combo_linea_inv.setBackground(new java.awt.Color(255, 255, 255));
         combo_linea_inv.setForeground(new java.awt.Color(0, 0, 0));
-        combo_linea_inv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         eti_tipo.setForeground(new java.awt.Color(0, 0, 0));
         eti_tipo.setText("TIPO PRODUCTO: ");
@@ -211,17 +211,17 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         // TODO add your handling code here:
-        if(!txt_Nombre.getText().isEmpty()){
+        if (!txt_Nombre.getText().isEmpty()||date2.getDate().toString().isEmpty()) {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            String [] colaboradores = new String[3];
+            String[] colaboradores = new String[3];
             colaboradores[0] = combo_colaboradores_1.getSelectedItem().toString();
             colaboradores[1] = combo_colaboradores_2.getSelectedItem().toString();
             colaboradores[2] = combo_colaboradores_3.getSelectedItem().toString();
             conexion_db cdb = new conexion_db();
             System.out.println("Enviando registro");
-            cdb.registrarProductos(combo_linea_inv.getSelectedItem().toString(), combo_tipo.getSelectedItem().toString()
-                    ,txt_Nombre.getText(),colaboradores, combo_Nivel.getSelectedItem().toString(),df.format(date2.getDate()), combo_estatus1.getSelectedItem().toString());
-        }else{
+            cdb.registrarProductos(combo_linea_inv.getSelectedItem().toString(), combo_tipo.getSelectedItem().toString(),
+                     txt_Nombre.getText(), colaboradores, combo_Nivel.getSelectedItem().toString(), df.format(date2.getDate()), combo_estatus1.getSelectedItem().toString());
+        } else {
             JOptionPane.showMessageDialog(null, "Por favor ingrese todos los datos");
         }
     }//GEN-LAST:event_btn_registrarActionPerformed
@@ -246,4 +246,12 @@ public class reg_productos_registrar extends javax.swing.JPanel {
     private javax.swing.JLabel eti_tipo;
     private javax.swing.JTextField txt_Nombre;
     // End of variables declaration//GEN-END:variables
+
+    public void rellenaComboLineas() {
+        conexion_db cdb = new conexion_db();
+        String[] lineas = cdb.buscaLineas();
+        for (String linea : lineas) {
+            combo_linea_inv.addItem(linea);
+        }
+    }
 }

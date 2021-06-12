@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -199,19 +200,27 @@ public class conexion_db {
         }
     }
     
-    public void buscaLineas(){
+    public String[] buscaLineas(){
        conexion();
+       ArrayList lineas = new ArrayList();
        try {
             st = con.createStatement();
-            String sql = "select * from lineas_investigacion";
+            String sql = "select nombre_linea from lineas_investigacion";
             rs = st.executeQuery(sql);
             
-            JOptionPane.showMessageDialog(null, "Registro completado");
+            while(rs.next()){
+                lineas.add(rs.getString("nombre_linea"));
+            }
             st.close();
             con.close();
         } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
+            JOptionPane.showMessageDialog(null, "Error al obtener las líneas de innvestigacion");
         }
+        String[] lineasinv = new String[lineas.size()];
+        for (int i = 0; i < lineasinv.length; i++) {
+            lineasinv[i] = (String) lineas.get(i);
+        }
+        return lineasinv;
     }
     // </editor-fold>
 

@@ -224,6 +224,11 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
                 "LINEA INVESTIGACION", "TIPO PRODUCTO", "NOM PRODUCTO", "COLABORADORES", "NIVEL", "FECHA REGISTRO", "ESTATUS"
             }
         ));
+        tablaProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaProductosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaProductos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 840, 260));
@@ -250,6 +255,13 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         tablaModelo = (DefaultTableModel) tablaProductos.getModel();
         conexion.llenarTablaProductos(tablaModelo);
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
+        // TODO add your handling code here:
+        int seleccion = tablaProductos.rowAtPoint(evt.getPoint());
+        //falta desarrollar
+        rpe.combo_linea_inv1.setSelectedIndex(0);
+    }//GEN-LAST:event_tablaProductosMouseClicked
 
     /**
      * @param args the command line arguments
