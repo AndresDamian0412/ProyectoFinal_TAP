@@ -198,6 +198,21 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
+    
+    public void buscaLineas(){
+       conexion();
+       try {
+            st = con.createStatement();
+            String sql = "select * from lineas_investigacion";
+            rs = st.executeQuery(sql);
+            
+            JOptionPane.showMessageDialog(null, "Registro completado");
+            st.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
+        }
+    }
     // </editor-fold>
 
     public static void main(String[] args) {

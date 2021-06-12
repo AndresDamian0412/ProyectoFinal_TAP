@@ -5,6 +5,11 @@
  */
 package JPanels_Proyecto;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import proyectofinal_rapa.conexion_db;
+
 /**
  *
  * @author axel8
@@ -43,7 +48,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         date2 = new com.toedter.calendar.JDateChooser();
         btn_registrar = new javax.swing.JButton();
         eti_estatus = new javax.swing.JLabel();
-        como_estatus1 = new javax.swing.JComboBox<>();
+        combo_estatus1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -101,13 +106,18 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         btn_registrar.setBackground(new java.awt.Color(0, 255, 17));
         btn_registrar.setForeground(new java.awt.Color(255, 255, 255));
         btn_registrar.setText("REGISTRAR");
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarActionPerformed(evt);
+            }
+        });
 
         eti_estatus.setForeground(new java.awt.Color(0, 0, 0));
         eti_estatus.setText("ESTATUS: ");
 
-        como_estatus1.setBackground(new java.awt.Color(255, 255, 255));
-        como_estatus1.setForeground(new java.awt.Color(0, 0, 0));
-        como_estatus1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En Proceso", "Concluido" }));
+        combo_estatus1.setBackground(new java.awt.Color(255, 255, 255));
+        combo_estatus1.setForeground(new java.awt.Color(0, 0, 0));
+        combo_estatus1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En Proceso", "Concluido" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,7 +158,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(eti_estatus)
                                 .addGap(18, 18, 18)
-                                .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(combo_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(64, 64, 64)
                         .addComponent(btn_registrar)
                         .addGap(233, 233, 233)))
@@ -189,7 +199,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                             .addComponent(date2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(combo_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(eti_estatus))
                         .addGap(72, 72, 72))))
         );
@@ -199,6 +209,23 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_colaboradores_3ActionPerformed
 
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+        // TODO add your handling code here:
+        if(!txt_Nombre.getText().isEmpty()){
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String [] colaboradores = new String[3];
+            colaboradores[0] = combo_colaboradores_1.getSelectedItem().toString();
+            colaboradores[1] = combo_colaboradores_2.getSelectedItem().toString();
+            colaboradores[2] = combo_colaboradores_3.getSelectedItem().toString();
+            conexion_db cdb = new conexion_db();
+            System.out.println("Enviando registro");
+            cdb.registrarProductos(combo_linea_inv.getSelectedItem().toString(), combo_tipo.getSelectedItem().toString()
+                    ,txt_Nombre.getText(),colaboradores, combo_Nivel.getSelectedItem().toString(),df.format(date2.getDate()), combo_estatus1.getSelectedItem().toString());
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor ingrese todos los datos");
+        }
+    }//GEN-LAST:event_btn_registrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_registrar;
@@ -206,9 +233,9 @@ public class reg_productos_registrar extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> combo_colaboradores_1;
     private javax.swing.JComboBox<String> combo_colaboradores_2;
     private javax.swing.JComboBox<String> combo_colaboradores_3;
+    private javax.swing.JComboBox<String> combo_estatus1;
     private javax.swing.JComboBox<String> combo_linea_inv;
     private javax.swing.JComboBox<String> combo_tipo;
-    private javax.swing.JComboBox<String> como_estatus1;
     private com.toedter.calendar.JDateChooser date2;
     private javax.swing.JLabel eti_colaboradores;
     private javax.swing.JLabel eti_estatus;
