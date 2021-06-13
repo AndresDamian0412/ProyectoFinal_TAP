@@ -103,25 +103,61 @@ public class conexion_db {
         }
     }
 
-    public void editar_eliminarLineas() {
-
-    }
-
-    public void buscarLineas(String opcion) {
+    public void buscarRegistroLineas(String opcion, String registro, DefaultTableModel tablaModel){
         conexion();
         try {
             st = con.createStatement();
-            switch (opcion) {
+            switch(opcion){
                 case "CLAVE":
-
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE clave = '" + registro + "'");
+                    llenarTablaLineasInvInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "NOM. DE LINEA":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE nombre_linea = '" + registro + "'");
+                    llenarTablaLineasInvInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "FECHA DE AUTORIZACIÓN":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE fecha_auto = '" + registro + "'");
+                    llenarTablaLineasInvInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "FECHA DE VIGENCIA":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE fecha_vig = '" + registro + "'");
+                    llenarTablaLineasInvInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Por favor, seleccione una de las opciones.");
             }
-        } catch (Exception e) {
+            st.close();
+            rs.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
+    }
+    
+    public void llenarTablaLineasInvInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
+        try {
+            
+            rs = instruccion;
+            int filas = tabla.getRowCount();
+            System.out.println(filas);
+            for (int i = 1; i <= filas; i++) {
+                System.out.println("limpiando filas");
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("agregando ");
+                tabla.addRow(new Object[]{rs.getString("nombre_linea"), rs.getString("clave"),
+                    rs.getDate("fecha_auto"), rs.getDate("fecha_vig")});
+            }
+           
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }  
     }
 
     public void llenarTablaLineasInv(DefaultTableModel tabla) {
         conexion();
-        
         try {
             System.out.println("entre al try");
             st = con.createStatement();
@@ -143,8 +179,7 @@ public class conexion_db {
             con.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
-        }
-        
+        }  
     }
     
     // </editor-fold>

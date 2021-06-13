@@ -172,7 +172,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "CLAVE", "LINEA DE INVESTIGACIÓN", "AUTORIZACIÓN", "VIGENCIA"
+                "LINEA DE INVESTIGACIÓN", "CLAVE", "AUTORIZACIÓN", "VIGENCIA"
             }
         ));
         jScrollPane2.setViewportView(tablaLineas);

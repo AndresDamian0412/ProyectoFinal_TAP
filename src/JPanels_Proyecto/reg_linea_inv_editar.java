@@ -6,7 +6,11 @@
 package JPanels_Proyecto;
 
 import java.awt.event.ItemEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+import proyectofinal_rapa.conexion_db;
 
 /**
  *
@@ -14,6 +18,9 @@ import javax.swing.JComboBox;
  */
 public class reg_linea_inv_editar extends javax.swing.JPanel {
     public String seleccion;
+    DefaultTableModel tablaModelo;
+    public conexion_db conexion = new conexion_db();
+    
     /**
      * Creates new form reg_linea_inv_editar
      */
@@ -49,6 +56,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         claveTxt = new javax.swing.JTextField();
         autorizacionDate = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
+        mostrarRegistrosBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaLineas = new javax.swing.JTable();
 
@@ -161,7 +169,17 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("LINEAS DE INVESTIGACIÓN");
+        jLabel5.setAlignmentX(0.5F);
         add(jLabel5);
+
+        mostrarRegistrosBtn.setText("Mostrar todos los registros");
+        mostrarRegistrosBtn.setAlignmentX(0.5F);
+        mostrarRegistrosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarRegistrosBtnActionPerformed(evt);
+            }
+        });
+        add(mostrarRegistrosBtn);
 
         tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -182,7 +200,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "CLAVE", "LINEA DE INVESTIGACIÓN", "AUTORIZACIÓN", "VIGENCIA"
+                "LINEA DE INVESTIGACIÓN", "CLAVE", "AUTORIZACIÓN", "VIGENCIA"
             }
         ));
         jScrollPane2.setViewportView(tablaLineas);
@@ -233,7 +251,46 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
     private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
         // TODO add your handling code here:
+        seleccion = (String) buscarporBox.getSelectedItem();
+        String registro;
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        
+        claveTxt.setEditable(true);
+        lineaTxt.setEditable(true);
+        autorizacionDate.setEnabled(true);
+        vigenciaDate.setEnabled(true);
+        
+        switch (seleccion) {
+            case "Seleccionar...":
+                registro = null;
+                break;
+            case "CLAVE":
+                registro = claveTxt.getText();
+                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                break;
+            case "NOM. DE LINEA":
+                registro = lineaTxt.getText();
+                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                break;
+            case "FECHA DE AUTORIZACIÓN":
+                registro = df.format(autorizacionDate.getDate());
+                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                break;
+            case "FECHA DE VIGENCIA":
+                registro = df.format(vigenciaDate.getDate());
+                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                break;
+        }
+        
+        
     }//GEN-LAST:event_buscarBtnActionPerformed
+
+    private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
+        // TODO add your handling code here:
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        conexion.llenarTablaLineasInv(tablaModelo);
+    }//GEN-LAST:event_mostrarRegistrosBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -251,6 +308,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField lineaTxt;
+    private javax.swing.JButton mostrarRegistrosBtn;
     public javax.swing.JTable tablaLineas;
     private com.toedter.calendar.JDateChooser vigenciaDate;
     // End of variables declaration//GEN-END:variables

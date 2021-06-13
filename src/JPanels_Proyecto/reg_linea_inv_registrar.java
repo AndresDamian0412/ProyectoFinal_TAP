@@ -46,6 +46,7 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
         registrarBtn = new javax.swing.JButton();
         claveTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        mostrarRegistrosBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaLineas = new javax.swing.JTable();
 
@@ -133,7 +134,17 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("LINEAS DE INVESTIGACIÓN");
+        jLabel4.setAlignmentX(0.5F);
         add(jLabel4);
+
+        mostrarRegistrosBtn.setText("Mostrar todos los registros");
+        mostrarRegistrosBtn.setAlignmentX(0.5F);
+        mostrarRegistrosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarRegistrosBtnActionPerformed(evt);
+            }
+        });
+        add(mostrarRegistrosBtn);
 
         tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,7 +165,7 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "CLAVE", "LINEA DE INVESTIGACIÓN", "AUTORIZACIÓN", "VIGENCIA"
+                "LINEA DE INVESTIGACIÓN", "CLAVE", "AUTORIZACIÓN", "VIGENCIA"
             }
         ));
         jScrollPane2.setViewportView(tablaLineas);
@@ -166,9 +177,16 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
         // TODO add your handling code here:
         conexion = new conexion_db();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        //conexion.registrarLineas(lineaTxt.getText(), claveTxt.getText(), df.format(fecha_autoTxt.getDate()), df.format(fecha_vigTxt.getDate()));
-        
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        conexion.registrarLineas(lineaTxt.getText(), claveTxt.getText(), df.format(fecha_autoTxt.getDate()), df.format(fecha_vigTxt.getDate()));
+        conexion.llenarTablaLineasInv(tablaModelo);
     }//GEN-LAST:event_registrarBtnActionPerformed
+
+    private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
+        // TODO add your handling code here:
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        conexion.llenarTablaLineasInv(tablaModelo);
+    }//GEN-LAST:event_mostrarRegistrosBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField claveTxt;
@@ -182,6 +200,7 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField lineaTxt;
+    private javax.swing.JButton mostrarRegistrosBtn;
     public javax.swing.JButton registrarBtn;
     public javax.swing.JTable tablaLineas;
     // End of variables declaration//GEN-END:variables
