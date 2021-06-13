@@ -14,7 +14,6 @@ import proyectofinal_rapa.conexion_db;
  * @author josep
  */
 public class reg_linea_inv extends javax.swing.JPanel {
-    DefaultTableModel tablaModelo;
     public conexion_db conexion = new conexion_db();
     /**
      * Creates new form reg_linea_inv
@@ -33,24 +32,16 @@ public class reg_linea_inv extends javax.swing.JPanel {
     private void initComponents() {
 
         opcionesPanelTglBtn = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        PanelBtns = new javax.swing.JPanel();
         agregar_btn = new javax.swing.JToggleButton();
         editar_btn = new javax.swing.JToggleButton();
         eliminar_btn = new javax.swing.JToggleButton();
         principal_panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaLineas = new javax.swing.JTable();
-        actualizarBtn = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        PanelBtns.setMaximumSize(new java.awt.Dimension(260, 31));
 
         opcionesPanelTglBtn.add(agregar_btn);
         agregar_btn.setText("AGREGAR");
@@ -62,7 +53,7 @@ public class reg_linea_inv extends javax.swing.JPanel {
                 agregar_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(agregar_btn);
+        PanelBtns.add(agregar_btn);
 
         opcionesPanelTglBtn.add(editar_btn);
         editar_btn.setText("EDITAR");
@@ -73,7 +64,7 @@ public class reg_linea_inv extends javax.swing.JPanel {
                 editar_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(editar_btn);
+        PanelBtns.add(editar_btn);
 
         opcionesPanelTglBtn.add(eliminar_btn);
         eliminar_btn.setText("ELIMINAR");
@@ -84,57 +75,21 @@ public class reg_linea_inv extends javax.swing.JPanel {
                 eliminar_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(eliminar_btn);
+        PanelBtns.add(eliminar_btn);
 
-        jPanel1.add(jPanel2);
+        add(PanelBtns);
 
         principal_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        principal_panel.setPreferredSize(new java.awt.Dimension(200, 400));
-        principal_panel.setLayout(new javax.swing.BoxLayout(principal_panel, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel1.add(principal_panel);
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("LINEAS DE INVESTIGACIÓN");
-        jPanel1.add(jLabel1);
-
-        tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "CLAVE", "LINEA DE INVESTIGACIÓN", "AUTORIZACIÓN", "VIGENCIA"
-            }
-        ));
-        jScrollPane2.setViewportView(tablaLineas);
-
-        jPanel1.add(jScrollPane2);
-
-        actualizarBtn.setText("Actualizar tabla");
-        actualizarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarBtnActionPerformed(evt);
-            }
-        });
-        jPanel1.add(actualizarBtn);
-
-        add(jPanel1);
+        principal_panel.setMinimumSize(new java.awt.Dimension(661, 441));
+        principal_panel.setPreferredSize(new java.awt.Dimension(661, 441));
+        principal_panel.setLayout(new java.awt.BorderLayout());
+        add(principal_panel);
     }// </editor-fold>//GEN-END:initComponents
-
     
+    
+    
+    
+
     private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
         // TODO add your handling code here:
         principal_panel.removeAll();
@@ -164,25 +119,14 @@ public class reg_linea_inv extends javax.swing.JPanel {
         principal_panel.revalidate();
         principal_panel.repaint();
     }//GEN-LAST:event_eliminar_btnActionPerformed
-
-    private void actualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBtnActionPerformed
-        // TODO add your handling code here:
-        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        conexion.llenarTablaLineasInv(tablaModelo);
-    }//GEN-LAST:event_actualizarBtnActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actualizarBtn;
+    private javax.swing.JPanel PanelBtns;
     private javax.swing.JToggleButton agregar_btn;
     private javax.swing.JToggleButton editar_btn;
     private javax.swing.JToggleButton eliminar_btn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.ButtonGroup opcionesPanelTglBtn;
     private javax.swing.JPanel principal_panel;
-    private javax.swing.JTable tablaLineas;
     // End of variables declaration//GEN-END:variables
 }

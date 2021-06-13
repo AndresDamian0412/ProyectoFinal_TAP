@@ -5,6 +5,7 @@
  */
 package proyectofinal_rapa;
 
+import JPanels_Proyecto.reg_linea_inv;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -119,7 +121,7 @@ public class conexion_db {
 
     public void llenarTablaLineasInv(DefaultTableModel tabla) {
         conexion();
-
+        
         try {
             System.out.println("entre al try");
             st = con.createStatement();
@@ -142,7 +144,9 @@ public class conexion_db {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
+        
     }
+    
     // </editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="PRODUCTOS - SOURCE"> 
