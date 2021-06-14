@@ -5,10 +5,12 @@
  */
 package JPanels_Proyecto;
 
-import java.awt.event.ItemEvent;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import javax.swing.JComboBox;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
 
@@ -17,10 +19,11 @@ import proyectofinal_rapa.conexion_db;
  * @author josep
  */
 public class reg_linea_inv_editar extends javax.swing.JPanel {
+
     public String seleccion;
     DefaultTableModel tablaModelo;
     public conexion_db conexion = new conexion_db();
-    
+
     /**
      * Creates new form reg_linea_inv_editar
      */
@@ -70,6 +73,8 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(384, 185));
         jPanel1.setPreferredSize(new java.awt.Dimension(384, 185));
 
+        vigenciaDate.setDateFormatString("yyyy-MM-dd");
+
         jLabel4.setText("BUSCAR POR:");
 
         buscarporBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "CLAVE", "NOM. DE LINEA", "FECHA DE AUTORIZACIÓN", "FECHA DE VIGENCIA" }));
@@ -100,6 +105,8 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                 buscarBtnActionPerformed(evt);
             }
         });
+
+        autorizacionDate.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,6 +210,11 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                 "LINEA DE INVESTIGACIÓN", "CLAVE", "AUTORIZACIÓN", "VIGENCIA"
             }
         ));
+        tablaLineas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaLineasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaLineas);
 
         add(jScrollPane2);
@@ -255,12 +267,12 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         String registro;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        
-        claveTxt.setEditable(true);
+
+        claveTxt.setEditable(false);
         lineaTxt.setEditable(true);
         autorizacionDate.setEnabled(true);
         vigenciaDate.setEnabled(true);
-        
+
         switch (seleccion) {
             case "Seleccionar...":
                 registro = null;
@@ -282,8 +294,8 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                 conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
                 break;
         }
-        
-        
+
+
     }//GEN-LAST:event_buscarBtnActionPerformed
 
     private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
@@ -291,6 +303,29 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
         conexion.llenarTablaLineasInv(tablaModelo);
     }//GEN-LAST:event_mostrarRegistrosBtnActionPerformed
+
+    private void tablaLineasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLineasMouseClicked
+        // TODO add your handling code here:
+        //int row =   tablaLineas.getSelectedRow(); 
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        
+
+        claveTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0));
+        lineaTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 1));
+        
+        String auto = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 2).toString();
+        String vige = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 3).toString();
+        
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date autoDate = formato.parse(auto);
+            Date vigeDate = formato.parse(vige);
+            autorizacionDate.setDate(autoDate);
+            vigenciaDate.setDate(vigeDate);
+        } catch (ParseException ex) {
+            Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tablaLineasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
