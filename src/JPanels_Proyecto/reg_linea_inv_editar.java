@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
 
@@ -33,7 +34,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         lineaTxt.setEditable(false);
         autorizacionDate.setEnabled(false);
         vigenciaDate.setEnabled(false);
-
+        editarBtn.setEnabled(false);
     }
 
     /**
@@ -223,12 +224,14 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
     private void buscarporBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_buscarporBoxItemStateChanged
         // TODO add your handling code here:
         seleccion = (String) buscarporBox.getSelectedItem();
+        limpiarCampos();
         switch (seleccion) {
             case "Seleccionar...":
                 claveTxt.setEditable(false);
                 lineaTxt.setEditable(false);
                 autorizacionDate.setEnabled(false);
                 vigenciaDate.setEnabled(false);
+                editarBtn.setEnabled(false);
                 break;
             case "CLAVE":
                 claveTxt.setEditable(true);
@@ -259,8 +262,15 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
     private void editarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBtnActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_editarBtnActionPerformed
 
+    public void limpiarCampos() {
+        claveTxt.setText(null);
+        lineaTxt.setText(null);
+        autorizacionDate.setDate(null);
+        vigenciaDate.setDate(null);
+    }
     private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
         // TODO add your handling code here:
         seleccion = (String) buscarporBox.getSelectedItem();
@@ -268,31 +278,50 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
 
-        claveTxt.setEditable(true);
-        lineaTxt.setEditable(true);
-        autorizacionDate.setEnabled(true);
-        vigenciaDate.setEnabled(true);
-
         switch (seleccion) {
             case "Seleccionar...":
+                claveTxt.setEditable(false);
+                lineaTxt.setEditable(false);
+                autorizacionDate.setEnabled(false);
+                vigenciaDate.setEnabled(false);
+                editarBtn.setEnabled(false);
                 registro = null;
                 break;
             case "CLAVE":
                 registro = claveTxt.getText();
-                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                if (registro.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+                } else {
+                    conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                }
+
                 break;
             case "NOM. DE LINEA":
                 registro = lineaTxt.getText();
-                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                if (registro.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+                } else {
+                    conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                }
+
                 break;
             case "FECHA DE AUTORIZACIÓN":
+                try {
                 registro = df.format(autorizacionDate.getDate());
                 conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
-                break;
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+            }
+
+            break;
             case "FECHA DE VIGENCIA":
+                try {
                 registro = df.format(vigenciaDate.getDate());
                 conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
-                break;
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+            }
+            break;
         }
 
 
@@ -308,14 +337,13 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         // TODO add your handling code here:
         //int row =   tablaLineas.getSelectedRow(); 
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        
 
         claveTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 1));
         lineaTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0));
-        
+
         String auto = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 2).toString();
         String vige = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 3).toString();
-        
+
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date autoDate = formato.parse(auto);
@@ -325,6 +353,11 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         } catch (ParseException ex) {
             Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
         }
+        claveTxt.setEditable(true);
+        lineaTxt.setEditable(true);
+        autorizacionDate.setEnabled(true);
+        vigenciaDate.setEnabled(true);
+        editarBtn.setEnabled(true);
     }//GEN-LAST:event_tablaLineasMouseClicked
 
 

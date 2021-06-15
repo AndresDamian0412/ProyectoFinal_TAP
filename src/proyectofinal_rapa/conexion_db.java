@@ -100,7 +100,8 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-
+    
+    
     public void buscarRegistroLineas(String opcion, String registro, DefaultTableModel tablaModel){
         conexion();
         try {
