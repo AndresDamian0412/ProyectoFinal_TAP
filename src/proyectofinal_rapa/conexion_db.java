@@ -6,6 +6,7 @@
 package proyectofinal_rapa;
 
 import java.awt.HeadlessException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -265,6 +266,37 @@ public class conexion_db {
         }
     }
     
+    public void editarProductos(String nombre_actual,String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus){
+        conexion();
+        String colabConcatenado = "{";
+        if (colaboradores.length > 1) {
+            for (int i = 0; i < colaboradores.length; i++) {
+                colabConcatenado += colaboradores[i];
+                if (i != colaboradores.length - 1) {
+                    colabConcatenado += ",";
+                }
+            }
+            colabConcatenado += "}";
+        } else if (colaboradores.length == 1) {
+            colabConcatenado += colaboradores[0] + "}";
+        } else {
+            colabConcatenado = null;
+        }
+        try {
+            st = con.createStatement();
+            String sql = "UPDATE productos SET linea_investigacion = '"+linea_inv+"',SET tipo_producto = '"
+                    +tipo_producto+"', SET nombre_producto = '"+nombre_producto+"', SET colaboradores = '"
+                    +colabConcatenado+"', SET nivel = '"+nivel+"' SET fecha_registro = '"+fecha_reg+
+                    "' SET estatus = "+estatus+"' WHERE nombre_producto = '"+nombre_actual+"';";
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Registro completado");
+            st.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
+        }
+    }
+    
     public String[] rellenarComboLineas(){
        conexion();
        ArrayList lineas = new ArrayList();
@@ -352,6 +384,7 @@ public class conexion_db {
     }
     
     public void llenarTablaProductosInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
+        Array pgArray;
         try {
             
             rs = instruccion;
@@ -363,8 +396,10 @@ public class conexion_db {
             }
             while (rs.next()) {
                 System.out.println("agregando ");
+                pgArray = rs.getArray("colaboradores");
+                
                 tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),rs.getString("nombre_producto"),
-                    rs.getArray("colaboradores"),rs.getString("nivel"),rs.getDate("fecha_registro"), rs.getString("estatus")});
+                    (pgArray.getArray()),rs.getString("nivel"),rs.getDate("fecha_registro"), rs.getString("estatus")});
             }
            
         } catch (SQLException e) {
