@@ -14,6 +14,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
     public reg_productos_editar() {
         initComponents();
         rellenaComboLineas();
+        rellenaComboColab();
         
         combo_linea_inv.disable();
         combo_nivel.disable();
@@ -60,6 +61,11 @@ public class reg_productos_editar extends javax.swing.JPanel {
         btn_editar.setBackground(new java.awt.Color(255, 102, 0));
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_editar.setText("EDITAR");
+        btn_editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarActionPerformed(evt);
+            }
+        });
 
         eti_fecha_registro.setForeground(new java.awt.Color(0, 0, 0));
         eti_fecha_registro.setText("FECHA DE REGISTRO: ");
@@ -79,14 +85,12 @@ public class reg_productos_editar extends javax.swing.JPanel {
 
         combo_colab1.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab1.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colab1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         eti_estatus.setForeground(new java.awt.Color(0, 0, 0));
         eti_estatus.setText("ESTATUS: ");
 
         combo_colab3.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab3.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colab3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo_colab3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_colab3ActionPerformed(evt);
@@ -99,7 +103,6 @@ public class reg_productos_editar extends javax.swing.JPanel {
 
         combo_colab2.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab2.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colab2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         eti_linea_Inv1.setForeground(new java.awt.Color(0, 0, 0));
         eti_linea_Inv1.setText("LINEA DE INVESTIGACIÓN:");
@@ -111,6 +114,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
         combo_linea_inv.setForeground(new java.awt.Color(0, 0, 0));
 
         combo_nivel.setBackground(new java.awt.Color(255, 255, 255));
+        combo_nivel.setEditable(true);
         combo_nivel.setForeground(new java.awt.Color(0, 0, 0));
         combo_nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Licenciatura", "Maestría", "Doctorado" }));
 
@@ -391,7 +395,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
         tablaModelo = (DefaultTableModel) tablaProductos.getModel();
         
-        
+
         txt_nombre.setText((String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2));
     }//GEN-LAST:event_tablaProductosMouseClicked
 
@@ -407,16 +411,6 @@ public class reg_productos_editar extends javax.swing.JPanel {
         String registro;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaProductos.getModel();
-
-        combo_linea_inv.enable();
-        combo_nivel.enable();
-        combo_tipo1.enable();
-        txt_nombre.setEditable(true);
-        combo_colab1.enable();
-        combo_colab2.enable();
-        combo_colab3.enable();
-        date3.setEnabled(true);
-        combo_estatus.enable();
 
         switch (seleccion) {
             case "Seleccionar...":
@@ -458,6 +452,13 @@ public class reg_productos_editar extends javax.swing.JPanel {
         combo_estatus.enable();
     }//GEN-LAST:event_btn_buscarActionPerformed
 
+    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
+        // TODO add your handling code here:
+                combo_linea_inv.setSelectedIndex(2);
+                
+                System.out.println(combo_linea_inv.getItemCount());
+    }//GEN-LAST:event_btn_editarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btn_buscar;
@@ -485,10 +486,18 @@ public class reg_productos_editar extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void rellenaComboLineas() {
-        conexion_db cdb = new conexion_db();
-        String[] lineas = cdb.rellenarComboLineas();
+        String[] lineas = conexion.rellenarComboLineas();
         for (String linea : lineas) {
             combo_linea_inv.addItem(linea);
+        }
+    }
+   
+    public void rellenaComboColab(){
+        String[] docentes = conexion.rellenarComboColaboradores();
+        for (String docente : docentes) {
+            combo_colab1.addItem(docente);
+            combo_colab2.addItem(docente);
+            combo_colab3.addItem(docente);
         }
     }
 }

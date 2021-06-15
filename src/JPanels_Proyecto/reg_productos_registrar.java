@@ -10,11 +10,12 @@ import proyectofinal_rapa.conexion_db;
 public class reg_productos_registrar extends javax.swing.JPanel {
 
     DefaultTableModel tablaModelo;
-    conexion_db cdb = new conexion_db();
+    conexion_db conexion = new conexion_db();
 
     public reg_productos_registrar() {
         initComponents();
         rellenaComboLineas();
+        rellenaComboColab();
     }
 
     @SuppressWarnings("unchecked")
@@ -28,9 +29,9 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         eti_nombre = new javax.swing.JLabel();
         txt_Nombre = new javax.swing.JTextField();
         eti_colaboradores = new javax.swing.JLabel();
-        combo_colaboradores_1 = new javax.swing.JComboBox<>();
-        combo_colaboradores_3 = new javax.swing.JComboBox<>();
-        combo_colaboradores_2 = new javax.swing.JComboBox<>();
+        combo_colab1 = new javax.swing.JComboBox<>();
+        combo_colab3 = new javax.swing.JComboBox<>();
+        combo_colab2 = new javax.swing.JComboBox<>();
         eti_nivel = new javax.swing.JLabel();
         combo_Nivel = new javax.swing.JComboBox<>();
         eti_fecha_registro = new javax.swing.JLabel();
@@ -70,22 +71,19 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         eti_colaboradores.setForeground(new java.awt.Color(0, 0, 0));
         eti_colaboradores.setText("COLABORADORES (MAX 3) :");
 
-        combo_colaboradores_1.setBackground(new java.awt.Color(255, 255, 255));
-        combo_colaboradores_1.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colaboradores_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_colab1.setBackground(new java.awt.Color(255, 255, 255));
+        combo_colab1.setForeground(new java.awt.Color(0, 0, 0));
 
-        combo_colaboradores_3.setBackground(new java.awt.Color(255, 255, 255));
-        combo_colaboradores_3.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colaboradores_3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        combo_colaboradores_3.addActionListener(new java.awt.event.ActionListener() {
+        combo_colab3.setBackground(new java.awt.Color(255, 255, 255));
+        combo_colab3.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_colaboradores_3ActionPerformed(evt);
+                combo_colab3ActionPerformed(evt);
             }
         });
 
-        combo_colaboradores_2.setBackground(new java.awt.Color(255, 255, 255));
-        combo_colaboradores_2.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colaboradores_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_colab2.setBackground(new java.awt.Color(255, 255, 255));
+        combo_colab2.setForeground(new java.awt.Color(0, 0, 0));
 
         eti_nivel.setForeground(new java.awt.Color(0, 0, 0));
         eti_nivel.setText("NIVEL: ");
@@ -187,14 +185,14 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(combo_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(combo_colaboradores_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(combo_colab1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_registrar)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(combo_colaboradores_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(combo_colab2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(combo_colaboradores_3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(combo_colab3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(168, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -230,33 +228,33 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(eti_colaboradores)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(combo_colaboradores_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(combo_colaboradores_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(combo_colaboradores_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(combo_colab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(combo_colab2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(combo_colab3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_registrar)
                     .addComponent(btnActualizar))
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(318, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 241, Short.MAX_VALUE)
+                    .addGap(0, 198, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void combo_colaboradores_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_colaboradores_3ActionPerformed
+    private void combo_colab3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_colab3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_combo_colaboradores_3ActionPerformed
+    }//GEN-LAST:event_combo_colab3ActionPerformed
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         // TODO add your handling code here:
         if (!txt_Nombre.getText().isEmpty() || date2.getDate().toString().isEmpty()) {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String[] colaboradores = new String[3];
-            colaboradores[0] = combo_colaboradores_1.getSelectedItem().toString();
-            colaboradores[1] = combo_colaboradores_2.getSelectedItem().toString();
-            colaboradores[2] = combo_colaboradores_3.getSelectedItem().toString();
+            colaboradores[0] = combo_colab1.getSelectedItem().toString();
+            colaboradores[1] = combo_colab2.getSelectedItem().toString();
+            colaboradores[2] = combo_colab3.getSelectedItem().toString();
             conexion_db cdb = new conexion_db();
             System.out.println("Enviando registro");
             cdb.registrarProductos(combo_linea_inv.getSelectedItem().toString(), combo_tipo.getSelectedItem().toString(),
@@ -273,7 +271,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
         tablaModelo = (DefaultTableModel) tablaProductos.getModel();
-        cdb.llenarTablaProductos(tablaModelo);
+        conexion.llenarTablaProductos(tablaModelo);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
 
@@ -281,9 +279,9 @@ public class reg_productos_registrar extends javax.swing.JPanel {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btn_registrar;
     private javax.swing.JComboBox<String> combo_Nivel;
-    private javax.swing.JComboBox<String> combo_colaboradores_1;
-    private javax.swing.JComboBox<String> combo_colaboradores_2;
-    private javax.swing.JComboBox<String> combo_colaboradores_3;
+    private javax.swing.JComboBox<String> combo_colab1;
+    private javax.swing.JComboBox<String> combo_colab2;
+    private javax.swing.JComboBox<String> combo_colab3;
     private javax.swing.JComboBox<String> combo_estatus1;
     private javax.swing.JComboBox<String> combo_linea_inv;
     private javax.swing.JComboBox<String> combo_tipo;
@@ -301,10 +299,18 @@ public class reg_productos_registrar extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void rellenaComboLineas() {
-        conexion_db cdb = new conexion_db();
-        String[] lineas = cdb.rellenarComboLineas();
+        String[] lineas = conexion.rellenarComboLineas();
         for (String linea : lineas) {
             combo_linea_inv.addItem(linea);
+        }
+    }
+    
+    public void rellenaComboColab(){
+        String[] docentes = conexion.rellenarComboColaboradores();
+        for (String docente : docentes) {
+            combo_colab1.addItem(docente);
+            combo_colab2.addItem(docente);
+            combo_colab3.addItem(docente);
         }
     }
 }

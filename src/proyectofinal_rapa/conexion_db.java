@@ -263,25 +263,25 @@ public class conexion_db {
     
     public String[] rellenarComboColaboradores(){
        conexion();
-       ArrayList lineas = new ArrayList();
+       ArrayList<String> docentes = new ArrayList();
        try {
             st = con.createStatement();
-            String sql = "select nombre_linea from lineas_investigacion";
+            String sql = "select * from usuarios where puesto = 'Docente'";
             rs = st.executeQuery(sql);
             
             while(rs.next()){
-                lineas.add(rs.getString("nombre_linea"));
+                docentes.add(rs.getString("nombres"));
             }
             st.close();
             con.close();
         } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al obtener las líneas de innvestigacion");
+            JOptionPane.showMessageDialog(null, "Error al obtener los colaboradores");
         }
-        String[] lineasinv = new String[lineas.size()];
-        for (int i = 0; i < lineasinv.length; i++) {
-            lineasinv[i] = (String) lineas.get(i);
+       String[] colab = new String[docentes.size()];
+        for (int i = 0; i < colab.length; i++) {
+            colab[i] = docentes.get(i);
         }
-        return lineasinv;
+       return colab;
     }
     
     public void buscarRegistroProductos(String opcion, String registro, DefaultTableModel tablaModel){
@@ -352,5 +352,6 @@ public class conexion_db {
         //String[] ola= {"prueba","uno"};
         //registrarProductos("esto es", "una", "prueba", ola, "medio", "09-09-2000", "hola");
         //login("esto", "123");
+        
     }
 }

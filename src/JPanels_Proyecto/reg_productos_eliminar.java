@@ -6,10 +6,12 @@ import proyectofinal_rapa.conexion_db;
 public class reg_productos_eliminar extends javax.swing.JPanel {
 
     DefaultTableModel tablaModelo;
-    conexion_db cdb = new conexion_db();
+    conexion_db conexion = new conexion_db();
+    
     public reg_productos_eliminar() {
         initComponents();
         rellenaComboLineas();
+        rellenaComboColab();
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +22,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         eti_fecha_registro = new javax.swing.JLabel();
         como_estatus1 = new javax.swing.JComboBox<>();
         combo_tipo1 = new javax.swing.JComboBox<>();
-        combo_colaboradores_6 = new javax.swing.JComboBox<>();
+        combo_colab2 = new javax.swing.JComboBox<>();
         eti_linea_Inv1 = new javax.swing.JLabel();
         eti_nombre = new javax.swing.JLabel();
         eti_nivel = new javax.swing.JLabel();
@@ -30,12 +32,12 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         eti_colaboradores = new javax.swing.JLabel();
         eti_tipo1 = new javax.swing.JLabel();
         eti_buscar = new javax.swing.JLabel();
-        combo_colaboradores_4 = new javax.swing.JComboBox<>();
+        combo_colab1 = new javax.swing.JComboBox<>();
         combo_buscar = new javax.swing.JComboBox<>();
         eti_estatus = new javax.swing.JLabel();
         date1 = new com.toedter.calendar.JDateChooser();
         btn_Buscar = new javax.swing.JButton();
-        combo_colaboradores_5 = new javax.swing.JComboBox<>();
+        combo_colab3 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
         btnActualizar = new javax.swing.JButton();
@@ -61,9 +63,8 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         combo_tipo1.setForeground(new java.awt.Color(0, 0, 0));
         combo_tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artículo", "Estancia Académica", "Informe Técnico", "Dirección de Tesis", "Prototipo" }));
 
-        combo_colaboradores_6.setBackground(new java.awt.Color(255, 255, 255));
-        combo_colaboradores_6.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colaboradores_6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_colab2.setBackground(new java.awt.Color(255, 255, 255));
+        combo_colab2.setForeground(new java.awt.Color(0, 0, 0));
 
         eti_linea_Inv1.setForeground(new java.awt.Color(0, 0, 0));
         eti_linea_Inv1.setText("LINEA DE INVESTIGACIÓN:");
@@ -99,9 +100,8 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         eti_buscar.setForeground(new java.awt.Color(0, 0, 0));
         eti_buscar.setText("BUSCAR POR:");
 
-        combo_colaboradores_4.setBackground(new java.awt.Color(255, 255, 255));
-        combo_colaboradores_4.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colaboradores_4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_colab1.setBackground(new java.awt.Color(255, 255, 255));
+        combo_colab1.setForeground(new java.awt.Color(0, 0, 0));
 
         combo_buscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -110,12 +110,11 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
         btn_Buscar.setText("BUSCAR");
 
-        combo_colaboradores_5.setBackground(new java.awt.Color(255, 255, 255));
-        combo_colaboradores_5.setForeground(new java.awt.Color(0, 0, 0));
-        combo_colaboradores_5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        combo_colaboradores_5.addActionListener(new java.awt.event.ActionListener() {
+        combo_colab3.setBackground(new java.awt.Color(255, 255, 255));
+        combo_colab3.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_colaboradores_5ActionPerformed(evt);
+                combo_colab3ActionPerformed(evt);
             }
         });
 
@@ -197,14 +196,14 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(combo_colaboradores_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(combo_colab1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btn_editar)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(combo_colaboradores_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(combo_colab2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(combo_colaboradores_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(combo_colab3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 231, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -244,10 +243,10 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                             .addComponent(eti_estatus))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(combo_colaboradores_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo_colaboradores_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo_colab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo_colab3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eti_colaboradores)
-                    .addComponent(combo_colaboradores_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_colab2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_editar)
@@ -258,9 +257,9 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void combo_colaboradores_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_colaboradores_5ActionPerformed
+    private void combo_colab3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_colab3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_combo_colaboradores_5ActionPerformed
+    }//GEN-LAST:event_combo_colab3ActionPerformed
 
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
 
@@ -269,7 +268,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
         tablaModelo = (DefaultTableModel) tablaProductos.getModel();
-        cdb.llenarTablaProductos(tablaModelo);
+        conexion.llenarTablaProductos(tablaModelo);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void combo_linea_invActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_linea_invActionPerformed
@@ -283,9 +282,9 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
     private javax.swing.JButton btn_editar;
     private javax.swing.JComboBox<String> combo_Nivel1;
     private javax.swing.JComboBox<String> combo_buscar;
-    private javax.swing.JComboBox<String> combo_colaboradores_4;
-    private javax.swing.JComboBox<String> combo_colaboradores_5;
-    private javax.swing.JComboBox<String> combo_colaboradores_6;
+    private javax.swing.JComboBox<String> combo_colab1;
+    private javax.swing.JComboBox<String> combo_colab2;
+    private javax.swing.JComboBox<String> combo_colab3;
     private javax.swing.JComboBox<String> combo_linea_inv;
     private javax.swing.JComboBox<String> combo_tipo1;
     private javax.swing.JComboBox<String> como_estatus1;
@@ -304,10 +303,18 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void rellenaComboLineas() {
-        conexion_db cdb = new conexion_db();
-        String[] lineas = cdb.rellenarComboLineas();
+        String[] lineas = conexion.rellenarComboLineas();
         for (String linea : lineas) {
             combo_linea_inv.addItem(linea);
+        }
+    }
+    
+    public void rellenaComboColab(){
+        String[] docentes = conexion.rellenarComboColaboradores();
+        for (String docente : docentes) {
+            combo_colab1.addItem(docente);
+            combo_colab2.addItem(docente);
+            combo_colab3.addItem(docente);
         }
     }
 }
