@@ -1,16 +1,10 @@
 package proyectofinal_rapa;
 
 import JPanels_Proyecto.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 
-public class Docentes extends javax.swing.JFrame implements ActionListener {
+public class Docentes extends javax.swing.JFrame {
 
-    reg_productos_editar rpe = new reg_productos_editar();
-    reg_productos_eliminar rpel = new reg_productos_eliminar();
-    reg_productos_registrar rpr = new reg_productos_registrar();
-    
     DefaultTableModel tablaModelo;
     public conexion_db conexion = new conexion_db();
 
@@ -188,7 +182,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
         principal_panel.removeAll();
         reg_productos_registrar rpr = new reg_productos_registrar();
-        rpr.setSize(1041,602);
+        rpr.setSize(1041, 602);
         principal_panel.add(rpr);
         principal_panel.revalidate();
         principal_panel.repaint();
@@ -198,7 +192,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
         principal_panel.removeAll();
         reg_productos_editar rpe = new reg_productos_editar();
-        rpe.setSize(1041,602);
+        rpe.setSize(1041, 602);
         principal_panel.add(rpe);
         principal_panel.revalidate();
         principal_panel.repaint();
@@ -208,7 +202,7 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
         principal_panel.removeAll();
         reg_productos_eliminar rpel = new reg_productos_eliminar();
-        rpel.setSize(1041,602);
+        rpel.setSize(1041, 602);
         principal_panel.add(rpel);
         principal_panel.revalidate();
         principal_panel.repaint();
@@ -267,31 +261,4 @@ public class Docentes extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel puesto_docente;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-//        Object evt = ae.getSource();
-//
-//        if (evt.equals(btn_editar)) {
-//            rpel.setVisible(false);
-//            rpr.setVisible(false);
-//            rpe.setVisible(true);
-//
-//            panelCambiante.add(rpe);
-//            panelCambiante.validate();
-//        } else if (evt.equals(btn_eliminar)) {
-//            rpr.setVisible(false);
-//            rpe.setVisible(false);
-//            rpel.setVisible(true);
-//
-//            panelCambiante.add(rpel);
-//            panelCambiante.validate();
-//        } else if (evt.equals(btn_agregar)) {
-//            rpe.setVisible(false);
-//            rpel.setVisible(false);
-//            rpr.setVisible(true);
-//
-//            panelCambiante.add(rpr);
-//            panelCambiante.validate();
-//        }
-    }
 }

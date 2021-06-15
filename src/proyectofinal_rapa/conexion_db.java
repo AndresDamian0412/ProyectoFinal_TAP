@@ -260,33 +260,56 @@ public class conexion_db {
         return lineasinv;
     }
     
+    public String[] rellenarComboColaboradores(){
+       conexion();
+       ArrayList lineas = new ArrayList();
+       try {
+            st = con.createStatement();
+            String sql = "select nombre_linea from lineas_investigacion";
+            rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                lineas.add(rs.getString("nombre_linea"));
+            }
+            st.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener las líneas de innvestigacion");
+        }
+        String[] lineasinv = new String[lineas.size()];
+        for (int i = 0; i < lineasinv.length; i++) {
+            lineasinv[i] = (String) lineas.get(i);
+        }
+        return lineasinv;
+    }
+    
     public void buscarRegistroProductos(String opcion, String registro, DefaultTableModel tablaModel){
         conexion();
         try {
             st = con.createStatement();
             switch(opcion){
                 case "LINEA":
-                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE linea_investigacion = '" + registro + "'");
+                    rs = st.executeQuery("SELECT * FROM productos WHERE linea_investigacion = '" + registro + "'");
                     llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
                     break;
                 case "TIPO":
-                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE tipo_producto = '" + registro + "'");
+                    rs = st.executeQuery("SELECT * FROM productos WHERE tipo_producto = '" + registro + "'");
                     llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
                     break;
                 case "NOMBRE":
-                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE nombre_producto = '" + registro + "'");
+                    rs = st.executeQuery("SELECT * FROM productos WHERE nombre_producto = '" + registro + "'");
                     llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
                     break;
                 case "NIVEL":
-                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE nivel = '" + registro + "'");
+                    rs = st.executeQuery("SELECT * FROM productos WHERE nivel = '" + registro + "'");
                     llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
                     break;
                 case "FECHA":
-                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE fecha_registro = '" + registro + "'");
+                    rs = st.executeQuery("SELECT * FROM productos WHERE fecha_registro = '" + registro + "'");
                     llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
                     break;
                 case "ESTATUS":
-                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE estatus = '" + registro + "'");
+                    rs = st.executeQuery("SELECT * FROM productos WHERE estatus = '" + registro + "'");
                     llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
                     break;
                 default:
