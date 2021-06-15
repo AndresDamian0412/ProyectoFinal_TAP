@@ -14,10 +14,6 @@ public class Docentes extends javax.swing.JFrame {
         this.setResizable(false);
         lbl_nombre.setText(login.getDatos()[0]);
         lbl_depa.setText(login.getDatos()[1]);
-
-//        btn_agregar.addActionListener(this);
-//        btn_editar.addActionListener(this);
-//        btn_eliminar.addActionListener(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -208,9 +204,6 @@ public class Docentes extends javax.swing.JFrame {
         principal_panel.repaint();
     }//GEN-LAST:event_eliminar_btnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

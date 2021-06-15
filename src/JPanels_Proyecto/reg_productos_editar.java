@@ -454,9 +454,10 @@ public class reg_productos_editar extends javax.swing.JPanel {
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
-                combo_linea_inv.setSelectedIndex(2);
-                
-                System.out.println(combo_linea_inv.getItemCount());
+                combo_nivel.setEditable(true);
+                combo_nivel.setEnabled(true);
+                combo_nivel.enable(true);
+                combo_nivel.setSelectedIndex(2);
     }//GEN-LAST:event_btn_editarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

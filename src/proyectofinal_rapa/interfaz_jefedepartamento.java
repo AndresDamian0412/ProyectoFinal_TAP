@@ -5,10 +5,6 @@ import JPanels_Proyecto.reg_docente;
 import JPanels_Proyecto.reg_linea_inv;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author josep
- */
 public class interfaz_jefedepartamento extends javax.swing.JFrame {
 
     public interfaz_jefedepartamento() {
