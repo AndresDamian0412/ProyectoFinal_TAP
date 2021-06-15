@@ -65,6 +65,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
         combo_colab2.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab2.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
 
         eti_linea_Inv1.setForeground(new java.awt.Color(0, 0, 0));
         eti_linea_Inv1.setText("LINEA DE INVESTIGACIÓN:");
@@ -102,6 +103,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
         combo_colab1.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab1.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
 
         combo_buscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -112,6 +114,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
         combo_colab3.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab3.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
         combo_colab3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_colab3ActionPerformed(evt);

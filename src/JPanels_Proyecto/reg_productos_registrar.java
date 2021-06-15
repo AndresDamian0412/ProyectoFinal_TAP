@@ -73,9 +73,11 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
         combo_colab1.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab1.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
 
         combo_colab3.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab3.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
         combo_colab3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_colab3ActionPerformed(evt);
@@ -84,6 +86,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
         combo_colab2.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab2.setForeground(new java.awt.Color(0, 0, 0));
+        combo_colab2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
 
         eti_nivel.setForeground(new java.awt.Color(0, 0, 0));
         eti_nivel.setText("NIVEL: ");
@@ -235,10 +238,10 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_registrar)
                     .addComponent(btnActualizar))
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 198, Short.MAX_VALUE)
+                    .addGap(0, 195, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
