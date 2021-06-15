@@ -101,6 +101,20 @@ public class conexion_db {
         }
     }
     
+    public boolean checarRelaciones(String buscar) throws SQLException {
+        conexion();
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM productos where linea_investigacion = '" + buscar + "'");
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar datos en tabla productos. NO se encontraron resultados");
+        }
+        return rs.next();
+    }
+    
     
     public void buscarRegistroLineas(String opcion, String registro, DefaultTableModel tablaModel){
         conexion();
