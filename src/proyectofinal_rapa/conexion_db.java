@@ -5,7 +5,6 @@
  */
 package proyectofinal_rapa;
 
-import JPanels_Proyecto.reg_linea_inv;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -260,6 +258,67 @@ public class conexion_db {
             lineasinv[i] = (String) lineas.get(i);
         }
         return lineasinv;
+    }
+    
+    public void buscarRegistroProductos(String opcion, String registro, DefaultTableModel tablaModel){
+        conexion();
+        try {
+            st = con.createStatement();
+            switch(opcion){
+                case "LINEA":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE linea_investigacion = '" + registro + "'");
+                    llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "TIPO":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE tipo_producto = '" + registro + "'");
+                    llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "NOMBRE":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE nombre_producto = '" + registro + "'");
+                    llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "NIVEL":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE nivel = '" + registro + "'");
+                    llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "FECHA":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE fecha_registro = '" + registro + "'");
+                    llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "ESTATUS":
+                    rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE estatus = '" + registro + "'");
+                    llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Por favor, seleccione una de las opciones.");
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }
+    }
+    
+    public void llenarTablaProductosInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
+        try {
+            
+            rs = instruccion;
+            int filas = tabla.getRowCount();
+            System.out.println(filas);
+            for (int i = 1; i <= filas; i++) {
+                System.out.println("limpiando filas");
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("agregando ");
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),rs.getString("nombre_producto"),
+                    rs.getArray("colaboradores"),rs.getString("nivel"),rs.getDate("fecha_registro"), rs.getString("estatus")});
+            }
+           
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }  
     }
     // </editor-fold>
 
