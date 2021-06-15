@@ -268,7 +268,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
 
-        claveTxt.setEditable(false);
+        claveTxt.setEditable(true);
         lineaTxt.setEditable(true);
         autorizacionDate.setEnabled(true);
         vigenciaDate.setEnabled(true);
@@ -310,8 +310,8 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
         
 
-        claveTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0));
-        lineaTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 1));
+        claveTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 1));
+        lineaTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0));
         
         String auto = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 2).toString();
         String vige = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 3).toString();

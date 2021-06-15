@@ -249,7 +249,7 @@ public class reg_productos_registrar extends javax.swing.JPanel {
 
     public void rellenaComboLineas() {
         conexion_db cdb = new conexion_db();
-        String[] lineas = cdb.buscaLineas();
+        String[] lineas = cdb.rellenarComboLineas();
         for (String linea : lineas) {
             combo_linea_inv.addItem(linea);
         }

@@ -239,7 +239,7 @@ public class conexion_db {
         }
     }
     
-    public String[] buscaLineas(){
+    public String[] rellenarComboLineas(){
        conexion();
        ArrayList lineas = new ArrayList();
        try {
