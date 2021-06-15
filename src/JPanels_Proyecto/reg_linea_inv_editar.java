@@ -5,6 +5,7 @@
  */
 package JPanels_Proyecto;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -169,7 +170,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
                     .addComponent(vigenciaDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editarBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         add(jPanel1);
@@ -344,6 +345,8 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         String auto = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 2).toString();
         String vige = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 3).toString();
 
+        
+        
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date autoDate = formato.parse(auto);
@@ -354,7 +357,14 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
             Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
         }
         claveTxt.setEditable(true);
-        lineaTxt.setEditable(true);
+        try {
+            if(conexion.checarRelaciones((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0)) == true)
+                lineaTxt.setEditable(false);
+            else
+                lineaTxt.setEditable(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         autorizacionDate.setEnabled(true);
         vigenciaDate.setEnabled(true);
         editarBtn.setEnabled(true);

@@ -101,18 +101,31 @@ public class conexion_db {
         }
     }
     
-    public boolean checarRelaciones(String buscar) throws SQLException {
+    public void editarLineas(String lineaNombre){
         conexion();
         try {
             st = con.createStatement();
+            if(checarRelaciones(lineaNombre)){
+                st.executeUpdate("UPDATE linea_produccion set ")
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    public boolean checarRelaciones(String buscar) throws SQLException {
+        conexion();
+        boolean retornar = false;
+        try {
+            st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM productos where linea_investigacion = '" + buscar + "'");
+            retornar = rs.next();           
             st.close();
             rs.close();
             con.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al buscar datos en tabla productos. NO se encontraron resultados");
         }
-        return rs.next();
+        return retornar;
     }
     
     
