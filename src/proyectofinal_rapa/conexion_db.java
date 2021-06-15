@@ -106,7 +106,7 @@ public class conexion_db {
         try {
             st = con.createStatement();
             if(checarRelaciones(lineaNombre)){
-                st.executeUpdate("UPDATE linea_produccion set ")
+                st.executeUpdate("UPDATE linea_produccion set ");
             }
         } catch (Exception e) {
         }
