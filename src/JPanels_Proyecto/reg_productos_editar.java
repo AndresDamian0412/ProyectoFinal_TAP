@@ -11,16 +11,16 @@ public class reg_productos_editar extends javax.swing.JPanel {
 
     public reg_productos_editar() {
         initComponents();
-        combo_linea_inv.setEditable(false);
-        combo_Nivel.setEditable(false);
-        combo_tipo1.setEditable(false);
+        combo_linea_inv.disable();
+        combo_Nivel.disable();
+        combo_tipo1.disable();
         txt_Nombre1.setEditable(false);
-        combo_colab1.setEditable(false);
-        combo_colab2.setEditable(false);
-        combo_colab3.setEditable(false);
+        combo_colab1.disable();
+        combo_colab2.disable();
+        combo_colab3.disable();
         date3.setEnabled(false);
-        combo_estatus.setEditable(false);
-        combo_nivel.setEditable(false);
+        combo_estatus.disable();
+        combo_nivel.disable();
     }
 
     @SuppressWarnings("unchecked")
@@ -486,7 +486,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
         seleccion = combo_buscar.getSelectedItem().toString();
 
         switch (seleccion) {
-            case "Seleccionar...": 
+            case "Seleccionar...":
                 combo_linea_inv.disable();
                 combo_Nivel.disable();
                 combo_tipo1.disable();
@@ -498,8 +498,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
                 combo_estatus.disable();
                 combo_nivel.disable();
                 break;
-            
-            case "LINEA": 
+
+            case "LINEA":
                 combo_linea_inv.enable();
                 combo_Nivel.disable();
                 combo_tipo1.disable();
@@ -511,8 +511,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
                 combo_estatus.disable();
                 combo_nivel.disable();
                 break;
-            
-            case "TIPO": 
+
+            case "TIPO":
                 combo_linea_inv.disable();
                 combo_Nivel.disable();
                 combo_tipo1.enable();
@@ -524,8 +524,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
                 combo_estatus.disable();
                 combo_nivel.disable();
                 break;
-            
-            case "NOMBRE": 
+
+            case "NOMBRE":
                 combo_linea_inv.disable();
                 combo_Nivel.disable();
                 combo_tipo1.disable();
@@ -537,8 +537,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
                 combo_estatus.disable();
                 combo_nivel.disable();
                 break;
-            
-            case "NIVEL": 
+
+            case "NIVEL":
                 combo_linea_inv.disable();
                 combo_Nivel.enable();
                 combo_tipo1.disable();
@@ -550,8 +550,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
                 combo_estatus.disable();
                 combo_nivel.disable();
                 break;
-            
-            case "FECHA": 
+
+            case "FECHA":
                 combo_linea_inv.disable();
                 combo_Nivel.disable();
                 combo_tipo1.disable();
@@ -563,8 +563,8 @@ public class reg_productos_editar extends javax.swing.JPanel {
                 combo_estatus.disable();
                 combo_nivel.disable();
                 break;
-            
-            case "ESTATUS": 
+
+            case "ESTATUS":
                 combo_linea_inv.disable();
                 combo_Nivel.disable();
                 combo_tipo1.disable();
@@ -642,6 +642,5 @@ public class reg_productos_editar extends javax.swing.JPanel {
     private javax.swing.JTextField txt_Nombre1;
     // End of variables declaration//GEN-END:variables
 // </editor-fold>
-    
-    
+
 }
