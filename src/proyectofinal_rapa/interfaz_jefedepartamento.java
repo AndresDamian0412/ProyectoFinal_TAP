@@ -110,7 +110,7 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
 
         eti_linea_deInvs.setText("Linea de investigación");
 
-        eti_docentes.setText("Docentes");
+        eti_docentes.setText("Usuarios");
 
         btn_docentes.setBackground(new java.awt.Color(255, 255, 255));
         btn_docentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar_usuario_icono.JPG"))); // NOI18N

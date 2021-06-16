@@ -23,6 +23,7 @@ import proyectofinal_rapa.conexion_db;
 public class reg_linea_inv_editar extends javax.swing.JPanel {
 
     public String seleccion;
+    public String nombre_lineaAnteriorString;
     DefaultTableModel tablaModelo;
     public conexion_db conexion = new conexion_db();
 
@@ -263,7 +264,12 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
     private void editarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBtnActionPerformed
         // TODO add your handling code here:
-        
+        System.out.println(getnombre_lineaAnterior() + "desde el boton editaar");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        conexion.editarLineas(lineaTxt.getText(), getnombre_lineaAnterior(), claveTxt.getText(), df.format(autorizacionDate.getDate()), df.format(vigenciaDate.getDate()));
+        conexion.llenarTablaLineasInv(tablaModelo);
+        limpiarCampos();
     }//GEN-LAST:event_editarBtnActionPerformed
 
     public void limpiarCampos() {
@@ -272,6 +278,15 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         autorizacionDate.setDate(null);
         vigenciaDate.setDate(null);
     }
+    
+    public String getnombre_lineaAnterior(){
+        return nombre_lineaAnteriorString;
+    }
+    
+    public void setnombre_lineaAnterior(String nombre){
+        nombre_lineaAnteriorString = nombre;
+    }
+    
     private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
         // TODO add your handling code here:
         seleccion = (String) buscarporBox.getSelectedItem();
@@ -341,10 +356,14 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
         claveTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 1));
         lineaTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0));
+        
+        setnombre_lineaAnterior(tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0).toString());
+        System.out.println(getnombre_lineaAnterior() + "este es el dato guardado!!!");
 
         String auto = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 2).toString();
         String vige = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 3).toString();
-
+        
+        
         
         
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");

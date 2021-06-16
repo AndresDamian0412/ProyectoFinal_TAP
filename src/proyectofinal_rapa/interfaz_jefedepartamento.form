@@ -211,7 +211,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="eti_docentes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Docentes"/>
+                <Property name="text" type="java.lang.String" value="Usuarios"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btn_docentes">

@@ -6,7 +6,6 @@
 package proyectofinal_rapa;
 
 import java.awt.HeadlessException;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -69,12 +68,12 @@ public class conexion_db {
             if (!rs.next()) {
                 JOptionPane.showMessageDialog(null, "No se encontró el registro.\n Ingrese correctamente los datos");
                 for (int i = 0; i < datos.length; i++) {
-                    datos[i]=null;
+                    datos[i] = null;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Bienvenido");
                 datos[0] = rs.getString(5);
-                datos[1]= rs.getString(3);
+                datos[1] = rs.getString(3);
                 datos[2] = rs.getString(6);
             }
             st.close();
@@ -101,25 +100,51 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-    
-    public void editarLineas(String lineaNombre){
+
+    public void editarLineas(String lineaNombreNuevo, String lineaNombreAnterior, String clave, String autorizacion, String vigencia) {
         conexion();
+        System.out.println("Entrando al try de editarLIneas()");
         try {
             st = con.createStatement();
-            if(checarRelaciones(lineaNombre)){
-                st.executeUpdate("UPDATE linea_produccion set ");
+            System.out.println("ENTRE AL TRY DE EDITARLINEAS");
+
+            boolean checar = checarRelaciones(lineaNombreAnterior);
+            int opcion;
+            if(checar == true){
+                opcion = 0;
+            }else{
+                opcion = 1;
             }
-        } catch (Exception e) {
+            System.out.println("DATO GUARDADO = " + lineaNombreAnterior + "VALOR BOLEANO = " + checar);
+            
+            System.out.println("CHECAR = " + checar + "VALOR NUMERICO = " + opcion);
+            
+            
+            if (opcion == 0) {
+                System.out.println("ENTRE AL TRUE DEL IF VALOR BOLEANO = " + checar + "DATO GUARDADO = " + lineaNombreAnterior);
+                st.executeUpdate("UPDATE lineas_investigacion SET clave = '" + clave + "', fecha_auto = '"
+                        + autorizacion + "', fecha_vig = '" + vigencia + "' WHERE nombre_linea = '" + lineaNombreAnterior + "'");
+            }
+            if (opcion == 1) {
+                System.out.println("ENTRE AL FALSE DEL IF VALOR BOLEANO = " + checar + "DATO GUARDADO = " + lineaNombreAnterior);
+                st.executeUpdate("DELETE FROM lineas_investigacion WHERE nombre_linea = '" + lineaNombreAnterior + "'");
+                st.executeUpdate("INSERT INTO lineas_investigacion VALUES('" + lineaNombreNuevo + "','" + clave + "','" + autorizacion
+                        + "','" + vigencia + "')");
+            }
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al modificar los datos en tabla lineas de investigacion.");
         }
     }
-    
+
     public boolean checarRelaciones(String buscar) throws SQLException {
         conexion();
         boolean retornar = false;
         try {
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM productos where linea_investigacion = '" + buscar + "'");
-            retornar = rs.next();           
+            retornar = rs.next();
             st.close();
             rs.close();
             con.close();
@@ -128,13 +153,12 @@ public class conexion_db {
         }
         return retornar;
     }
-    
-    
-    public void buscarRegistroLineas(String opcion, String registro, DefaultTableModel tablaModel){
+
+    public void buscarRegistroLineas(String opcion, String registro, DefaultTableModel tablaModel) {
         conexion();
         try {
             st = con.createStatement();
-            switch(opcion){
+            switch (opcion) {
                 case "CLAVE":
                     rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE clave = '" + registro + "'");
                     llenarTablaLineasInvInstruccionesEspeciales(tablaModel, rs);
@@ -161,10 +185,10 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
+
     public void llenarTablaLineasInvInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
         try {
-            
+
             rs = instruccion;
             int filas = tabla.getRowCount();
             System.out.println(filas);
@@ -177,10 +201,10 @@ public class conexion_db {
                 tabla.addRow(new Object[]{rs.getString("nombre_linea"), rs.getString("clave"),
                     rs.getDate("fecha_auto"), rs.getDate("fecha_vig")});
             }
-           
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
-        }  
+        }
     }
 
     public void llenarTablaLineasInv(DefaultTableModel tabla) {
@@ -206,11 +230,10 @@ public class conexion_db {
             con.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
-        }  
+        }
     }
-    
-    // </editor-fold>
 
+    // </editor-fold>
     //<editor-fold defaultstate="collapsed" desc="PRODUCTOS - SOURCE"> 
     public void llenarTablaProductos(DefaultTableModel tabla) {
         conexion();
@@ -265,8 +288,8 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-    
-    public void editarProductos(String nombre_actual,String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus){
+
+    public void editarProductos(String nombre_actual, String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus) {
         conexion();
         String colabConcatenado = "{";
         if (colaboradores.length > 1) {
@@ -284,10 +307,10 @@ public class conexion_db {
         }
         try {
             st = con.createStatement();
-            String sql = "UPDATE productos SET linea_investigacion = '"+linea_inv+"',tipo_producto = '"
-                    +tipo_producto+"',nombre_producto = '"+nombre_producto+"', colaboradores = '"
-                    +colabConcatenado+"',nivel = '"+nivel+"',fecha_registro = '"+fecha_reg+
-                    "',estatus = '"+estatus+"' WHERE nombre_producto = '"+nombre_actual+"';";
+            String sql = "UPDATE productos SET linea_investigacion = '" + linea_inv + "',tipo_producto = '"
+                    + tipo_producto + "',nombre_producto = '" + nombre_producto + "', colaboradores = '"
+                    + colabConcatenado + "',nivel = '" + nivel + "',fecha_registro = '" + fecha_reg
+                    + "',estatus = '" + estatus + "' WHERE nombre_producto = '" + nombre_actual + "';";
             System.out.println(sql);
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Registro completado");
@@ -297,16 +320,16 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al insertar datos en la tabla. Por favor de checar los datos ingresados");
         }
     }
-    
-    public String[] rellenarComboLineas(){
-       conexion();
-       ArrayList lineas = new ArrayList();
-       try {
+
+    public String[] rellenarComboLineas() {
+        conexion();
+        ArrayList lineas = new ArrayList();
+        try {
             st = con.createStatement();
             String sql = "select nombre_linea from lineas_investigacion";
             rs = st.executeQuery(sql);
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 lineas.add(rs.getString("nombre_linea"));
             }
             st.close();
@@ -320,16 +343,16 @@ public class conexion_db {
         }
         return lineasinv;
     }
-    
-    public String[] rellenarComboColaboradores(){
-       conexion();
-       ArrayList<String> docentes = new ArrayList();
-       try {
+
+    public String[] rellenarComboColaboradores() {
+        conexion();
+        ArrayList<String> docentes = new ArrayList();
+        try {
             st = con.createStatement();
             String sql = "select * from usuarios where puesto = 'Docente'";
             rs = st.executeQuery(sql);
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 docentes.add(rs.getString("nombres"));
             }
             st.close();
@@ -337,18 +360,18 @@ public class conexion_db {
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener los colaboradores");
         }
-       String[] colab = new String[docentes.size()];
+        String[] colab = new String[docentes.size()];
         for (int i = 0; i < colab.length; i++) {
             colab[i] = docentes.get(i);
         }
-       return colab;
+        return colab;
     }
-    
-    public void buscarRegistroProductos(String opcion, String registro, DefaultTableModel tablaModel){
+
+    public void buscarRegistroProductos(String opcion, String registro, DefaultTableModel tablaModel) {
         conexion();
         try {
             st = con.createStatement();
-            switch(opcion){
+            switch (opcion) {
                 case "LINEA":
                     rs = st.executeQuery("SELECT * FROM productos WHERE linea_investigacion = '" + registro + "'");
                     llenarTablaProductosInstruccionesEspeciales(tablaModel, rs);
@@ -383,11 +406,11 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
+
     public void llenarTablaProductosInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
 
         try {
-            
+
             rs = instruccion;
             int filas = tabla.getRowCount();
             System.out.println(filas);
@@ -397,14 +420,14 @@ public class conexion_db {
             }
             while (rs.next()) {
                 System.out.println("agregando ");
-                
-                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),rs.getString("nombre_producto"),
-                    rs.getArray("colaboradores"),rs.getString("nivel"),rs.getDate("fecha_registro"), rs.getString("estatus")});
+
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"), rs.getString("nombre_producto"),
+                    rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
             }
-           
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
-        }  
+        }
     }
     // </editor-fold>
 
@@ -414,6 +437,6 @@ public class conexion_db {
         //String[] ola= {"prueba","uno"};
         //registrarProductos("esto es", "una", "prueba", ola, "medio", "09-09-2000", "hola");
         //login("esto", "123");
-        
+
     }
 }
