@@ -1,5 +1,13 @@
 package JPanels_Proyecto;
 
+import java.sql.Array;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
 
@@ -7,11 +15,23 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
     DefaultTableModel tablaModelo;
     conexion_db conexion = new conexion_db();
-    
+    private String seleccion;
+    private String nom_producto_eliminar;
+
     public reg_productos_eliminar() {
         initComponents();
         rellenaComboLineas();
         rellenaComboColab();
+
+        combo_linea_inv.disable();
+        combo_nivel.disable();
+        combo_tipo1.disable();
+        txt_nombre.setEditable(false);
+        combo_colab1.disable();
+        combo_colab2.disable();
+        combo_colab3.disable();
+        date3.setEnabled(false);
+        combo_estatus.disable();
     }
 
     @SuppressWarnings("unchecked")
@@ -20,22 +40,22 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
         btn_editar = new javax.swing.JButton();
         eti_fecha_registro = new javax.swing.JLabel();
-        como_estatus1 = new javax.swing.JComboBox<>();
+        combo_estatus = new javax.swing.JComboBox<>();
         combo_tipo1 = new javax.swing.JComboBox<>();
         combo_colab2 = new javax.swing.JComboBox<>();
         eti_linea_Inv1 = new javax.swing.JLabel();
         eti_nombre = new javax.swing.JLabel();
         eti_nivel = new javax.swing.JLabel();
-        txt_Nombre1 = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
         combo_linea_inv = new javax.swing.JComboBox<>();
-        combo_Nivel1 = new javax.swing.JComboBox<>();
+        combo_nivel = new javax.swing.JComboBox<>();
         eti_colaboradores = new javax.swing.JLabel();
         eti_tipo1 = new javax.swing.JLabel();
         eti_buscar = new javax.swing.JLabel();
         combo_colab1 = new javax.swing.JComboBox<>();
         combo_buscar = new javax.swing.JComboBox<>();
         eti_estatus = new javax.swing.JLabel();
-        date1 = new com.toedter.calendar.JDateChooser();
+        date3 = new com.toedter.calendar.JDateChooser();
         btn_Buscar = new javax.swing.JButton();
         combo_colab3 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -55,9 +75,9 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         eti_fecha_registro.setForeground(new java.awt.Color(0, 0, 0));
         eti_fecha_registro.setText("FECHA DE REGISTRO: ");
 
-        como_estatus1.setBackground(new java.awt.Color(255, 255, 255));
-        como_estatus1.setForeground(new java.awt.Color(0, 0, 0));
-        como_estatus1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En Proceso", "Concluido" }));
+        combo_estatus.setBackground(new java.awt.Color(255, 255, 255));
+        combo_estatus.setForeground(new java.awt.Color(0, 0, 0));
+        combo_estatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En Proceso", "Concluido" }));
 
         combo_tipo1.setBackground(new java.awt.Color(255, 255, 255));
         combo_tipo1.setForeground(new java.awt.Color(0, 0, 0));
@@ -76,9 +96,9 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         eti_nivel.setForeground(new java.awt.Color(0, 0, 0));
         eti_nivel.setText("NIVEL: ");
 
-        txt_Nombre1.setEditable(false);
-        txt_Nombre1.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Nombre1.setForeground(new java.awt.Color(0, 0, 0));
+        txt_nombre.setEditable(false);
+        txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
+        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
 
         combo_linea_inv.setBackground(new java.awt.Color(255, 255, 255));
         combo_linea_inv.setForeground(new java.awt.Color(0, 0, 0));
@@ -88,9 +108,9 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
             }
         });
 
-        combo_Nivel1.setBackground(new java.awt.Color(255, 255, 255));
-        combo_Nivel1.setForeground(new java.awt.Color(0, 0, 0));
-        combo_Nivel1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Licenciatura", "Maestría", "Doctorado" }));
+        combo_nivel.setBackground(new java.awt.Color(255, 255, 255));
+        combo_nivel.setForeground(new java.awt.Color(0, 0, 0));
+        combo_nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Licenciatura", "Maestría", "Doctorado" }));
 
         eti_colaboradores.setForeground(new java.awt.Color(0, 0, 0));
         eti_colaboradores.setText("COLABORADORES (MAX 3) :");
@@ -105,12 +125,22 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         combo_colab1.setForeground(new java.awt.Color(0, 0, 0));
         combo_colab1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar..." }));
 
-        combo_buscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_buscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "LINEA", "TIPO", "NOMBRE", "NIVEL", "FECHA", "ESTATUS" }));
+        combo_buscar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combo_buscarItemStateChanged(evt);
+            }
+        });
 
         eti_estatus.setForeground(new java.awt.Color(0, 0, 0));
         eti_estatus.setText("ESTATUS: ");
 
         btn_Buscar.setText("BUSCAR");
+        btn_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BuscarActionPerformed(evt);
+            }
+        });
 
         combo_colab3.setBackground(new java.awt.Color(255, 255, 255));
         combo_colab3.setForeground(new java.awt.Color(0, 0, 0));
@@ -182,10 +212,10 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                                 .addGap(30, 30, 30)
                                 .addComponent(eti_nivel)
                                 .addGap(18, 18, 18)
-                                .addComponent(combo_Nivel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(combo_nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(combo_linea_inv, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(combo_tipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
@@ -193,11 +223,11 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(eti_fecha_registro)
                                         .addGap(18, 18, 18)
-                                        .addComponent(date1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(date3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(eti_estatus)
                                         .addGap(18, 18, 18)
-                                        .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(combo_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(combo_colab1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -220,7 +250,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                     .addComponent(combo_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Buscar)
                     .addComponent(eti_nivel)
-                    .addComponent(combo_Nivel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,16 +263,16 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                             .addComponent(combo_tipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(eti_nombre)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eti_fecha_registro)
-                            .addComponent(date1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(date3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(como_estatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(combo_estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(eti_estatus))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -265,7 +295,48 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
     }//GEN-LAST:event_combo_colab3ActionPerformed
 
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
+        try {
+            // <editor-fold defaultstate="collapsed" desc="Habilitación de Combos">
+            combo_linea_inv.enable();
+            combo_nivel.enable();
+            combo_tipo1.enable();
+            txt_nombre.setEditable(true);  //comprueba que se habiliten todos
+            combo_colab1.enable();
+            combo_colab2.enable();
+            combo_colab3.enable();
+            date3.setEnabled(true);
+            combo_estatus.enable();
+            // </editor-fold>
 
+            tablaModelo = (DefaultTableModel) tablaProductos.getModel();
+            nom_producto_eliminar = (String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2);
+
+            combo_linea_inv.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 0));
+            combo_tipo1.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 1));
+            txt_nombre.setText((String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2));
+            combo_nivel.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 4));
+            combo_estatus.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 6));
+
+            String fecha = tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 5).toString();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date autoDate = formato.parse(fecha);
+                date3.setDate(autoDate);
+
+            } catch (ParseException ex) {
+                Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Array pgArray;
+            //llenado de colaboladores
+            pgArray = (Array) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 3);
+            String[] colab = (String[]) pgArray.getArray();
+            combo_colab1.setSelectedItem(colab[0]);
+            combo_colab2.setSelectedItem(colab[1]);
+            combo_colab3.setSelectedItem(colab[2]);
+            colab = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(reg_productos_editar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tablaProductosMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -278,20 +349,158 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_linea_invActionPerformed
 
+    private void combo_buscarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_buscarItemStateChanged
+        // TODO add your handling code here:
+        seleccion = combo_buscar.getSelectedItem().toString();
+
+        switch (seleccion) {
+            case "Seleccionar...":
+                combo_linea_inv.disable();
+                combo_nivel.disable();
+                combo_tipo1.disable();
+                txt_nombre.setEditable(false);
+                combo_colab1.disable();
+                combo_colab2.disable();
+                combo_colab3.disable();
+                date3.setEnabled(false);
+                combo_estatus.disable();
+                break;
+
+            case "LINEA":
+                combo_linea_inv.enable();
+                combo_nivel.disable();
+                combo_tipo1.disable();
+                txt_nombre.setEditable(false);
+                combo_colab1.disable();
+                combo_colab2.disable();
+                combo_colab3.disable();
+                date3.setEnabled(false);
+                combo_estatus.disable();
+                break;
+
+            case "TIPO":
+                combo_linea_inv.disable();
+                combo_nivel.disable();
+                combo_tipo1.enable();
+                txt_nombre.setEditable(false);
+                combo_colab1.disable();
+                combo_colab2.disable();
+                combo_colab3.disable();
+                date3.setEnabled(false);
+                combo_estatus.disable();
+                break;
+
+            case "NOMBRE":
+                combo_linea_inv.disable();
+                combo_nivel.disable();
+                combo_tipo1.disable();
+                txt_nombre.setEditable(true);
+                combo_colab1.disable();
+                combo_colab2.disable();
+                combo_colab3.disable();
+                date3.setEnabled(false);
+                combo_estatus.disable();
+                break;
+
+            case "NIVEL":
+                combo_linea_inv.disable();
+                combo_nivel.enable();
+                combo_tipo1.disable();
+                txt_nombre.setEditable(false);
+                combo_colab1.disable();
+                combo_colab2.disable();
+                combo_colab3.disable();
+                date3.setEnabled(false);
+                combo_estatus.disable();
+                break;
+
+            case "FECHA":
+                combo_linea_inv.disable();
+                combo_nivel.disable();
+                combo_tipo1.disable();
+                txt_nombre.setEditable(false);
+                combo_colab1.disable();
+                combo_colab2.disable();
+                combo_colab3.disable();
+                date3.setEnabled(true);
+                combo_estatus.disable();
+                break;
+
+            case "ESTATUS":
+                combo_linea_inv.disable();
+                combo_nivel.disable();
+                combo_tipo1.disable();
+                txt_nombre.setEditable(false);
+                combo_colab1.disable();
+                combo_colab2.disable();
+                combo_colab3.disable();
+                date3.setEnabled(false);
+                combo_estatus.enable();
+                break;
+        }
+    }//GEN-LAST:event_combo_buscarItemStateChanged
+
+    private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
+        // TODO add your handling code here:
+        seleccion = (String) combo_buscar.getSelectedItem();
+        String registro;
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        tablaModelo = (DefaultTableModel) tablaProductos.getModel();
+
+        switch (seleccion) {
+            case "Seleccionar...":
+                registro = null;
+                break;
+            case "LINEA":
+                registro = combo_linea_inv.getSelectedItem().toString();
+                conexion.buscarRegistroProductos(seleccion, registro, tablaModelo);
+                break;
+            case "NOMBRE":
+                registro = txt_nombre.getText();
+                conexion.buscarRegistroProductos(seleccion, registro, tablaModelo);
+                break;
+            case "TIPO":
+                registro = combo_tipo1.getSelectedItem().toString();
+                conexion.buscarRegistroProductos(seleccion, registro, tablaModelo);
+                break;
+            case "NIVEL":
+                registro = combo_nivel.getSelectedItem().toString();
+                conexion.buscarRegistroProductos(seleccion, registro, tablaModelo);
+                break;
+            case "FECHA":
+                registro = df.format(date3.getDate());
+                conexion.buscarRegistroProductos(seleccion, registro, tablaModelo);
+                break;
+            case "ESTATUS":
+                registro = combo_estatus.getSelectedItem().toString();
+                conexion.buscarRegistroProductos(seleccion, registro, tablaModelo);
+                break;
+        }
+        combo_linea_inv.enable();
+        combo_nivel.enable();
+        combo_tipo1.enable();
+        txt_nombre.setEditable(true);
+        combo_colab1.enable();
+        combo_colab2.enable();
+        combo_colab3.enable();
+        date3.setEnabled(true);
+        combo_estatus.enable();
+    }//GEN-LAST:event_btn_BuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btn_Buscar;
     private javax.swing.JButton btn_editar;
-    private javax.swing.JComboBox<String> combo_Nivel1;
     private javax.swing.JComboBox<String> combo_buscar;
     private javax.swing.JComboBox<String> combo_colab1;
     private javax.swing.JComboBox<String> combo_colab2;
     private javax.swing.JComboBox<String> combo_colab3;
+    private javax.swing.JComboBox<String> combo_estatus;
     private javax.swing.JComboBox<String> combo_linea_inv;
+    private javax.swing.JComboBox<String> combo_nivel;
     private javax.swing.JComboBox<String> combo_tipo1;
-    private javax.swing.JComboBox<String> como_estatus1;
-    private com.toedter.calendar.JDateChooser date1;
+    private com.toedter.calendar.JDateChooser date3;
     private javax.swing.JLabel eti_buscar;
     private javax.swing.JLabel eti_colaboradores;
     private javax.swing.JLabel eti_estatus;
@@ -302,7 +511,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
     private javax.swing.JLabel eti_tipo1;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tablaProductos;
-    private javax.swing.JTextField txt_Nombre1;
+    private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 
     public void rellenaComboLineas() {
@@ -311,8 +520,8 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
             combo_linea_inv.addItem(linea);
         }
     }
-    
-    public void rellenaComboColab(){
+
+    public void rellenaComboColab() {
         String[] docentes = conexion.rellenarComboColaboradores();
         for (String docente : docentes) {
             combo_colab1.addItem(docente);
