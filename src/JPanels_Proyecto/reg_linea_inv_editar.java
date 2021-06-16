@@ -267,7 +267,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         System.out.println(getnombre_lineaAnterior() + "desde el boton editaar");
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        conexion.editarLineas(lineaTxt.getText(), getnombre_lineaAnterior(), claveTxt.getText(), df.format(autorizacionDate.getDate()), df.format(vigenciaDate.getDate()));
+        conexion.editarLineasInv(lineaTxt.getText(), getnombre_lineaAnterior(), claveTxt.getText(), df.format(autorizacionDate.getDate()), df.format(vigenciaDate.getDate()));
         conexion.llenarTablaLineasInv(tablaModelo);
         limpiarCampos();
     }//GEN-LAST:event_editarBtnActionPerformed

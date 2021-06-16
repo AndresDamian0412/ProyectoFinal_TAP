@@ -8,6 +8,7 @@ package proyectofinal_rapa;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -101,43 +102,25 @@ public class conexion_db {
         }
     }
 
-    public void editarLineas(String lineaNombreNuevo, String lineaNombreAnterior, String clave, String autorizacion, String vigencia) {
+    public void editarLineasInv(String nombreNuevo, String nombreAnterior, String clave, String autorizacion, String vigencia){
         conexion();
-        System.out.println("Entrando al try de editarLIneas()");
         try {
-            st = con.createStatement();
-            System.out.println("ENTRE AL TRY DE EDITARLINEAS");
-
-            boolean checar = checarRelaciones(lineaNombreAnterior);
-            int opcion;
-            if(checar == true){
-                opcion = 0;
-            }else{
-                opcion = 1;
-            }
-            System.out.println("DATO GUARDADO = " + lineaNombreAnterior + "VALOR BOLEANO = " + checar);
-            
-            System.out.println("CHECAR = " + checar + "VALOR NUMERICO = " + opcion);
-            
-            
-            if (opcion == 0) {
-                System.out.println("ENTRE AL TRUE DEL IF VALOR BOLEANO = " + checar + "DATO GUARDADO = " + lineaNombreAnterior);
-                st.executeUpdate("UPDATE lineas_investigacion SET clave = '" + clave + "', fecha_auto = '"
-                        + autorizacion + "', fecha_vig = '" + vigencia + "' WHERE nombre_linea = '" + lineaNombreAnterior + "'");
-            }
-            if (opcion == 1) {
-                System.out.println("ENTRE AL FALSE DEL IF VALOR BOLEANO = " + checar + "DATO GUARDADO = " + lineaNombreAnterior);
-                st.executeUpdate("DELETE FROM lineas_investigacion WHERE nombre_linea = '" + lineaNombreAnterior + "'");
-                st.executeUpdate("INSERT INTO lineas_investigacion VALUES('" + lineaNombreNuevo + "','" + clave + "','" + autorizacion
-                        + "','" + vigencia + "')");
-            }
-            st.close();
+            Statement st2 = con.createStatement();
+            Statement st1 = con.createStatement();
+            boolean checar = checarRelaciones(nombreAnterior);
+            if(checar == true)
+            st1.executeUpdate("UPDATE lineas_investigacion SET clave = '" + clave + "', fecha_auto = '" + autorizacion + "', fecha_vig = '" + vigencia + "' WHERE nombre_linea = '" + nombreAnterior + "'");
+            if(checar == false)
+                st2.executeUpdate("UPDATE lineas_investigacion SET nombre_linea = '" + nombreNuevo + "', clave = '" + clave + "', fecha_auto = '" + autorizacion + "', fecha_vig = '" + vigencia + "' WHERE nombre_linea = '" + nombreAnterior + "'");
+            st1.close();
+            st2.close();
             con.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al modificar los datos en tabla lineas de investigacion.");
+            JOptionPane.showMessageDialog(null, "Error al modificar los datos");
         }
+        
     }
-
+    
     public boolean checarRelaciones(String buscar) throws SQLException {
         conexion();
         boolean retornar = false;
