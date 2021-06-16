@@ -284,10 +284,11 @@ public class conexion_db {
         }
         try {
             st = con.createStatement();
-            String sql = "UPDATE productos SET linea_investigacion = '"+linea_inv+"',SET tipo_producto = '"
-                    +tipo_producto+"', SET nombre_producto = '"+nombre_producto+"', SET colaboradores = '"
-                    +colabConcatenado+"', SET nivel = '"+nivel+"' SET fecha_registro = '"+fecha_reg+
-                    "' SET estatus = "+estatus+"' WHERE nombre_producto = '"+nombre_actual+"';";
+            String sql = "UPDATE productos SET linea_investigacion = '"+linea_inv+"',tipo_producto = '"
+                    +tipo_producto+"',nombre_producto = '"+nombre_producto+"', colaboradores = '"
+                    +colabConcatenado+"',nivel = '"+nivel+"',fecha_registro = '"+fecha_reg+
+                    "',estatus = '"+estatus+"' WHERE nombre_producto = '"+nombre_actual+"';";
+            System.out.println(sql);
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Registro completado");
             st.close();

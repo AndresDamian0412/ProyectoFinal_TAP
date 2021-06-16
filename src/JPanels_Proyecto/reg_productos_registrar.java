@@ -2,7 +2,6 @@ package JPanels_Proyecto;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;

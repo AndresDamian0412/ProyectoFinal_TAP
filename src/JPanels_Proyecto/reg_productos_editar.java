@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
 
@@ -16,6 +17,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
     private String seleccion;
     conexion_db conexion = new conexion_db();
     DefaultTableModel tablaModelo;
+    private String nom_producto_editar;
 
     public reg_productos_editar() {
         initComponents();
@@ -402,7 +404,7 @@ public class reg_productos_editar extends javax.swing.JPanel {
     }//GEN-LAST:event_combo_buscarActionPerformed
 
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
-        try {                                            
+        try {
             // <editor-fold defaultstate="collapsed" desc="Habilitación de Combos">
             combo_linea_inv.enable();
             combo_nivel.enable();
@@ -414,31 +416,33 @@ public class reg_productos_editar extends javax.swing.JPanel {
             date3.setEnabled(true);
             combo_estatus.enable();
             // </editor-fold>
-            
+
             tablaModelo = (DefaultTableModel) tablaProductos.getModel();
-            
+            nom_producto_editar = (String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2);
+
             combo_linea_inv.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 0));
             combo_tipo1.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 1));
             txt_nombre.setText((String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2));
             combo_nivel.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 4));
             combo_estatus.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 6));
-            
+
             String fecha = tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 5).toString();
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 Date autoDate = formato.parse(fecha);
                 date3.setDate(autoDate);
-                
+
             } catch (ParseException ex) {
                 Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
             }
             Array pgArray;
             //llenado de colaboladores
-            pgArray = (Array)tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 3);
-            String[] colab = (String[])pgArray.getArray();
+            pgArray = (Array) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 3);
+            String[] colab = (String[]) pgArray.getArray();
             combo_colab1.setSelectedItem(colab[0]);
             combo_colab2.setSelectedItem(colab[1]);
             combo_colab3.setSelectedItem(colab[2]);
+            colab = null;
         } catch (SQLException ex) {
             Logger.getLogger(reg_productos_editar.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -499,7 +503,18 @@ public class reg_productos_editar extends javax.swing.JPanel {
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
-
+        if (!txt_nombre.getText().isEmpty() || date3.getDate().toString().isEmpty()) {
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String[] colaboradores = new String[3];
+            colaboradores[0] = combo_colab1.getSelectedItem().toString();
+            colaboradores[1] = combo_colab2.getSelectedItem().toString();
+            colaboradores[2] = combo_colab3.getSelectedItem().toString();
+            System.out.println("Enviando registro");
+            conexion.editarProductos(nom_producto_editar, combo_linea_inv.getSelectedItem().toString(), combo_tipo1.getSelectedItem().toString(),
+                    txt_nombre.getText(), colaboradores, combo_nivel.getSelectedItem().toString(), df.format(date3.getDate()), combo_estatus.getSelectedItem().toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese todos los datos");
+        }
     }//GEN-LAST:event_btn_editarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
