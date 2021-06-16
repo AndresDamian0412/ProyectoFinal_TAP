@@ -1,5 +1,7 @@
 package JPanels_Proyecto;
 
+import java.sql.Array;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -400,42 +402,46 @@ public class reg_productos_editar extends javax.swing.JPanel {
     }//GEN-LAST:event_combo_buscarActionPerformed
 
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
-        // <editor-fold defaultstate="collapsed" desc="Habilitación de Combos">
-        combo_linea_inv.enable();
-        combo_nivel.enable();
-        combo_tipo1.enable();
-        txt_nombre.setEditable(true);  //comprueba que se habiliten todos
-        combo_colab1.enable();
-        combo_colab2.enable();
-        combo_colab3.enable();
-        date3.setEnabled(true);
-        combo_estatus.enable();
-        // </editor-fold> 
-        
-        tablaModelo = (DefaultTableModel) tablaProductos.getModel();
-        
-        combo_linea_inv.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 0));
-        combo_tipo1.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 1));
-        txt_nombre.setText((String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2));
-        combo_nivel.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 4));
-        combo_estatus.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 6));
-        
-        String fecha = tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 5).toString();
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date autoDate = formato.parse(fecha);
-            date3.setDate(autoDate);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
+        try {                                            
+            // <editor-fold defaultstate="collapsed" desc="Habilitación de Combos">
+            combo_linea_inv.enable();
+            combo_nivel.enable();
+            combo_tipo1.enable();
+            txt_nombre.setEditable(true);  //comprueba que se habiliten todos
+            combo_colab1.enable();
+            combo_colab2.enable();
+            combo_colab3.enable();
+            date3.setEnabled(true);
+            combo_estatus.enable();
+            // </editor-fold>
+            
+            tablaModelo = (DefaultTableModel) tablaProductos.getModel();
+            
+            combo_linea_inv.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 0));
+            combo_tipo1.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 1));
+            txt_nombre.setText((String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2));
+            combo_nivel.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 4));
+            combo_estatus.setSelectedItem(tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 6));
+            
+            String fecha = tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 5).toString();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date autoDate = formato.parse(fecha);
+                date3.setDate(autoDate);
+                
+            } catch (ParseException ex) {
+                Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Array pgArray;
+            //llenado de colaboladores
+            pgArray = (Array)tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 3);
+            String[] colab = (String[])pgArray.getArray();
+            combo_colab1.setSelectedItem(colab[0]);
+            combo_colab2.setSelectedItem(colab[1]);
+            combo_colab3.setSelectedItem(colab[2]);
+        } catch (SQLException ex) {
+            Logger.getLogger(reg_productos_editar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        //llenado de colaboladores
-        String [] colab = new String[3];
-        colab = (String[])tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 3);
-        combo_colab1.setSelectedItem(colab[0]);
-        combo_colab2.setSelectedItem(colab[1]);
-        combo_colab3.setSelectedItem(colab[2]);
     }//GEN-LAST:event_tablaProductosMouseClicked
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

@@ -384,7 +384,7 @@ public class conexion_db {
     }
     
     public void llenarTablaProductosInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
-        Array pgArray;
+
         try {
             
             rs = instruccion;
@@ -396,10 +396,9 @@ public class conexion_db {
             }
             while (rs.next()) {
                 System.out.println("agregando ");
-                pgArray = rs.getArray("colaboradores");
                 
                 tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),rs.getString("nombre_producto"),
-                    (pgArray.getArray()),rs.getString("nivel"),rs.getDate("fecha_registro"), rs.getString("estatus")});
+                    rs.getArray("colaboradores"),rs.getString("nivel"),rs.getDate("fecha_registro"), rs.getString("estatus")});
             }
            
         } catch (SQLException e) {
