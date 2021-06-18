@@ -264,7 +264,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
     private void editarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBtnActionPerformed
         // TODO add your handling code here:
-        System.out.println(getnombre_lineaAnterior() + "desde el boton editaar");
+        
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
         conexion.editarLineasInv(lineaTxt.getText(), getnombre_lineaAnterior(), claveTxt.getText(), df.format(autorizacionDate.getDate()), df.format(vigenciaDate.getDate()));
@@ -362,9 +362,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
 
         String auto = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 2).toString();
         String vige = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 3).toString();
-        
-        
-        
+
         
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {

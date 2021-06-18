@@ -5,12 +5,25 @@
  */
 package JPanels_Proyecto;
 
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import proyectofinal_rapa.conexion_db;
+
 /**
  *
  * @author josep
  */
 public class reg_linea_inv_eliminar extends javax.swing.JPanel {
-
+    public String seleccion;
+    public conexion_db conexion = new conexion_db();
+    DefaultTableModel tablaModelo;
     /**
      * Creates new form reg_linea_inv_eliminar
      */
@@ -20,6 +33,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
         lineaTxt.setEditable(false);
         autorizacionDate.setEnabled(false);
         vigenciaDate.setEnabled(false);
+        eliminarBtn.setEnabled(false);
     }
 
     /**
@@ -45,6 +59,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
         buscarporBox = new javax.swing.JComboBox<>();
         autorizacionDate = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
+        mostrarRegistrosBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaLineas = new javax.swing.JTable();
 
@@ -64,9 +79,21 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
 
         jLabel3.setText("FECHA AUTORIZACIÓN:");
 
+        vigenciaDate.setDateFormatString("yyyy-MM-dd");
+
         eliminarBtn.setText("ELIMINAR");
+        eliminarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBtnActionPerformed(evt);
+            }
+        });
 
         buscarBtn.setText("BUSCAR");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBtnActionPerformed(evt);
+            }
+        });
 
         claveTxt.setEditable(false);
 
@@ -82,6 +109,8 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
                 buscarporBoxItemStateChanged(evt);
             }
         });
+
+        autorizacionDate.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,7 +180,17 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("LINEAS DE INVESTIGACIÓN");
+        jLabel5.setAlignmentX(0.5F);
         add(jLabel5);
+
+        mostrarRegistrosBtn.setText("Mostrar todos los registros");
+        mostrarRegistrosBtn.setAlignmentX(0.5F);
+        mostrarRegistrosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarRegistrosBtnActionPerformed(evt);
+            }
+        });
+        add(mostrarRegistrosBtn);
 
         tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,6 +214,11 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
                 "LINEA DE INVESTIGACIÓN", "CLAVE", "AUTORIZACIÓN", "VIGENCIA"
             }
         ));
+        tablaLineas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaLineasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaLineas);
 
         add(jScrollPane2);
@@ -182,13 +226,15 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
 
     private void buscarporBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_buscarporBoxItemStateChanged
         // TODO add your handling code here:
-        String seleccion = (String) buscarporBox.getSelectedItem();
+        seleccion = (String) buscarporBox.getSelectedItem();
+        limpiarCampos();
         switch (seleccion) {
             case "Seleccionar...":
                 claveTxt.setEditable(false);
                 lineaTxt.setEditable(false);
                 autorizacionDate.setEnabled(false);
                 vigenciaDate.setEnabled(false);
+                eliminarBtn.setEnabled(false);
                 break;
             case "CLAVE":
                 claveTxt.setEditable(true);
@@ -217,6 +263,114 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buscarporBoxItemStateChanged
 
+    public void limpiarCampos() {
+        claveTxt.setText(null);
+        lineaTxt.setText(null);
+        autorizacionDate.setDate(null);
+        vigenciaDate.setDate(null);
+    }
+    
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+        // TODO add your handling code here:
+        seleccion = (String) buscarporBox.getSelectedItem();
+        String registro;
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+
+        switch (seleccion) {
+            case "Seleccionar...":
+                claveTxt.setEditable(false);
+                lineaTxt.setEditable(false);
+                autorizacionDate.setEnabled(false);
+                vigenciaDate.setEnabled(false);
+                eliminarBtn.setEnabled(false);
+                registro = null;
+                break;
+            case "CLAVE":
+                registro = claveTxt.getText();
+                if (registro.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+                } else {
+                    conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                }
+
+                break;
+            case "NOM. DE LINEA":
+                registro = lineaTxt.getText();
+                if (registro.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+                } else {
+                    conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+                }
+
+                break;
+            case "FECHA DE AUTORIZACIÓN":
+                try {
+                registro = df.format(autorizacionDate.getDate());
+                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+            }
+
+            break;
+            case "FECHA DE VIGENCIA":
+                try {
+                registro = df.format(vigenciaDate.getDate());
+                conexion.buscarRegistroLineas(seleccion, registro, tablaModelo);
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, rellene los campos");
+            }
+            break;
+        }
+    }//GEN-LAST:event_buscarBtnActionPerformed
+
+    private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
+        // TODO add your handling code here:
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+        conexion.llenarTablaLineasInv(tablaModelo);
+    }//GEN-LAST:event_mostrarRegistrosBtnActionPerformed
+
+    private void tablaLineasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLineasMouseClicked
+        // TODO add your handling code here:
+        //int row =   tablaLineas.getSelectedRow();
+        tablaModelo = (DefaultTableModel) tablaLineas.getModel();
+
+        claveTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 1));
+        lineaTxt.setText((String) tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0));
+
+        String auto = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 2).toString();
+        String vige = tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 3).toString();
+
+        
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date autoDate = formato.parse(auto);
+            Date vigeDate = formato.parse(vige);
+            autorizacionDate.setDate(autoDate);
+            vigenciaDate.setDate(vigeDate);
+        } catch (ParseException ex) {
+            Logger.getLogger(reg_linea_inv_editar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        try {
+            if(conexion.checarRelaciones(tablaModelo.getValueAt(tablaLineas.getSelectedRow(), 0).toString())){
+                JOptionPane.showMessageDialog(null, "Esta linea de investigación tiene registros relacionados con otra tabla.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(reg_linea_inv_eliminar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        eliminarBtn.setEnabled(true);
+    }//GEN-LAST:event_tablaLineasMouseClicked
+
+    private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
+        // TODO add your handling code here:
+        conexion.eliminarLineas(lineaTxt.getText());
+        conexion.llenarTablaLineasInv(tablaModelo);
+        limpiarCampos();
+    }//GEN-LAST:event_eliminarBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser autorizacionDate;
@@ -233,6 +387,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField lineaTxt;
+    private javax.swing.JButton mostrarRegistrosBtn;
     public javax.swing.JTable tablaLineas;
     private com.toedter.calendar.JDateChooser vigenciaDate;
     // End of variables declaration//GEN-END:variables

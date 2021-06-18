@@ -118,7 +118,19 @@ public class conexion_db {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al modificar los datos");
         }
-        
+    }
+    
+    public void eliminarLineas(String nombreLinea){
+        conexion();
+        try {
+            st = con.createStatement();
+            st.executeUpdate("DELETE FROM lineas_investigacion WHERE nombre_linea = '" + nombreLinea + "'");
+            JOptionPane.showMessageDialog(null, "Registros eliminados con exito");
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
+        }
     }
     
     public boolean checarRelaciones(String buscar) throws SQLException {
