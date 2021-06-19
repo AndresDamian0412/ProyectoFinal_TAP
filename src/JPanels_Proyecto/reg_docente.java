@@ -28,24 +28,15 @@ public class reg_docente extends javax.swing.JPanel {
     private void initComponents() {
 
         opciones_btns = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        buttonsPanel = new javax.swing.JPanel();
         agregar_btn = new javax.swing.JToggleButton();
         editar_btn = new javax.swing.JToggleButton();
         eliminar_btn = new javax.swing.JToggleButton();
         principal_panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
+        buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         opciones_btns.add(agregar_btn);
         agregar_btn.setText("AGREGAR");
@@ -57,7 +48,7 @@ public class reg_docente extends javax.swing.JPanel {
                 agregar_btnActionPerformed(evt);
             }
         });
-        jPanel3.add(agregar_btn);
+        buttonsPanel.add(agregar_btn);
 
         opciones_btns.add(editar_btn);
         editar_btn.setText("EDITAR");
@@ -68,7 +59,7 @@ public class reg_docente extends javax.swing.JPanel {
                 editar_btnActionPerformed(evt);
             }
         });
-        jPanel3.add(editar_btn);
+        buttonsPanel.add(editar_btn);
 
         opciones_btns.add(eliminar_btn);
         eliminar_btn.setText("ELIMINAR");
@@ -79,33 +70,15 @@ public class reg_docente extends javax.swing.JPanel {
                 eliminar_btnActionPerformed(evt);
             }
         });
-        jPanel3.add(eliminar_btn);
+        buttonsPanel.add(eliminar_btn);
 
-        jPanel2.add(jPanel3);
+        add(buttonsPanel);
 
         principal_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        principal_panel.setPreferredSize(new java.awt.Dimension(200, 400));
-        principal_panel.setLayout(new javax.swing.BoxLayout(principal_panel, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel2.add(principal_panel);
-
-        jLabel1.setText("DOCENTES ADSCRITOS");
-        jPanel2.add(jLabel1);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "NOMBRE", "APELLIDOS", "PUESTO", "DEPARTAMENTO", "USUARIO", "CONTRASEÑA"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1);
-
-        jPanel1.add(jPanel2);
-
-        add(jPanel1);
+        principal_panel.setMinimumSize(new java.awt.Dimension(661, 441));
+        principal_panel.setPreferredSize(new java.awt.Dimension(661, 441));
+        principal_panel.setLayout(new java.awt.BorderLayout());
+        add(principal_panel);
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
@@ -141,14 +114,9 @@ public class reg_docente extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton agregar_btn;
+    private javax.swing.JPanel buttonsPanel;
     private javax.swing.JToggleButton editar_btn;
     private javax.swing.JToggleButton eliminar_btn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.ButtonGroup opciones_btns;
     private javax.swing.JPanel principal_panel;
     // End of variables declaration//GEN-END:variables
