@@ -52,7 +52,7 @@ public class registro_de_jefes extends javax.swing.JFrame {
 
         jLabel5.setText("DEPARTAMENTO:");
 
-        combo_depa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sistemas y computación", "Ingenieria Insdustrial", "Cs. Económico Administrativo ", "Ingenierías" }));
+        combo_depa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sistemas y Computación", "Ingenieria Industrial", "Cs. Económico Administrativo ", "Ingenierías" }));
 
         jLabel6.setText("USUARIO:");
 

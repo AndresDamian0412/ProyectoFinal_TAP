@@ -53,10 +53,12 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
 
         lbl_nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_nombre.setText("Nombre");
+        lbl_nombre.setAlignmentX(0.5F);
 
         eti_jefe_depa2.setText("Jefe de departamento: ");
 
         lbl_depa.setText("Departamento");
+        lbl_depa.setAlignmentX(0.5F);
 
         javax.swing.GroupLayout panel_jefeDepartamento2Layout = new javax.swing.GroupLayout(panel_jefeDepartamento2);
         panel_jefeDepartamento2.setLayout(panel_jefeDepartamento2Layout);

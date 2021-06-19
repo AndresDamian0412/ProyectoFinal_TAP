@@ -122,6 +122,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
+                <Property name="alignmentX" type="float" value="0.5"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="eti_jefe_depa2">
@@ -132,6 +133,7 @@
             <Component class="javax.swing.JLabel" name="lbl_depa">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Departamento"/>
+                <Property name="alignmentX" type="float" value="0.5"/>
               </Properties>
             </Component>
           </SubComponents>
