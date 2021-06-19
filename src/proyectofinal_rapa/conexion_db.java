@@ -227,7 +227,110 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
+    
+    public void llenarTablaDocentes(DefaultTableModel tabla) {
+        conexion();
+        try {
+            System.out.println("entre al try");
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM usuarios WHERE puesto = 'Docente'");
+            int filas = tabla.getRowCount();
+            System.out.println(filas);
+            for (int i = 1; i <= filas; i++) {
+                System.out.println("Limpiando tabla");
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("llenando tabla");
+                tabla.addRow(new Object[]{rs.getString("usuario"), rs.getString("contrasena"),
+                    rs.getString("nombres"), rs.getString("apellidos"), rs.getString("departamento")});
+            }
+            System.out.println("sali de llenar tabla");
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }
+    }
+    
+    public void buscarRegistroDocentes(String opcion, String registro, DefaultTableModel tablaModel) {
+        conexion();
+        try {
+            st = con.createStatement();
+            switch (opcion) {
+                case "NOMBRE(S)":
+                    rs = st.executeQuery("SELECT * FROM usuarios WHERE puesto = 'Docente' AND nombres like '%" + registro + "%'");
+                    llenarTablaDocentesInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "APELLIDOS":
+                    rs = st.executeQuery("SELECT * FROM usuarios WHERE puesto = 'Docente' AND apellidos like '%" + registro + "%'");
+                    llenarTablaDocentesInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "USUARIO":
+                    rs = st.executeQuery("SELECT * FROM usuarios WHERE puesto = 'Docente' AND usuario like '%" + registro + "%'");
+                    llenarTablaDocentesInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                case "DEPARTAMENTO":
+                    rs = st.executeQuery("SELECT * FROM usuarios WHERE puesto = 'Docente' AND departamento = '" + registro + "'");
+                    llenarTablaDocentesInstruccionesEspeciales(tablaModel, rs);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Por favor, seleccione una de las opciones.");
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }
+    }
+    
+    public void llenarTablaDocentesInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
+        try {
+            rs = instruccion;
+            int filas = tabla.getRowCount();
+            System.out.println(filas);
+            for (int i = 1; i <= filas; i++) {
+                System.out.println("limpiando filas");
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("llenando tabla");
+                tabla.addRow(new Object[]{rs.getString("usuario"), rs.getString("contrasena"),
+                    rs.getString("nombres"), rs.getString("apellidos"), rs.getString("departamento")});
+            }
 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }
+    }
+    
+    public void editarDocentes(String usuarioNuevo, String usuarioAnterior, String contraseña, String nombres, String apellidos, String departamento){
+        conexion();
+        try {
+            st = con.createStatement();
+            st.executeUpdate("UPDATE usuarios SET usuario = '" + usuarioNuevo + "', contrasena = '" + contraseña + "', nombres = '" + nombres + "', apellidos = '" +
+                    apellidos + "', departamento = '" + departamento + "' WHERE usuario = '" + usuarioAnterior + "'");
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al modificar los datos");
+        }
+    }
+    
+    public void eliminarDocentes(String usuario){
+        conexion();
+        try {
+            st = con.createStatement();
+            st.executeUpdate("DELETE FROM usuarios WHERE puesto = 'Docente' AND usuario = '" + usuario + "'");
+            JOptionPane.showMessageDialog(null, "Registros eliminados con exito");
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
+        }
+    }
     // </editor-fold>
     //<editor-fold defaultstate="collapsed" desc="PRODUCTOS - SOURCE"> 
     public void llenarTablaProductos(DefaultTableModel tabla) {

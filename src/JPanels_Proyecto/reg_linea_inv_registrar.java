@@ -180,8 +180,16 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
         conexion.registrarLineas(lineaTxt.getText(), claveTxt.getText(), df.format(fecha_autoTxt.getDate()), df.format(fecha_vigTxt.getDate()));
         conexion.llenarTablaLineasInv(tablaModelo);
+        limpiarCampos();
     }//GEN-LAST:event_registrarBtnActionPerformed
 
+    public void limpiarCampos() {
+        claveTxt.setText(null);
+        lineaTxt.setText(null);
+        fecha_autoTxt.setDate(null);
+        fecha_vigTxt.setDate(null);
+    }
+    
     private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
         // TODO add your handling code here:
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
