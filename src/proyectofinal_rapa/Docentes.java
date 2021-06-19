@@ -1,6 +1,7 @@
 package proyectofinal_rapa;
 
 import JPanels_Proyecto.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Docentes extends javax.swing.JFrame {
@@ -29,6 +30,7 @@ public class Docentes extends javax.swing.JFrame {
         Panel_ProductosAcademicos = new javax.swing.JPanel();
         eti_informes = new javax.swing.JLabel();
         Img_productosAcademicos = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         PanelBtns = new javax.swing.JPanel();
         agregar_btn = new javax.swing.JToggleButton();
@@ -95,10 +97,20 @@ public class Docentes extends javax.swing.JFrame {
         Panel_ProductosAcademicos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         Panel_ProductosAcademicos.setForeground(new java.awt.Color(0, 0, 0));
 
+        eti_informes.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         eti_informes.setForeground(new java.awt.Color(0, 0, 0));
         eti_informes.setText("PRODUCTOS ACADEMICOS");
+        eti_informes.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        eti_informes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         Img_productosAcademicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Productos_academicos.jpg"))); // NOI18N
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel_ProductosAcademicosLayout = new javax.swing.GroupLayout(Panel_ProductosAcademicos);
         Panel_ProductosAcademicos.setLayout(Panel_ProductosAcademicosLayout);
@@ -107,11 +119,16 @@ public class Docentes extends javax.swing.JFrame {
             .addGroup(Panel_ProductosAcademicosLayout.createSequentialGroup()
                 .addGroup(Panel_ProductosAcademicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_ProductosAcademicosLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(eti_informes))
+                        .addContainerGap()
+                        .addComponent(eti_informes, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
                     .addGroup(Panel_ProductosAcademicosLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(Img_productosAcademicos)))
+                        .addComponent(Img_productosAcademicos)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(Panel_ProductosAcademicosLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(btnSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_ProductosAcademicosLayout.setVerticalGroup(
@@ -119,9 +136,11 @@ public class Docentes extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ProductosAcademicosLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(Img_productosAcademicos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(eti_informes)
-                .addGap(53, 53, 53))
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir)
+                .addGap(43, 43, 43))
         );
 
         getContentPane().add(Panel_ProductosAcademicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, 280));
@@ -204,6 +223,17 @@ public class Docentes extends javax.swing.JFrame {
         principal_panel.repaint();
     }//GEN-LAST:event_eliminar_btnActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        if ((JOptionPane.showConfirmDialog(this, "¿En verdad desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
+            login l = new login();
+            l.setVisible(true);
+            this.dispose();
+        }else{
+            //Nada
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -242,6 +272,7 @@ public class Docentes extends javax.swing.JFrame {
     private javax.swing.JPanel PanelBtns;
     private javax.swing.JPanel Panel_ProductosAcademicos;
     private javax.swing.JToggleButton agregar_btn;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JToggleButton editar_btn;
     private javax.swing.JToggleButton eliminar_btn;
     private javax.swing.JLabel eti_informes;

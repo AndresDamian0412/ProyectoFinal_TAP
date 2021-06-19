@@ -8,8 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 public class reg_productos_eliminar extends javax.swing.JPanel {
 
@@ -38,7 +40,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_editar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
         eti_fecha_registro = new javax.swing.JLabel();
         combo_estatus = new javax.swing.JComboBox<>();
         combo_tipo1 = new javax.swing.JComboBox<>();
@@ -68,9 +70,14 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1041, 602));
         setPreferredSize(new java.awt.Dimension(1041, 602));
 
-        btn_editar.setBackground(new java.awt.Color(255, 0, 0));
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("ELIMINAR");
+        btn_eliminar.setBackground(new java.awt.Color(255, 0, 0));
+        btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_eliminar.setText("ELIMINAR");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
 
         eti_fecha_registro.setForeground(new java.awt.Color(0, 0, 0));
         eti_fecha_registro.setText("FECHA DE REGISTRO: ");
@@ -232,7 +239,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                                 .addComponent(combo_colab1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_editar)
+                                    .addComponent(btn_eliminar)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(combo_colab2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -282,7 +289,7 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                     .addComponent(combo_colab2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_editar)
+                    .addComponent(btn_eliminar)
                     .addComponent(btnActualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,17 +303,6 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
 
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
         try {
-            // <editor-fold defaultstate="collapsed" desc="Habilitación de Combos">
-            combo_linea_inv.enable();
-            combo_nivel.enable();
-            combo_tipo1.enable();
-            txt_nombre.setEditable(true);  //comprueba que se habiliten todos
-            combo_colab1.enable();
-            combo_colab2.enable();
-            combo_colab3.enable();
-            date3.setEnabled(true);
-            combo_estatus.enable();
-            // </editor-fold>
 
             tablaModelo = (DefaultTableModel) tablaProductos.getModel();
             nom_producto_eliminar = (String) tablaModelo.getValueAt(tablaProductos.getSelectedRow(), 2);
@@ -476,22 +472,31 @@ public class reg_productos_eliminar extends javax.swing.JPanel {
                 conexion.buscarRegistroProductos(seleccion, registro, tablaModelo);
                 break;
         }
-        combo_linea_inv.enable();
-        combo_nivel.enable();
-        combo_tipo1.enable();
-        txt_nombre.setEditable(true);
-        combo_colab1.enable();
-        combo_colab2.enable();
-        combo_colab3.enable();
-        date3.setEnabled(true);
-        combo_estatus.enable();
+        combo_linea_inv.disable();
+        combo_nivel.disable();
+        combo_tipo1.disable();
+        txt_nombre.setEditable(false);
+        combo_colab1.disable();
+        combo_colab2.disable();
+        combo_colab3.disable();
+        date3.setEnabled(false);
+        combo_estatus.disable();
     }//GEN-LAST:event_btn_BuscarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // TODO add your handling code here:
+        if ((JOptionPane.showConfirmDialog(this, "¿En verdad desea eliminar el registro?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
+            conexion.eliminarProductos(txt_nombre.getText(), combo_linea_inv.getSelectedItem().toString());
+        } else {
+            //Nada
+        }
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btn_Buscar;
-    private javax.swing.JButton btn_editar;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JComboBox<String> combo_buscar;
     private javax.swing.JComboBox<String> combo_colab1;
     private javax.swing.JComboBox<String> combo_colab2;

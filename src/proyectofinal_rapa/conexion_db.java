@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinal_rapa;
 
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,10 +10,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author josep
- */
 public class conexion_db {
 
     public static Connection con = null;
@@ -102,16 +92,18 @@ public class conexion_db {
         }
     }
 
-    public void editarLineasInv(String nombreNuevo, String nombreAnterior, String clave, String autorizacion, String vigencia){
+    public void editarLineasInv(String nombreNuevo, String nombreAnterior, String clave, String autorizacion, String vigencia) {
         conexion();
         try {
             Statement st2 = con.createStatement();
             Statement st1 = con.createStatement();
             boolean checar = checarRelaciones(nombreAnterior);
-            if(checar == true)
-            st1.executeUpdate("UPDATE lineas_investigacion SET clave = '" + clave + "', fecha_auto = '" + autorizacion + "', fecha_vig = '" + vigencia + "' WHERE nombre_linea = '" + nombreAnterior + "'");
-            if(checar == false)
+            if (checar) {
+                st1.executeUpdate("UPDATE lineas_investigacion SET clave = '" + clave + "', fecha_auto = '" + autorizacion + "', fecha_vig = '" + vigencia + "' WHERE nombre_linea = '" + nombreAnterior + "'");
+            }
+            if (!checar) {
                 st2.executeUpdate("UPDATE lineas_investigacion SET nombre_linea = '" + nombreNuevo + "', clave = '" + clave + "', fecha_auto = '" + autorizacion + "', fecha_vig = '" + vigencia + "' WHERE nombre_linea = '" + nombreAnterior + "'");
+            }
             st1.close();
             st2.close();
             con.close();
@@ -119,8 +111,8 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al modificar los datos");
         }
     }
-    
-    public void eliminarLineas(String nombreLinea){
+
+    public void eliminarLineas(String nombreLinea) {
         conexion();
         try {
             st = con.createStatement();
@@ -132,7 +124,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
         }
     }
-    
+
     public boolean checarRelaciones(String buscar) throws SQLException {
         conexion();
         boolean retornar = false;
@@ -227,7 +219,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
+
     public void llenarTablaDocentes(DefaultTableModel tabla) {
         conexion();
         try {
@@ -253,7 +245,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
+
     public void buscarRegistroDocentes(String opcion, String registro, DefaultTableModel tablaModel) {
         conexion();
         try {
@@ -285,7 +277,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
+
     public void llenarTablaDocentesInstruccionesEspeciales(DefaultTableModel tabla, ResultSet instruccion) {
         try {
             rs = instruccion;
@@ -305,21 +297,21 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
-    public void editarDocentes(String usuarioNuevo, String usuarioAnterior, String contraseña, String nombres, String apellidos, String departamento){
+
+    public void editarDocentes(String usuarioNuevo, String usuarioAnterior, String contraseña, String nombres, String apellidos, String departamento) {
         conexion();
         try {
             st = con.createStatement();
-            st.executeUpdate("UPDATE usuarios SET usuario = '" + usuarioNuevo + "', contrasena = '" + contraseña + "', nombres = '" + nombres + "', apellidos = '" +
-                    apellidos + "', departamento = '" + departamento + "' WHERE usuario = '" + usuarioAnterior + "'");
+            st.executeUpdate("UPDATE usuarios SET usuario = '" + usuarioNuevo + "', contrasena = '" + contraseña + "', nombres = '" + nombres + "', apellidos = '"
+                    + apellidos + "', departamento = '" + departamento + "' WHERE usuario = '" + usuarioAnterior + "'");
             st.close();
             con.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al modificar los datos");
         }
     }
-    
-    public void eliminarDocentes(String usuario){
+
+    public void eliminarDocentes(String usuario) {
         conexion();
         try {
             st = con.createStatement();
@@ -331,6 +323,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
         }
     }
+
     // </editor-fold>
     //<editor-fold defaultstate="collapsed" desc="PRODUCTOS - SOURCE"> 
     public void llenarTablaProductos(DefaultTableModel tabla) {
@@ -525,6 +518,22 @@ public class conexion_db {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }
+    }
+    
+    public void eliminarProductos(String nombreProducto,String linea_inv) {
+        conexion();
+        try {
+            st = con.createStatement();
+            String sql = "DELETE FROM productos WHERE linea_investigacion = '" + linea_inv + "' AND nombre_producto = '"
+            +nombreProducto+"';";
+            System.out.println(sql);
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Producto eliminado con exito");
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
         }
     }
     // </editor-fold>
