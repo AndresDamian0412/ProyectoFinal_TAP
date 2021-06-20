@@ -350,7 +350,7 @@ public class conexion_db {
         }
     }
 
-    public void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus) {
+    public void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus,String departamento) {
         conexion();
         String colabConcatenado = "{";
         if (colaboradores.length > 1) {
@@ -370,7 +370,7 @@ public class conexion_db {
             st = con.createStatement();
             String sql = "INSERT INTO productos VALUES('" + linea_inv + "','" + tipo_producto + "','"
                     + nombre_producto + "','" + colabConcatenado + "','" + nivel + "','" + fecha_reg
-                    + "','" + estatus + "')";
+                    + "','" + estatus + "','"+departamento+"')";
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Registro completado");
             st.close();

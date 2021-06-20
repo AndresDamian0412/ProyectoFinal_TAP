@@ -4,17 +4,21 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import proyectofinal_rapa.Docentes;
 import proyectofinal_rapa.conexion_db;
 
 public class reg_productos_registrar extends javax.swing.JPanel {
 
     DefaultTableModel tablaModelo;
     conexion_db conexion = new conexion_db();
+    String departamento;
 
     public reg_productos_registrar() {
         initComponents();
         rellenaComboLineas();
         rellenaComboColab();
+        Docentes d = new Docentes();
+        departamento = d.getDepartamento();
     }
 
     @SuppressWarnings("unchecked")
@@ -259,7 +263,8 @@ public class reg_productos_registrar extends javax.swing.JPanel {
             conexion_db cdb = new conexion_db();
             System.out.println("Enviando registro");
             cdb.registrarProductos(combo_linea_inv.getSelectedItem().toString(), combo_tipo.getSelectedItem().toString(),
-                    txt_Nombre.getText(), colaboradores, combo_Nivel.getSelectedItem().toString(), df.format(date2.getDate()), combo_estatus1.getSelectedItem().toString());
+                    txt_Nombre.getText(), colaboradores, combo_Nivel.getSelectedItem().toString(), df.format(date2.getDate()),
+                    combo_estatus1.getSelectedItem().toString(),departamento);
         } else {
             JOptionPane.showMessageDialog(null, "Por favor ingrese todos los datos");
         }

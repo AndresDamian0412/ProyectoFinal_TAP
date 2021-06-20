@@ -1,20 +1,27 @@
 package proyectofinal_rapa;
 
 import JPanels_Proyecto.*;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Docentes extends javax.swing.JFrame {
 
     DefaultTableModel tablaModelo;
-    public conexion_db conexion = new conexion_db();
-
+    private conexion_db conexion = new conexion_db();
+    private String departamento;
+    
     public Docentes() {
         initComponents();
         this.setLocation(150, 100);
         this.setResizable(false);
         lbl_nombre.setText(login.getDatos()[0]);
         lbl_depa.setText(login.getDatos()[1]);
+        departamento = lbl_depa.getText();
+    }
+
+    public String getDepartamento() {
+        return departamento;
     }
 
     @SuppressWarnings("unchecked")
