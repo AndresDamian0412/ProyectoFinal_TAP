@@ -68,7 +68,6 @@ public class reg_productos_registrar extends javax.swing.JPanel {
         eti_nombre.setForeground(new java.awt.Color(0, 0, 0));
         eti_nombre.setText("NOMBRE PRODUCTO: ");
 
-        txt_Nombre.setBackground(new java.awt.Color(255, 255, 255));
         txt_Nombre.setForeground(new java.awt.Color(0, 0, 0));
 
         eti_colaboradores.setForeground(new java.awt.Color(0, 0, 0));
@@ -240,10 +239,10 @@ public class reg_productos_registrar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_registrar)
                     .addComponent(btnActualizar))
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(410, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 196, Short.MAX_VALUE)
+                    .addGap(0, 238, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents

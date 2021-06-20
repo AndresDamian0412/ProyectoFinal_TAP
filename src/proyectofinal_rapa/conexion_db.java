@@ -77,12 +77,12 @@ public class conexion_db {
     }
 
     //<editor-fold defaultstate="collapsed" desc="LINEAS DE INVESTIGACION - SOURCE"> 
-    public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig) {
+    public void registrarLineas(String nombre_linea, String clave, String fecha_auto, String fecha_vig, String departamento) {
         conexion();
         try {
             st = con.createStatement();
             String sql = "INSERT INTO lineas_investigacion VALUES('" + nombre_linea + "','" + clave + "','" + fecha_auto
-                    + "','" + fecha_vig + "')";
+                    + "','" + fecha_vig + "','" + departamento + "')";
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Registro completado");
             st.close();
@@ -194,12 +194,12 @@ public class conexion_db {
         }
     }
 
-    public void llenarTablaLineasInv(DefaultTableModel tabla) {
+    public void llenarTablaLineasInv(DefaultTableModel tabla, String departamento) {
         conexion();
         try {
             System.out.println("entre al try");
             st = con.createStatement();
-            rs = st.executeQuery("SELECT * FROM lineas_investigacion");
+            rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE departamento = '" + departamento + "'");
             int filas = tabla.getRowCount();
             System.out.println(filas);
             for (int i = 1; i <= filas; i++) {
@@ -332,6 +332,30 @@ public class conexion_db {
         try {
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM productos");
+            int filas = tabla.getRowCount();
+
+            for (int i = 1; i <= filas; i++) {
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("dentro del while");
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }
+    }
+    
+    public void llenarTablaProductosPorDepartamento(DefaultTableModel tabla, String departamento) {
+        conexion();
+        System.out.println(departamento);
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM productos WHERE departamento = '" + departamento + "'");
             int filas = tabla.getRowCount();
 
             for (int i = 1; i <= filas; i++) {

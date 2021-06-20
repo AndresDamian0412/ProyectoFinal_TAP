@@ -55,8 +55,10 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
         lbl_nombre.setText("Nombre");
         lbl_nombre.setAlignmentX(0.5F);
 
+        eti_jefe_depa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         eti_jefe_depa2.setText("Jefe de departamento: ");
 
+        lbl_depa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_depa.setText("Departamento");
         lbl_depa.setAlignmentX(0.5F);
 
@@ -67,21 +69,22 @@ public class interfaz_jefedepartamento extends javax.swing.JFrame {
             .addGroup(panel_jefeDepartamento2Layout.createSequentialGroup()
                 .addGroup(panel_jefeDepartamento2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_jefeDepartamento2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panel_jefeDepartamento2Layout.createSequentialGroup()
                         .addGroup(panel_jefeDepartamento2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_jefeDepartamento2Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(img_usuario2))
                             .addGroup(panel_jefeDepartamento2Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(lbl_depa)))
-                        .addGap(0, 18, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_jefeDepartamento2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(eti_jefe_depa2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_jefeDepartamento2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addContainerGap()
+                                .addComponent(eti_jefe_depa2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 12, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(panel_jefeDepartamento2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_depa, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_jefeDepartamento2Layout.setVerticalGroup(
             panel_jefeDepartamento2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

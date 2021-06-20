@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 /**
  *
@@ -327,7 +328,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
     private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
         // TODO add your handling code here:
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        conexion.llenarTablaLineasInv(tablaModelo);
+        conexion.llenarTablaLineasInv(tablaModelo, login.getDatos()[1]);
     }//GEN-LAST:event_mostrarRegistrosBtnActionPerformed
 
     private void tablaLineasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLineasMouseClicked
@@ -367,7 +368,7 @@ public class reg_linea_inv_eliminar extends javax.swing.JPanel {
     private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
         // TODO add your handling code here:
         conexion.eliminarLineas(lineaTxt.getText());
-        conexion.llenarTablaLineasInv(tablaModelo);
+        conexion.llenarTablaLineasInv(tablaModelo, login.getDatos()[1]);
         limpiarCampos();
     }//GEN-LAST:event_eliminarBtnActionPerformed
 

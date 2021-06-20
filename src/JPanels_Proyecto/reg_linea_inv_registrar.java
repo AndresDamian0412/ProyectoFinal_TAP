@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 /**
  *
@@ -178,8 +179,8 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
         conexion = new conexion_db();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        conexion.registrarLineas(lineaTxt.getText(), claveTxt.getText(), df.format(fecha_autoTxt.getDate()), df.format(fecha_vigTxt.getDate()));
-        conexion.llenarTablaLineasInv(tablaModelo);
+        conexion.registrarLineas(lineaTxt.getText(), claveTxt.getText(), df.format(fecha_autoTxt.getDate()), df.format(fecha_vigTxt.getDate()), login.getDatos()[1]);
+        conexion.llenarTablaLineasInv(tablaModelo, login.getDatos()[1]);
         limpiarCampos();
     }//GEN-LAST:event_registrarBtnActionPerformed
 
@@ -193,7 +194,7 @@ public class reg_linea_inv_registrar extends javax.swing.JPanel {
     private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
         // TODO add your handling code here:
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        conexion.llenarTablaLineasInv(tablaModelo);
+        conexion.llenarTablaLineasInv(tablaModelo, login.getDatos()[1]);
     }//GEN-LAST:event_mostrarRegistrosBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 /**
  *
@@ -268,7 +269,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
         conexion.editarLineasInv(lineaTxt.getText(), getnombre_lineaAnterior(), claveTxt.getText(), df.format(autorizacionDate.getDate()), df.format(vigenciaDate.getDate()));
-        conexion.llenarTablaLineasInv(tablaModelo);
+        conexion.llenarTablaLineasInv(tablaModelo, login.getDatos()[1]);
         limpiarCampos();
     }//GEN-LAST:event_editarBtnActionPerformed
 
@@ -346,7 +347,7 @@ public class reg_linea_inv_editar extends javax.swing.JPanel {
     private void mostrarRegistrosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarRegistrosBtnActionPerformed
         // TODO add your handling code here:
         tablaModelo = (DefaultTableModel) tablaLineas.getModel();
-        conexion.llenarTablaLineasInv(tablaModelo);
+        conexion.llenarTablaLineasInv(tablaModelo, login.getDatos()[1]);
     }//GEN-LAST:event_mostrarRegistrosBtnActionPerformed
 
     private void tablaLineasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLineasMouseClicked
