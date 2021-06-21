@@ -178,13 +178,10 @@ public class conexion_db {
 
             rs = instruccion;
             int filas = tabla.getRowCount();
-            System.out.println(filas);
             for (int i = 1; i <= filas; i++) {
-                System.out.println("limpiando filas");
                 tabla.removeRow(0);
             }
             while (rs.next()) {
-                System.out.println("agregando ");
                 tabla.addRow(new Object[]{rs.getString("nombre_linea"), rs.getString("clave"),
                     rs.getDate("fecha_auto"), rs.getDate("fecha_vig")});
             }
@@ -197,7 +194,6 @@ public class conexion_db {
     public void llenarTablaLineasInv(DefaultTableModel tabla, String departamento) {
         conexion();
         try {
-            System.out.println("entre al try");
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM lineas_investigacion WHERE departamento = '" + departamento + "'");
             int filas = tabla.getRowCount();
@@ -559,6 +555,33 @@ public class conexion_db {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
         }
+    }
+    
+    public void productosDocente(DefaultTableModel tabla,String nombreDocente){
+        conexion();
+
+        try {
+            st = con.createStatement();
+            String sql = "SELECT * FROM productos where colaboradores[1] = '"+nombreDocente+
+                    "' or colaboradores[2] = '"+nombreDocente+"' or colaboradores[3] ='"+nombreDocente+"';";
+            System.out.println(sql);
+            rs = st.executeQuery(sql);
+            int filas = tabla.getRowCount();
+
+            for (int i = 1; i <= filas; i++) {
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("dentro del while");
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
+        }       
     }
     // </editor-fold>
 

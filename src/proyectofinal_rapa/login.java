@@ -2,6 +2,7 @@ package proyectofinal_rapa;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -90,6 +91,11 @@ public class login extends javax.swing.JFrame {
         txtContra.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtContraFocusGained(evt);
+            }
+        });
+        txtContra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContraKeyReleased(evt);
             }
         });
 
@@ -243,6 +249,53 @@ public class login extends javax.swing.JFrame {
         registro_de_jefes rdj = new registro_de_jefes();
         rdj.setVisible(true);
     }//GEN-LAST:event_lblNuevouserMouseClicked
+
+    private void txtContraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            String user, contra;
+        user = txtUsuario.getText();
+        contra = new String(txtContra.getPassword());
+        conexion_db cdb = new conexion_db();
+        String[] aux = new String[3];
+        aux = cdb.login(user, contra);
+        String puesto = aux[0];
+        datos[0]=aux[1];
+        datos[1] = aux[2];
+        
+        if(!(puesto.isEmpty())){
+            switch (puesto){
+                case ("Docente") :{
+                    Docentes d = new Docentes();
+                    d.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+                
+                case ("Jefe de Departamento"):{
+                    interfaz_jefedepartamento jdp = new interfaz_jefedepartamento();
+                    jdp.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+                
+                case ("Jefe de Oficina"):{
+                    Jefe_de_Oficina jdo = new Jefe_de_Oficina();
+                    jdo.setVisible(true);
+                    this.dispose();
+                    break;
+                }
+                
+                default :{
+                    JOptionPane.showMessageDialog(null, "Lo sentimos, su puesto no coincide con ninguno en la lista de usuarios permitidos.");
+                    break;
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifique sus datos e ingrese de nuevo");
+        }
+        }
+    }//GEN-LAST:event_txtContraKeyReleased
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -8,8 +8,8 @@ public class Docentes extends javax.swing.JFrame {
 
     DefaultTableModel tablaModelo;
     private conexion_db conexion = new conexion_db();
-    private String departamento;
-    
+    private String departamento, nombre;
+
     public Docentes() {
         initComponents();
         this.setLocation(150, 100);
@@ -17,12 +17,17 @@ public class Docentes extends javax.swing.JFrame {
         lbl_nombre.setText(login.getDatos()[0]);
         lbl_depa.setText(login.getDatos()[1]);
         departamento = lbl_depa.getText();
+        nombre = lbl_nombre.getText();
     }
 
     public String getDepartamento() {
         return departamento;
     }
-
+    
+     public String getNombre() {
+        return nombre;
+    }
+     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,6 +48,7 @@ public class Docentes extends javax.swing.JFrame {
         editar_btn = new javax.swing.JToggleButton();
         eliminar_btn = new javax.swing.JToggleButton();
         principal_panel = new javax.swing.JPanel();
+        btn_mostrarProductos = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -196,6 +202,17 @@ public class Docentes extends javax.swing.JFrame {
         principal_panel.setLayout(new java.awt.BorderLayout());
         getContentPane().add(principal_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 850, 570));
 
+        btn_mostrarProductos.setText("Mostrar mis productos");
+        btn_mostrarProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0), 2));
+        btn_mostrarProductos.setMargin(new java.awt.Insets(2, 30, 2, 90));
+        btn_mostrarProductos.setPreferredSize(new java.awt.Dimension(80, 21));
+        btn_mostrarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrarProductosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_mostrarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 170, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -240,6 +257,16 @@ public class Docentes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btn_mostrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrarProductosActionPerformed
+        // TODO add your handling code here:
+        principal_panel.removeAll();
+        panelProductos pp = new panelProductos();
+        pp.setSize(1041, 602);
+        principal_panel.add(pp);
+        principal_panel.revalidate();
+        principal_panel.repaint();
+    }//GEN-LAST:event_btn_mostrarProductosActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -279,6 +306,7 @@ public class Docentes extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_ProductosAcademicos;
     private javax.swing.JToggleButton agregar_btn;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JToggleButton btn_mostrarProductos;
     private javax.swing.JToggleButton editar_btn;
     private javax.swing.JToggleButton eliminar_btn;
     private javax.swing.JLabel eti_informes;

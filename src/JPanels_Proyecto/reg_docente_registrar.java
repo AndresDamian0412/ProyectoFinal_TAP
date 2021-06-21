@@ -176,7 +176,7 @@ public class reg_docente_registrar extends javax.swing.JPanel {
         tablaModel = (DefaultTableModel) tablaDocentes.getModel();
         if (departamentoBox.getSelectedItem().toString() != "Seleccionar..." && nombresTxt.getText().length() != 0
                 && apellidosTxt.getText().length() != 0 && usuarioTxt.getText().length() != 0 && contraTxt.getText().length() != 0) {
-            conexion.registrarUsuarios(usuarioTxt.getText(), contraTxt.getText(), nombresTxt.getText(), apellidosTxt.getText(), "Docente", departamentoBox.getSelectedItem().toString());
+            conexion.registrarUsuarios(usuarioTxt.getText().trim(), contraTxt.getText().trim(), nombresTxt.getText().trim(), apellidosTxt.getText().trim(), "Docente", departamentoBox.getSelectedItem().toString());
             vaciarCampos();
             conexion.llenarTablaDocentes(tablaModel);
         }else{
