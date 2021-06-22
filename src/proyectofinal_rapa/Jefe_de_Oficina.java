@@ -1,5 +1,7 @@
 package proyectofinal_rapa;
 
+import JPanels_Proyecto.*;
+
 
 public class Jefe_de_Oficina extends javax.swing.JFrame {
 
@@ -16,7 +18,6 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollBar1 = new javax.swing.JScrollBar();
         Panel_Usuario_JefeOficina = new javax.swing.JPanel();
         Foto_perfil = new javax.swing.JLabel();
         Puesto_Jefe_Oficina = new javax.swing.JLabel();
@@ -25,17 +26,17 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         eti_departamento_jefeOficina = new javax.swing.JLabel();
         btn_semestrales = new javax.swing.JButton();
         btn_anuales = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnTipo = new javax.swing.JButton();
         btn_rango = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
+        principal_panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1040, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Usuario_JefeOficina.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Usuario_JefeOficina.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Panel_Usuario_JefeOficina.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         Foto_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/perfil_jefe_oficina (2).png"))); // NOI18N
 
@@ -56,10 +57,25 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         });
 
         btn_anuales.setText("ANUALES");
+        btn_anuales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_anualesActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("TIPO PRODUCTOS");
+        btnTipo.setText("TIPO PRODUCTOS");
+        btnTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTipoActionPerformed(evt);
+            }
+        });
 
         btn_rango.setText("RANGO DE FECHAS");
+        btn_rango.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_rangoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel_Usuario_JefeOficinaLayout = new javax.swing.GroupLayout(Panel_Usuario_JefeOficina);
         Panel_Usuario_JefeOficina.setLayout(Panel_Usuario_JefeOficinaLayout);
@@ -85,7 +101,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                     .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(btnTipo)
                             .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btn_rango, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
@@ -121,31 +137,67 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(btn_rango)
                 .addGap(42, 42, 42)
-                .addComponent(jButton1)
+                .addComponent(btnTipo)
                 .addGap(26, 26, 26))
         );
 
         getContentPane().add(Panel_Usuario_JefeOficina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 570));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout principal_panelLayout = new javax.swing.GroupLayout(principal_panel);
+        principal_panel.setLayout(principal_panelLayout);
+        principal_panelLayout.setHorizontalGroup(
+            principal_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 870, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        principal_panelLayout.setVerticalGroup(
+            principal_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 570, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 870, 570));
+        getContentPane().add(principal_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 870, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_semestralesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_semestralesActionPerformed
         // TODO add your handling code here:
+        principal_panel.removeAll();
+        info_semestral is = new info_semestral();
+        is.setSize(1041, 602);
+        principal_panel.add(is);
+        principal_panel.revalidate();
+        principal_panel.repaint();
     }//GEN-LAST:event_btn_semestralesActionPerformed
+
+    private void btnTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTipoActionPerformed
+        // TODO add your handling code here:
+        principal_panel.removeAll();
+        info_tipo_productos itp = new info_tipo_productos();
+        itp.setSize(1041, 602);
+        principal_panel.add(itp);
+        principal_panel.revalidate();
+        principal_panel.repaint();
+    }//GEN-LAST:event_btnTipoActionPerformed
+
+    private void btn_rangoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rangoActionPerformed
+        // TODO add your handling code here:
+        principal_panel.removeAll();
+        info_rangoFechas irf = new info_rangoFechas();
+        irf.setSize(1041, 602);
+        principal_panel.add(irf);
+        principal_panel.revalidate();
+        principal_panel.repaint();
+    }//GEN-LAST:event_btn_rangoActionPerformed
+
+    private void btn_anualesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_anualesActionPerformed
+        // TODO add your handling code here:
+        principal_panel.removeAll();
+        info_anual ia = new info_anual();
+        ia.setSize(1041, 602);
+        principal_panel.add(ia);
+        principal_panel.revalidate();
+        principal_panel.repaint();
+    }//GEN-LAST:event_btn_anualesActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -160,14 +212,13 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
     private javax.swing.JLabel Nombre_Jefe_Oficina;
     private javax.swing.JPanel Panel_Usuario_JefeOficina;
     private javax.swing.JLabel Puesto_Jefe_Oficina;
+    private javax.swing.JButton btnTipo;
     private javax.swing.JButton btn_anuales;
     private javax.swing.JButton btn_rango;
     private javax.swing.JButton btn_semestrales;
     private javax.swing.JLabel eti_departamento_jefeOficina;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel principal_panel;
     // End of variables declaration//GEN-END:variables
 }
