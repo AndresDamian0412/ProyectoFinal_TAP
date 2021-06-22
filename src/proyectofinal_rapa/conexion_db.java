@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -345,7 +347,7 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
+
     public void llenarTablaProductosPorDepartamento(DefaultTableModel tabla, String departamento) {
         conexion();
         System.out.println(departamento);
@@ -370,7 +372,7 @@ public class conexion_db {
         }
     }
 
-    public void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus,String departamento) {
+    public void registrarProductos(String linea_inv, String tipo_producto, String nombre_producto, String[] colaboradores, String nivel, String fecha_reg, String estatus, String departamento) {
         conexion();
         String colabConcatenado = "{";
         if (colaboradores.length > 1) {
@@ -390,7 +392,7 @@ public class conexion_db {
             st = con.createStatement();
             String sql = "INSERT INTO productos VALUES('" + linea_inv + "','" + tipo_producto + "','"
                     + nombre_producto + "','" + colabConcatenado + "','" + nivel + "','" + fecha_reg
-                    + "','" + estatus + "','"+departamento+"')";
+                    + "','" + estatus + "','" + departamento + "')";
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Registro completado");
             st.close();
@@ -540,13 +542,13 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
         }
     }
-    
-    public void eliminarProductos(String nombreProducto,String linea_inv) {
+
+    public void eliminarProductos(String nombreProducto, String linea_inv) {
         conexion();
         try {
             st = con.createStatement();
             String sql = "DELETE FROM productos WHERE linea_investigacion = '" + linea_inv + "' AND nombre_producto = '"
-            +nombreProducto+"';";
+                    + nombreProducto + "';";
             System.out.println(sql);
             st.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Producto eliminado con exito");
@@ -556,14 +558,14 @@ public class conexion_db {
             JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
         }
     }
-    
-    public void productosDocente(DefaultTableModel tabla,String nombreDocente){
+
+    public void productosDocente(DefaultTableModel tabla, String nombreDocente) {
         conexion();
 
         try {
             st = con.createStatement();
-            String sql = "SELECT * FROM productos where colaboradores[1] = '"+nombreDocente+
-                    "' or colaboradores[2] = '"+nombreDocente+"' or colaboradores[3] ='"+nombreDocente+"';";
+            String sql = "SELECT * FROM productos where colaboradores[1] = '" + nombreDocente
+                    + "' or colaboradores[2] = '" + nombreDocente + "' or colaboradores[3] ='" + nombreDocente + "';";
             System.out.println(sql);
             rs = st.executeQuery(sql);
             int filas = tabla.getRowCount();
@@ -581,10 +583,139 @@ public class conexion_db {
             con.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al rellenar tabla");
-        }       
+        }
     }
     // </editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Jefe Oficina - SOURCE">
+    public void productosTipo(DefaultTableModel tabla, String tipo) {
+        try {
+            conexion();
+
+            st = con.createStatement();
+            String sql = "SELECT * FROM productos where tipo_producto = '" + tipo + "';";
+            System.out.println(sql);
+            rs = st.executeQuery(sql);
+            int filas = tabla.getRowCount();
+
+            for (int i = 1; i <= filas; i++) {
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("dentro del while");
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(conexion_db.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void productosRango(DefaultTableModel tabla, String fechaIni, String fechaFin) {
+        try {
+            conexion();
+
+            st = con.createStatement();
+            String sql = "SELECT * FROM productos where fecha_registro between '" + fechaIni + "' and '" + fechaFin + "';";
+            System.out.println(sql);
+            rs = st.executeQuery(sql);
+            int filas = tabla.getRowCount();
+
+            for (int i = 1; i <= filas; i++) {
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("dentro del while");
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(conexion_db.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void productosAnual(DefaultTableModel tabla, String anio) {
+
+        try {
+            conexion();
+
+            st = con.createStatement();
+            String sql = "SELECT * FROM productos where extract(year from fecha_registro) = '" + anio + "';";
+            System.out.println(sql);
+            rs = st.executeQuery(sql);
+            int filas = tabla.getRowCount();
+
+            for (int i = 1; i <= filas; i++) {
+                tabla.removeRow(0);
+            }
+            while (rs.next()) {
+                System.out.println("dentro del while");
+                tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                    rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
+            }
+            st.close();
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(conexion_db.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void productosSemestral(DefaultTableModel tabla, String periodo, String anio) {
+        try {
+            conexion();
+
+            Statement st1 = con.createStatement();
+            Statement st2 = con.createStatement();
+
+            switch (periodo) {
+                case "1": {
+                    rs = st1.executeQuery("select * from productos where extract(month fecha_registro)>=01 and"
+                            + " extract(month from fecha_registro)<=06 and extract(year from fecha_registro) = '" + anio + "'");
+                    int filas = tabla.getRowCount();
+
+                    for (int i = 1; i <= filas; i++) {
+                        tabla.removeRow(0);
+                    }
+                    while (rs.next()) {
+                        System.out.println("dentro del while");
+                        tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                            rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
+                    }
+                    break;
+                }
+                case "2": {
+                    rs = st2.executeQuery("select * from productos where extract(month fecha_registro)>=07 and"
+                            + " extract(month from fecha_registro)<= 12 and extract(year from fecha_registro) = '" + anio + "'");
+                    int filas = tabla.getRowCount();
+
+                    for (int i = 1; i <= filas; i++) {
+                        tabla.removeRow(0);
+                    }
+                    while (rs.next()) {
+                        System.out.println("dentro del while");
+                        tabla.addRow(new Object[]{rs.getString("linea_investigacion"), rs.getString("tipo_producto"),
+                            rs.getString("nombre_producto"), rs.getArray("colaboradores"), rs.getString("nivel"), rs.getDate("fecha_registro"), rs.getString("estatus")});
+                    }
+                    break;
+                }
+            }
+            st1.close();
+            st2.close();
+            rs.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(conexion_db.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+// </editor-fold>
     public static void main(String[] args) {
         //registrarUsuarios("esto", "1234", "es", "una", "secretario", "prueba");
         //registrarLineas("esto es", "12345", "10-09-2000", "09-10-9000");
