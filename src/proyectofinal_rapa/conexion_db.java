@@ -588,12 +588,12 @@ public class conexion_db {
     // </editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Jefe Oficina - SOURCE">
-    public void productosTipo(DefaultTableModel tabla, String tipo) {
+    public void productosTipo(DefaultTableModel tabla, String tipo, String departamento) {
         try {
             conexion();
 
             st = con.createStatement();
-            String sql = "SELECT * FROM productos where tipo_producto = '" + tipo + "';";
+            String sql = "SELECT * FROM productos where tipo_producto = '" + tipo + "' and departamento = '" + departamento + "';";
             System.out.println(sql);
             rs = st.executeQuery(sql);
             int filas = tabla.getRowCount();
@@ -614,12 +614,12 @@ public class conexion_db {
         }
     }
 
-    public void productosRango(DefaultTableModel tabla, String fechaIni, String fechaFin) {
+    public void productosRango(DefaultTableModel tabla, String fechaIni, String fechaFin, String departamento) {
         try {
             conexion();
 
             st = con.createStatement();
-            String sql = "SELECT * FROM productos where fecha_registro between '" + fechaIni + "' and '" + fechaFin + "';";
+            String sql = "SELECT * FROM productos where fecha_registro between '" + fechaIni + "' and '" + fechaFin + "' and departamento = '" + departamento + "';";
             System.out.println(sql);
             rs = st.executeQuery(sql);
             int filas = tabla.getRowCount();

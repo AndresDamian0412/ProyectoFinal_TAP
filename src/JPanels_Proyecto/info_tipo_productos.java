@@ -8,6 +8,7 @@ package JPanels_Proyecto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 /**
  *
@@ -135,7 +136,7 @@ public class info_tipo_productos extends javax.swing.JPanel {
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
         if(!combo_tipo.getSelectedItem().toString().equals("Seleccionar...")){
-            conexion.productosTipo((DefaultTableModel)tablaProductos.getModel(), combo_tipo.getSelectedItem().toString());
+            conexion.productosTipo((DefaultTableModel)tablaProductos.getModel(), combo_tipo.getSelectedItem().toString(), login.getDatos()[1].toString());
         }else{
             JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo");
         }

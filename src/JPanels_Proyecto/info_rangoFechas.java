@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 /**
  *
@@ -151,7 +152,7 @@ public class info_rangoFechas extends javax.swing.JPanel {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         if(!(fechaIni.getDate()==null && fechaFin.getDate()==null)){
             conexion.productosRango((DefaultTableModel)tablaProductos.getModel(),df.format(fechaIni.getDate()),
-                    df.format(fechaFin.getDate()));
+                    df.format(fechaFin.getDate()), login.getDatos()[1].toString());
         }else{
             JOptionPane.showMessageDialog(null, "Debe ingresar ambas fechas");
         }
