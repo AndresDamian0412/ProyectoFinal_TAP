@@ -27,40 +27,75 @@ public class info_semestral extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         año = new com.toedter.calendar.JYearChooser();
         jLabel3 = new javax.swing.JLabel();
-        txt_semestre = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(477, 121));
+        jPanel1.setMinimumSize(new java.awt.Dimension(477, 121));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("INFORME SEMESTRAL");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, 24));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Año: ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, 20));
-        add(año, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Semestre: ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
-
-        txt_semestre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_semestreActionPerformed(evt);
-            }
-        });
-        add(txt_semestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 70, -1));
 
         btn_buscar.setText("Buscar");
-        add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(12, 12, 12)
+                        .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(btn_buscar)))
+                .addContainerGap(101, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(btn_buscar)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        add(jPanel1);
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,12 +126,8 @@ public class info_semestral extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tablaProductos);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 740, 320));
+        add(jScrollPane2);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_semestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_semestreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_semestreActionPerformed
 
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
 
@@ -106,11 +137,12 @@ public class info_semestral extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JYearChooser año;
     private javax.swing.JButton btn_buscar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tablaProductos;
-    private javax.swing.JTextField txt_semestre;
     // End of variables declaration//GEN-END:variables
 }
