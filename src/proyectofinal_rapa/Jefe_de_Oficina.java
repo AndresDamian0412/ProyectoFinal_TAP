@@ -82,10 +82,6 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         Panel_Usuario_JefeOficinaLayout.setHorizontalGroup(
             Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Foto_perfil)
-                .addGap(34, 34, 34))
             .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
                 .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
@@ -96,24 +92,27 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                         .addComponent(Puesto_Jefe_Oficina)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jSeparator2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(Foto_perfil)
+                .addGap(34, 34, 34))
             .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
                 .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTipo)
-                            .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btn_rango, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
-                                    .addComponent(btn_semestrales)
-                                    .addGap(18, 18, 18)))))
                     .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(btn_anuales))
                     .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(eti_departamento_jefeOficina)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(eti_departamento_jefeOficina))
+                    .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btn_semestrales))
+                    .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_rango)
+                            .addComponent(btnTipo))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_Usuario_JefeOficinaLayout.setVerticalGroup(
             Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,15 +129,15 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                 .addComponent(eti_departamento_jefeOficina)
                 .addGap(30, 30, 30)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(23, 23, 23)
                 .addComponent(btn_semestrales)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(btn_anuales)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_rango)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addComponent(btnTipo)
-                .addGap(26, 26, 26))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         getContentPane().add(Panel_Usuario_JefeOficina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 570));
@@ -163,7 +162,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         // TODO add your handling code here:
         principal_panel.removeAll();
         info_semestral is = new info_semestral();
-        is.setSize(1041, 602);
+        is.setSize(principal_panel.getSize());
         principal_panel.add(is);
         principal_panel.revalidate();
         principal_panel.repaint();
@@ -173,7 +172,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         // TODO add your handling code here:
         principal_panel.removeAll();
         info_tipo_productos itp = new info_tipo_productos();
-        itp.setSize(1041, 602);
+        itp.setSize(principal_panel.getSize());
         principal_panel.add(itp);
         principal_panel.revalidate();
         principal_panel.repaint();
@@ -183,7 +182,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         // TODO add your handling code here:
         principal_panel.removeAll();
         info_rangoFechas irf = new info_rangoFechas();
-        irf.setSize(1041, 602);
+        irf.setSize(principal_panel.getSize());
         principal_panel.add(irf);
         principal_panel.revalidate();
         principal_panel.repaint();
@@ -193,7 +192,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         // TODO add your handling code here:
         principal_panel.removeAll();
         info_anual ia = new info_anual();
-        ia.setSize(1041, 602);
+        ia.setSize(principal_panel.getSize());
         principal_panel.add(ia);
         principal_panel.revalidate();
         principal_panel.repaint();

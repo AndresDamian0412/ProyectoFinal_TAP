@@ -5,6 +5,10 @@
  */
 package JPanels_Proyecto;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import proyectofinal_rapa.conexion_db;
+
 /**
  *
  * @author axel8
@@ -14,6 +18,7 @@ public class info_tipo_productos extends javax.swing.JPanel {
     /**
      * Creates new form info_tipo_productos
      */
+    conexion_db conexion = new conexion_db();
     public info_tipo_productos() {
         initComponents();
     }
@@ -44,10 +49,15 @@ public class info_tipo_productos extends javax.swing.JPanel {
         jLabel2.setText("Producto:");
 
         btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
 
         combo_tipo.setBackground(new java.awt.Color(255, 255, 255));
         combo_tipo.setForeground(new java.awt.Color(0, 0, 0));
-        combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artículo", "Estancia Académica", "Informe Técnico", "Dirección de Tesis", "Prototipo" }));
+        combo_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "Artículo", "Estancia Académica", "Informe Técnico", "Dirección de Tesis", "Prototipo" }));
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("INFORME TIPO DE PRODUCTO");
@@ -57,7 +67,7 @@ public class info_tipo_productos extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -79,7 +89,7 @@ public class info_tipo_productos extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(combo_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_buscar)
                 .addContainerGap())
         );
@@ -121,6 +131,15 @@ public class info_tipo_productos extends javax.swing.JPanel {
     private void tablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProductosMouseClicked
 
     }//GEN-LAST:event_tablaProductosMouseClicked
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        // TODO add your handling code here:
+        if(!combo_tipo.getSelectedItem().toString().equals("Seleccionar...")){
+            conexion.productosTipo((DefaultTableModel)tablaProductos.getModel(), combo_tipo.getSelectedItem().toString());
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo");
+        }
+    }//GEN-LAST:event_btn_buscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
