@@ -8,6 +8,7 @@ package JPanels_Proyecto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 /**
  *
@@ -149,13 +150,13 @@ public class info_semestral extends javax.swing.JPanel {
             switch (combo_semestre.getSelectedItem().toString()){
                 case "Enero-Junio" :{
                     conexion.productosSemestral((DefaultTableModel)tablaProductos.getModel(),
-                            "1", String.valueOf(anio.getYear()));
+                            "1", String.valueOf(anio.getYear()),login.getDatos()[1]);
                     break;
                 }
                 
                 case "Agosto-Diciembre":{
                     conexion.productosSemestral((DefaultTableModel)tablaProductos.getModel(),
-                            "2", String.valueOf(anio.getYear()));
+                            "2", String.valueOf(anio.getYear()),login.getDatos()[1]);
                     break;
                 }
             }

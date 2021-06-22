@@ -8,6 +8,7 @@ package JPanels_Proyecto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectofinal_rapa.conexion_db;
+import proyectofinal_rapa.login;
 
 /**
  *
@@ -130,7 +131,7 @@ public class info_anual extends javax.swing.JPanel {
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
         if(!(String.valueOf(anio.getYear()).isEmpty())){
-            conexion.productosAnual((DefaultTableModel)tablaProductos.getModel(), String.valueOf(anio.getYear()));
+            conexion.productosAnual((DefaultTableModel)tablaProductos.getModel(), String.valueOf(anio.getYear()), login.getDatos()[1]);
         }else{
             JOptionPane.showMessageDialog(null,"Ingrese el año");
         }

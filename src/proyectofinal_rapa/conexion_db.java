@@ -640,13 +640,13 @@ public class conexion_db {
         }
     }
 
-    public void productosAnual(DefaultTableModel tabla, String anio) {
+    public void productosAnual(DefaultTableModel tabla, String anio, String depa) {
 
         try {
             conexion();
 
             st = con.createStatement();
-            String sql = "SELECT * FROM productos where extract(year from fecha_registro) = '" + anio + "';";
+            String sql = "SELECT * FROM productos where extract(year from fecha_registro) = '" + anio + "' and departamento = '"+depa+"';";
             System.out.println(sql);
             rs = st.executeQuery(sql);
             int filas = tabla.getRowCount();
@@ -667,7 +667,8 @@ public class conexion_db {
         }
     }
 
-    public void productosSemestral(DefaultTableModel tabla, String periodo, String anio) {
+    public void productosSemestral(DefaultTableModel tabla, String periodo, String anio, String depa) {
+        System.out.println(anio+periodo);
         try {
             conexion();
 
@@ -676,8 +677,8 @@ public class conexion_db {
 
             switch (periodo) {
                 case "1": {
-                    rs = st1.executeQuery("select * from productos where extract(month fecha_registro)>=01 and"
-                            + " extract(month from fecha_registro)<=06 and extract(year from fecha_registro) = '" + anio + "'");
+                    rs = st1.executeQuery("select * from productos where extract(month from fecha_registro)>=01 and"
+                            + " extract(month from fecha_registro)<=06 and extract(year from fecha_registro) = '" + anio + "' and departamento = '"+depa+"';");
                     int filas = tabla.getRowCount();
 
                     for (int i = 1; i <= filas; i++) {
@@ -692,7 +693,7 @@ public class conexion_db {
                 }
                 case "2": {
                     rs = st2.executeQuery("select * from productos where extract(month fecha_registro)>=07 and"
-                            + " extract(month from fecha_registro)<= 12 and extract(year from fecha_registro) = '" + anio + "'");
+                            + " extract(month from fecha_registro)<= 12 and extract(year from fecha_registro) = '" + anio + "' and departamento = '"+depa+"';");
                     int filas = tabla.getRowCount();
 
                     for (int i = 1; i <= filas; i++) {
