@@ -1,6 +1,5 @@
 package proyectofinal_rapa;
 
-import javax.swing.JOptionPane;
 
 public class Jefe_de_Oficina extends javax.swing.JFrame {
 
@@ -9,6 +8,8 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         this.setLocation(150, 100);
         Nombre_Jefe_Oficina.setText(login.getDatos()[0]);
         eti_departamento_jefeOficina.setText(login.getDatos()[1]);
+        
+        this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -25,17 +26,10 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         Panel_Informes = new javax.swing.JPanel();
         img_Informe = new javax.swing.JLabel();
         eti_informes = new javax.swing.JLabel();
-        Titulo_Informes = new javax.swing.JLabel();
-        eti_Tipo_Presentacion = new javax.swing.JLabel();
-        combo_presentacion = new javax.swing.JComboBox<>();
-        eti_Titulo_Informe_Generado = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btn_Aceptar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        Fondo_Jefe_Oficina = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1040, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel_Usuario_JefeOficina.setBackground(new java.awt.Color(255, 255, 255));
@@ -120,96 +114,28 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
             .addGroup(Panel_InformesLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(img_Informe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(eti_informes)
                 .addGap(42, 42, 42))
         );
 
         getContentPane().add(Panel_Informes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, 250));
 
-        Titulo_Informes.setFont(new java.awt.Font("Bookman Old Style", 0, 48)); // NOI18N
-        Titulo_Informes.setForeground(new java.awt.Color(0, 0, 0));
-        Titulo_Informes.setText("Informes");
-        getContentPane().add(Titulo_Informes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 220, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 870, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 570, Short.MAX_VALUE)
+        );
 
-        eti_Tipo_Presentacion.setForeground(new java.awt.Color(0, 0, 0));
-        eti_Tipo_Presentacion.setText("TIPO DE PRESENTACIÓN: ");
-        getContentPane().add(eti_Tipo_Presentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 150, 30));
-
-        combo_presentacion.setBackground(new java.awt.Color(255, 255, 255));
-        combo_presentacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(combo_presentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 220, -1));
-
-        eti_Titulo_Informe_Generado.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        eti_Titulo_Informe_Generado.setForeground(new java.awt.Color(0, 0, 0));
-        eti_Titulo_Informe_Generado.setText("INFORME GENERADO");
-        getContentPane().add(eti_Titulo_Informe_Generado, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "LINEA INVESTIGACION", "TIPO PRODUCTO", "NOM PRODUCTO", "COLABORADORES", "NIVEL", "FECHA REGISTRO", "ESTATUS"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 850, 380));
-
-        btn_Aceptar.setBackground(new java.awt.Color(255, 255, 255));
-        btn_Aceptar.setText("Aceptar");
-        getContentPane().add(btn_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 80, 30));
-
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setText("SALIR");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
-
-        Fondo_Jefe_Oficina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_jefe_oficina.jpg"))); // NOI18N
-        getContentPane().add(Fondo_Jefe_Oficina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1054, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 870, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        if ((JOptionPane.showConfirmDialog(this, "¿En verdad desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
-            login l = new login();
-            l.setVisible(true);
-            this.dispose();
-        }else{
-            //Nada
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -220,24 +146,16 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Fondo_Jefe_Oficina;
     private javax.swing.JLabel Foto_perfil;
     private javax.swing.JLabel Nombre_Jefe_Oficina;
     private javax.swing.JPanel Panel_Informes;
     private javax.swing.JPanel Panel_Usuario_JefeOficina;
     private javax.swing.JLabel Puesto_Jefe_Oficina;
-    private javax.swing.JLabel Titulo_Informes;
-    private javax.swing.JButton btn_Aceptar;
-    private javax.swing.JComboBox<String> combo_presentacion;
-    private javax.swing.JLabel eti_Tipo_Presentacion;
-    private javax.swing.JLabel eti_Titulo_Informe_Generado;
     private javax.swing.JLabel eti_departamento_jefeOficina;
     private javax.swing.JLabel eti_informes;
     private javax.swing.JLabel img_Informe;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
