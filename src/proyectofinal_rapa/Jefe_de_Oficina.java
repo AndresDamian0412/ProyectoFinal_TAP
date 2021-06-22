@@ -1,6 +1,7 @@
 package proyectofinal_rapa;
 
 import JPanels_Proyecto.*;
+import javax.swing.JOptionPane;
 
 
 public class Jefe_de_Oficina extends javax.swing.JFrame {
@@ -29,6 +30,7 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         btnTipo = new javax.swing.JButton();
         btn_rango = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        btnSalir2 = new javax.swing.JButton();
         principal_panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,6 +79,14 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
             }
         });
 
+        btnSalir2.setText("Salir");
+        btnSalir2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 3, 3)));
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Panel_Usuario_JefeOficinaLayout = new javax.swing.GroupLayout(Panel_Usuario_JefeOficina);
         Panel_Usuario_JefeOficina.setLayout(Panel_Usuario_JefeOficinaLayout);
         Panel_Usuario_JefeOficinaLayout.setHorizontalGroup(
@@ -111,7 +121,10 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(Panel_Usuario_JefeOficinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_rango)
-                            .addComponent(btnTipo))))
+                            .addComponent(btnTipo)))
+                    .addGroup(Panel_Usuario_JefeOficinaLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(btnSalir2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_Usuario_JefeOficinaLayout.setVerticalGroup(
@@ -137,7 +150,9 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
                 .addComponent(btn_rango)
                 .addGap(18, 18, 18)
                 .addComponent(btnTipo)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir2)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         getContentPane().add(Panel_Usuario_JefeOficina, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 570));
@@ -198,6 +213,17 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
         principal_panel.repaint();
     }//GEN-LAST:event_btn_anualesActionPerformed
 
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+        // TODO add your handling code here:
+        if ((JOptionPane.showConfirmDialog(this, "¿En verdad desea cerrar sesión?", "Confirmación", JOptionPane.YES_NO_OPTION)) == 0) {
+            login l = new login();
+            l.setVisible(true);
+            this.dispose();
+        }else{
+            //Nada
+        }
+    }//GEN-LAST:event_btnSalir2ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -211,6 +237,9 @@ public class Jefe_de_Oficina extends javax.swing.JFrame {
     private javax.swing.JLabel Nombre_Jefe_Oficina;
     private javax.swing.JPanel Panel_Usuario_JefeOficina;
     private javax.swing.JLabel Puesto_Jefe_Oficina;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnSalir1;
+    private javax.swing.JButton btnSalir2;
     private javax.swing.JButton btnTipo;
     private javax.swing.JButton btn_anuales;
     private javax.swing.JButton btn_rango;

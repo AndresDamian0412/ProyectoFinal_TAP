@@ -5,6 +5,10 @@
  */
 package JPanels_Proyecto;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import proyectofinal_rapa.conexion_db;
+
 /**
  *
  * @author axel8
@@ -14,6 +18,7 @@ public class info_semestral extends javax.swing.JPanel {
     /**
      * Creates new form info_semestral
      */
+    conexion_db conexion = new conexion_db();
     public info_semestral() {
         initComponents();
     }
@@ -30,10 +35,10 @@ public class info_semestral extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        año = new com.toedter.calendar.JYearChooser();
+        anio = new com.toedter.calendar.JYearChooser();
         jLabel3 = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combo_semestre = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
 
@@ -52,8 +57,13 @@ public class info_semestral extends javax.swing.JPanel {
         jLabel3.setText("Semestre: ");
 
         btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+        combo_semestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar...", "Enero-Junio", "Agosto-Diciembre" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,11 +78,11 @@ public class info_semestral extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(12, 12, 12)
-                        .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(combo_semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(btn_buscar)))
@@ -86,10 +96,10 @@ public class info_semestral extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(combo_semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addComponent(btn_buscar)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -133,11 +143,32 @@ public class info_semestral extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tablaProductosMouseClicked
 
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        // TODO add your handling code here:
+        if(!(combo_semestre.getSelectedItem().toString().equals("Seleccionar..."))){
+            switch (combo_semestre.getSelectedItem().toString()){
+                case "Enero-Junio" :{
+                    conexion.productosSemestral((DefaultTableModel)tablaProductos.getModel(),
+                            "1", String.valueOf(anio.getYear()));
+                    break;
+                }
+                
+                case "Agosto-Diciembre":{
+                    conexion.productosSemestral((DefaultTableModel)tablaProductos.getModel(),
+                            "2", String.valueOf(anio.getYear()));
+                    break;
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese el periodo");
+        }
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JYearChooser año;
+    private com.toedter.calendar.JYearChooser anio;
     private javax.swing.JButton btn_buscar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> combo_semestre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

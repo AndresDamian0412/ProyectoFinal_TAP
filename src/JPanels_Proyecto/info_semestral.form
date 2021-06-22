@@ -41,11 +41,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                          <Component id="año" min="-2" max="-2" attributes="0"/>
+                          <Component id="anio" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="combo_semestre" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
@@ -64,10 +64,10 @@
                   <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="año" min="-2" max="-2" attributes="0"/>
+                      <Component id="anio" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_semestre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -94,7 +94,7 @@
             <Property name="text" type="java.lang.String" value="A&#xf1;o: "/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JYearChooser" name="a&#xf1;o">
+        <Component class="com.toedter.calendar.JYearChooser" name="anio">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -108,13 +108,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_buscarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="combo_semestre">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="1"/>
-                <StringItem index="1" value="2"/>
+              <StringArray count="3">
+                <StringItem index="0" value="Seleccionar..."/>
+                <StringItem index="1" value="Enero-Junio"/>
+                <StringItem index="2" value="Agosto-Diciembre"/>
               </StringArray>
             </Property>
           </Properties>
