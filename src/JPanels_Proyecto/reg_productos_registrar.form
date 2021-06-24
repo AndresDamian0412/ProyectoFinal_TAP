@@ -69,14 +69,14 @@
                                               <Component id="combo_Nivel" min="-2" pref="160" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="eti_fecha_registro" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="date2" min="-2" pref="157" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
                                               <Component id="eti_estatus" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="combo_estatus1" min="-2" pref="141" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="eti_fecha_registro" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="date2" min="-2" pref="139" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -90,9 +90,9 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="242" max="32767" attributes="0"/>
+                      <EmptySpace pref="218" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane2" alignment="0" pref="1033" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" alignment="0" pref="1039" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -142,7 +142,7 @@
                   <Component id="btn_registrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="348" max="-2" attributes="0"/>
           </Group>
       </Group>
